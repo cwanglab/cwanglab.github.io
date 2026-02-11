@@ -45,7 +45,6 @@ We are an emerging research group founded in November 2021, committed to radical
 <div class="card">
 <h3>Our Reality</h3>
 <p><strong>Founded:</strong> November 2021</p>
-<p><strong>PhD graduates:</strong> 0 (first expected September 2026)</p>
 <p><strong>Current team:</strong> 4 PhD students, diverse international backgrounds</p>
 <p><strong>Publications:</strong> 57+ peer-reviewed papers including 2 Nature Communications (2025)</p>
 </div>

@@ -214,7 +214,7 @@ You **get**: Personal mentorship (biweekly one-on-ones), work-life balance (enfo
 
 You **don't get**: Famous PI name (yet), 50+ lab alumni network, £10M+ project budgets.
 
-**Our track record**: 0 PhD graduates yet (first expected Sept 2026), but strong publication record (2 Nature Comms 2025), clinical partnerships (BHF Centre, NHS Lothian), and 100% PhD retention (0 dropouts).
+**Our track record**: Strong publication record (2 Nature Comms 2025), clinical partnerships (BHF Centre, NHS Lothian), and 100% PhD retention (0 dropouts).
 
 ---
 

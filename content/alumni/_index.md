@@ -16,10 +16,6 @@ We are proud of our MSc and BSc graduates who have gone on to successful careers
 
 ## PhD Graduates
 
-**Status:** 0 PhD graduates yet (group founded November 2021)
-
-**First PhD graduation expected:** September 2026
-
 <div class="card-grid">
 <div class="card">
 <h3>Current PhD Students</h3>

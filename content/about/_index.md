@@ -22,7 +22,7 @@ We build AI systems that are trustworthy, efficient, and impactful across divers
 
 <div class="card">
 <h3>❌ Established Group</h3>
-<p>0 PhD graduates yet (first expected September 2026). We're young and growing, not a mature lab with decades of alumni.</p>
+<p>We're young and growing, not a mature lab with decades of alumni.</p>
 </div>
 
 <div class="card">
