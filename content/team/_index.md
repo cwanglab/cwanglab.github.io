@@ -67,7 +67,7 @@ Heriot-Watt University | National Robotarium, Edinburgh</p>
 
 ## PhD Students
 
-**Current Team (4 students):** Year 1-3, diverse international backgrounds, working on trustworthy AI and clinical translation projects.
+**Current Team:** 4 PhD students + 3 MSc students (7 total), Year 1-3, diverse international backgrounds, working on trustworthy AI and clinical translation projects.
 
 <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f0ad4e; margin: 2rem 0;">
 <p style="margin: 0; color: #856404;"><strong>⚠️ Student Consent Required:</strong> Individual PhD student profiles will be added after obtaining written consent (Phase 0). We respect student privacy and only display information with explicit permission.</p>
