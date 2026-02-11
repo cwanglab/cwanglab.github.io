@@ -1,0 +1,56 @@
+baseURL = 'https://cwanglab.github.io/'
+languageCode = 'en-us'
+title = 'C. Wang Lab - Trustworthy Heterogeneous AI'
+# theme = 'PaperMod'  # Temporarily disabled for custom layout
+
+[params]
+  description = "C. Wang Lab for Trustworthy Heterogeneous AI at Heriot-Watt University. Research areas: Health Intelligence, Terminal/Edge AI, Multimodal Systems"
+  author = "Dr. Chengjia Wang"
+
+  # Home info
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/cwanglab"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:C.Wang@hw.ac.uk"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Research"
+    url = "/research/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Team"
+    url = "/team/"
+    weight = 4
+
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 5
+
+  [[menu.main]]
+    name = "Join Us"
+    url = "/opportunities/"
+    weight = 6
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow raw HTML in Markdown
