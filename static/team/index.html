@@ -15,12 +15,11 @@
     --gray-600: #475569;
     --gray-800: #1e293b;
     --green: #16a34a;
+    --amber: #d97706;
     --red: #dc2626;
     --white: #ffffff;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--gray-50);
@@ -28,258 +27,142 @@
     line-height: 1.6;
   }
 
-  /* Login Screen */
+  /* ── Login ── */
   #login-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
     background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
   }
-
   .login-box {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 48px 40px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    text-align: center;
+    background: var(--white); border-radius: 12px; padding: 48px 40px;
+    width: 100%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
   }
-
-  .login-box h1 {
-    color: var(--blue);
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-
-  .login-box p {
-    color: var(--gray-600);
-    margin-bottom: 32px;
-    font-size: 14px;
-  }
-
+  .login-box h1 { color: var(--blue); font-size: 24px; margin-bottom: 8px; }
+  .login-box p { color: var(--gray-600); margin-bottom: 32px; font-size: 14px; }
   .login-box input[type="password"] {
-    width: 100%;
-    padding: 12px 16px;
-    border: 2px solid var(--gray-200);
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.2s;
+    width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+    border-radius: 8px; font-size: 16px; outline: none;
   }
-
-  .login-box input[type="password"]:focus {
-    border-color: var(--blue-light);
-  }
-
+  .login-box input:focus { border-color: var(--blue-light); }
   .login-box button {
-    width: 100%;
-    padding: 12px;
-    background: var(--blue);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 16px;
-    transition: background 0.2s;
+    width: 100%; padding: 12px; background: var(--blue); color: var(--white);
+    border: none; border-radius: 8px; font-size: 16px; font-weight: 600;
+    cursor: pointer; margin-top: 16px;
   }
-
   .login-box button:hover { background: var(--blue-light); }
+  .login-error { color: var(--red); font-size: 14px; margin-top: 12px; display: none; }
 
-  .login-error {
-    color: var(--red);
-    font-size: 14px;
-    margin-top: 12px;
-    display: none;
-  }
-
-  /* Dashboard */
-  #dashboard { display: none; }
-
+  /* ── App Shell ── */
+  #app { display: none; }
   .topbar {
-    background: var(--blue);
-    color: var(--white);
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: var(--blue); color: var(--white); padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center; height: 56px;
   }
-
-  .topbar h1 { font-size: 20px; font-weight: 600; }
-
-  .topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .topbar a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 14px;
-  }
-
+  .topbar h1 { font-size: 18px; font-weight: 600; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; }
   .topbar a:hover { color: var(--white); }
-
   .btn-logout {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: var(--white);
-    padding: 6px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 13px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 13px;
   }
 
-  .btn-logout:hover { background: rgba(255,255,255,0.25); }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 24px;
+  /* ── Navigation Tabs ── */
+  .nav-bar {
+    background: var(--white); border-bottom: 1px solid var(--gray-200);
+    padding: 0 32px; display: flex; gap: 0; overflow-x: auto;
   }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
+  .nav-tab {
+    padding: 12px 20px; font-size: 14px; font-weight: 500; color: var(--gray-600);
+    cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: all 0.15s;
   }
+  .nav-tab:hover { color: var(--gray-800); background: var(--gray-50); }
+  .nav-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
+  /* ── Page Container ── */
+  .page { display: none; max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+  .page.active { display: block; }
+
+  /* ── Shared Components ── */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
   .grid-full { grid-column: 1 / -1; }
-
-  .card {
-    background: var(--white);
-    border-radius: 10px;
-    border: 1px solid var(--gray-200);
-    overflow: hidden;
-  }
-
+  .card { background: var(--white); border-radius: 10px; border: 1px solid var(--gray-200); overflow: hidden; }
   .card-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--gray-200);
-    font-weight: 600;
-    font-size: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 16px 20px; border-bottom: 1px solid var(--gray-200);
+    font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;
   }
-
   .card-body { padding: 20px; }
-
-  .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 12px;
-    text-transform: uppercase;
-  }
-
+  .badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; text-transform: uppercase; }
   .badge-blue { background: #dbeafe; color: var(--blue); }
   .badge-green { background: #dcfce7; color: var(--green); }
+  .badge-amber { background: #fef3c7; color: var(--amber); }
 
-  /* Meeting info */
-  .meeting-info { display: flex; flex-direction: column; gap: 12px; }
-
-  .info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--gray-100);
-  }
-
+  .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
   .info-row:last-child { border-bottom: none; }
   .info-label { color: var(--gray-600); font-size: 14px; }
   .info-value { font-weight: 500; font-size: 14px; }
 
-  /* Roles table */
   .roles-table { width: 100%; border-collapse: collapse; }
-  .roles-table th {
-    text-align: left;
-    padding: 10px 12px;
-    background: var(--gray-50);
-    font-size: 13px;
-    color: var(--gray-600);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .roles-table td {
-    padding: 10px 12px;
-    border-top: 1px solid var(--gray-100);
-    font-size: 14px;
-  }
+  .roles-table th { text-align: left; padding: 10px 12px; background: var(--gray-50); font-size: 13px; color: var(--gray-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .roles-table td { padding: 10px 12px; border-top: 1px solid var(--gray-100); font-size: 14px; }
 
-  /* Rotation schedule */
   .rotation-list { list-style: none; }
-  .rotation-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray-100);
-    font-size: 14px;
-  }
+  .rotation-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; }
   .rotation-list li:last-child { border-bottom: none; }
   .rotation-week { color: var(--gray-400); font-size: 12px; }
 
-  /* Agenda sections */
-  .agenda-item {
-    display: flex;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray-100);
-  }
+  .agenda-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); }
   .agenda-item:last-child { border-bottom: none; }
-
-  .agenda-time {
-    font-family: monospace;
-    font-size: 13px;
-    color: var(--blue-light);
-    min-width: 50px;
-  }
-
+  .agenda-time { font-family: monospace; font-size: 13px; color: var(--blue-light); min-width: 50px; }
   .agenda-title { font-size: 14px; font-weight: 500; }
+  .agenda-duration { font-size: 12px; color: var(--gray-400); margin-left: auto; white-space: nowrap; }
 
-  .agenda-duration {
-    font-size: 12px;
-    color: var(--gray-400);
-    margin-left: auto;
-    white-space: nowrap;
-  }
-
-  /* Links */
   .link-list { list-style: none; }
   .link-list li { padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
   .link-list li:last-child { border-bottom: none; }
-  .link-list a {
-    color: var(--blue-light);
-    text-decoration: none;
-    font-size: 14px;
-  }
+  .link-list a { color: var(--blue-light); text-decoration: none; font-size: 14px; }
   .link-list a:hover { text-decoration: underline; }
 
-  .no-data {
-    color: var(--gray-400);
-    font-style: italic;
-    font-size: 14px;
-    text-align: center;
-    padding: 20px;
+  .no-data { color: var(--gray-400); font-style: italic; font-size: 14px; text-align: center; padding: 20px; }
+
+  /* ── Meeting Guide (docs page) ── */
+  .doc-content { line-height: 1.8; }
+  .doc-content h2 { font-size: 22px; color: var(--blue); margin: 32px 0 16px 0; padding-bottom: 8px; border-bottom: 2px solid var(--gray-200); }
+  .doc-content h2:first-child { margin-top: 0; }
+  .doc-content h3 { font-size: 17px; color: var(--gray-800); margin: 24px 0 12px 0; }
+  .doc-content p { margin-bottom: 12px; font-size: 15px; }
+  .doc-content ul, .doc-content ol { margin: 8px 0 16px 24px; font-size: 15px; }
+  .doc-content li { margin-bottom: 6px; }
+  .doc-content strong { color: var(--blue); }
+  .doc-content .section-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0;
   }
+  .doc-content .section-card .sec-id {
+    display: inline-block; background: var(--blue); color: var(--white);
+    width: 28px; height: 28px; border-radius: 6px; text-align: center; line-height: 28px;
+    font-size: 13px; font-weight: 700; margin-right: 10px;
+  }
+  .doc-content .section-card .sec-title { font-weight: 600; font-size: 15px; }
+  .doc-content .section-card .sec-time { color: var(--gray-400); font-size: 13px; float: right; }
+  .doc-content .section-card .sec-desc { margin-top: 8px; font-size: 14px; color: var(--gray-600); }
+  .doc-content .section-card ul { margin: 8px 0 0 20px; font-size: 14px; color: var(--gray-600); }
+
+  .doc-toc { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+  .doc-toc h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-400); margin-bottom: 8px; }
+  .doc-toc a { color: var(--blue-light); text-decoration: none; font-size: 14px; display: block; padding: 4px 0; }
+  .doc-toc a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
-    .topbar { padding: 12px 16px; }
-    .container { padding: 16px; }
+    .topbar, .nav-bar { padding-left: 16px; padding-right: 16px; }
+    .page { padding: 16px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Login Screen -->
+<!-- ════════════ LOGIN ════════════ -->
 <div id="login-screen">
   <div class="login-box">
     <h1>C. Wang Lab</h1>
@@ -290,55 +173,44 @@
   </div>
 </div>
 
-<!-- Dashboard (hidden until login) -->
-<div id="dashboard">
+<!-- ════════════ APP ════════════ -->
+<div id="app">
   <div class="topbar">
-    <h1>C. Wang Lab — Team Portal</h1>
+    <h1>C. Wang Lab</h1>
     <div class="topbar-right">
       <a href="https://cwanglab.github.io" target="_blank">Public Website</a>
       <button class="btn-logout" onclick="logout()">Sign Out</button>
     </div>
   </div>
 
-  <div class="container">
-    <!-- Next Meeting -->
+  <div class="nav-bar">
+    <div class="nav-tab active" onclick="showPage('dashboard')">Dashboard</div>
+    <div class="nav-tab" onclick="showPage('meeting-guide')">Meeting Guide</div>
+    <div class="nav-tab" onclick="showPage('resources')">Resources</div>
+  </div>
+
+  <!-- ──── PAGE: Dashboard ──── -->
+  <div class="page active" id="page-dashboard">
     <div class="grid">
       <div class="card grid-full">
-        <div class="card-header">
-          Next Meeting
-          <span class="badge badge-blue" id="meeting-badge">This Thursday</span>
-        </div>
-        <div class="card-body">
-          <div class="meeting-info" id="meeting-info">
-            <div class="no-data">Loading meeting data...</div>
-          </div>
-        </div>
+        <div class="card-header">Next Meeting <span class="badge badge-blue">This Thursday</span></div>
+        <div class="card-body"><div class="meeting-info" id="meeting-info"><div class="no-data">Loading...</div></div></div>
       </div>
     </div>
-
-    <!-- Roles + Agenda -->
     <div class="grid">
       <div class="card">
         <div class="card-header">This Week's Roles</div>
-        <div class="card-body" id="roles-section">
-          <div class="no-data">No data loaded</div>
-        </div>
+        <div class="card-body" id="roles-section"><div class="no-data">No data</div></div>
       </div>
       <div class="card">
         <div class="card-header">Agenda (2 hours)</div>
-        <div class="card-body" id="agenda-section">
-          <div class="no-data">No data loaded</div>
-        </div>
+        <div class="card-body" id="agenda-section"><div class="no-data">No data</div></div>
       </div>
     </div>
-
-    <!-- Rotation Schedule + Quick Links -->
     <div class="grid">
       <div class="card">
-        <div class="card-header">Rotation Schedule (Upcoming)</div>
-        <div class="card-body" id="rotation-section">
-          <div class="no-data">No data loaded</div>
-        </div>
+        <div class="card-header">Rotation Schedule</div>
+        <div class="card-body" id="rotation-section"><div class="no-data">No data</div></div>
       </div>
       <div class="card">
         <div class="card-header">Quick Links</div>
@@ -346,41 +218,318 @@
           <ul class="link-list">
             <li><a href="https://cwanglab.github.io" target="_blank">Group Website</a></li>
             <li><a href="https://cwanglab.github.io/publications/" target="_blank">Publications</a></li>
-            <li><a href="https://cwanglab.github.io/research/" target="_blank">Research Directions</a></li>
-            <li><a href="https://cwanglab.github.io/opportunities/" target="_blank">Open Positions</a></li>
+            <li><a href="https://cwanglab.github.io/research/" target="_blank">Research</a></li>
+            <li><a href="https://cwanglab.github.io/opportunities/" target="_blank">Opportunities</a></li>
           </ul>
         </div>
       </div>
     </div>
-
   </div>
+
+  <!-- ──── PAGE: Meeting Guide ──── -->
+  <div class="page" id="page-meeting-guide">
+    <div class="doc-content">
+
+      <h2>Weekly Group Meeting Guide</h2>
+
+      <div class="doc-toc">
+        <h4>Contents</h4>
+        <a href="#" onclick="return false;">Overview &amp; Philosophy</a>
+        <a href="#" onclick="return false;">9 Agenda Sections (A-I)</a>
+        <a href="#" onclick="return false;">Rotating Roles</a>
+        <a href="#" onclick="return false;">Preparation Checklist</a>
+        <a href="#" onclick="return false;">Meeting Best Practices</a>
+        <a href="#" onclick="return false;">Remote / Hybrid Guidelines</a>
+      </div>
+
+      <h3>Overview</h3>
+      <p>Our group meeting takes place <strong>every Thursday, 14:00-16:00</strong> at the National Robotarium, Heriot-Watt University (hybrid via Zoom). The meeting is designed to support our long-term research goals while maintaining a sustainable work rhythm.</p>
+      <p>Every meeting component is strategically aligned with building a world-class research group. We cover 9 sections in 2 hours, with rotating student-led roles each week.</p>
+
+      <h3>Meeting Philosophy</h3>
+      <ul>
+        <li><strong>Incremental Progress:</strong> Each meeting must contribute to measurable advancement</li>
+        <li><strong>High Efficiency:</strong> Maximum output within our 10-hour daily work constraint</li>
+        <li><strong>Continuous Innovation:</strong> Constant evolution of research direction</li>
+        <li><strong>Sustainable Excellence:</strong> Team well-being alongside world-class results</li>
+        <li><strong>Strategic Growth:</strong> Build collaboration networks, funding pipeline, and impact</li>
+      </ul>
+
+      <h2>9 Agenda Sections</h2>
+
+      <div class="section-card">
+        <span class="sec-id">A</span>
+        <span class="sec-title">PhD Project Progress with Brainstorming</span>
+        <span class="sec-time">20 min (14:00)</span>
+        <div class="sec-desc">Each PhD student presents a 3-5 minute progress update followed by 2-3 minutes of Q&A and brainstorming.</div>
+        <ul>
+          <li>Recent progress (results, experiments, analysis)</li>
+          <li>Current challenges or blockers</li>
+          <li>Next steps planned</li>
+          <li>Brainstorming: novel approaches, cross-project connections, publication potential</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">B</span>
+        <span class="sec-title">BSc/MSc Project Progress with Brainstorming</span>
+        <span class="sec-time">15 min (14:20)</span>
+        <div class="sec-desc">Brief updates from Master's students on project milestones, learning outcomes, and results.</div>
+        <ul>
+          <li>Project milestones achieved</li>
+          <li>How student projects contribute to group publications</li>
+          <li>PhD students actively mentor and guide</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">C</span>
+        <span class="sec-title">Paper Sharing with Brainstorming</span>
+        <span class="sec-time">15 min (14:35)</span>
+        <div class="sec-desc">Pre-assigned presenter shares 1-2 recent papers from top venues.</div>
+        <ul>
+          <li><strong>Target venues:</strong> NeurIPS, ICML, ICLR, CVPR, MICCAI, TMI, MedIA, Nature Medicine</li>
+          <li>Key contributions, methods, relevance to our work, limitations</li>
+          <li>Brainstorm: how to adapt/improve ideas, collaboration with authors, gap identification</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">D</span>
+        <span class="sec-title">Tool Sharing with Brainstorming</span>
+        <span class="sec-time">10 min (14:50)</span>
+        <div class="sec-desc">Quick demos of useful tools, libraries, or techniques.</div>
+        <ul>
+          <li>Deep learning frameworks, data visualization, experiment tracking</li>
+          <li>Paper writing/management tools, computational resources</li>
+          <li>Integration into current workflows, open-source contribution opportunities</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">E</span>
+        <span class="sec-title">Publication Planning and Funding Search</span>
+        <span class="sec-time">15 min (15:00)</span>
+        <div class="sec-desc">Publication pipeline status and funding opportunities.</div>
+        <ul>
+          <li><strong>Publications:</strong> Papers in preparation, target venues with deadlines, writing timelines, rebuttal strategies</li>
+          <li><strong>Funding:</strong> New calls (EPSRC, UKRI, ERC, Horizon Europe), application deadlines, proposal ideas</li>
+          <li>Align publications with funding priorities, build narrative for grants</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">F</span>
+        <span class="sec-title">New Idea Proposals and Solution Discussions</span>
+        <span class="sec-time">15 min (15:15)</span>
+        <div class="sec-desc">Open floor for novel research ideas using a 2-minute pitch format.</div>
+        <ul>
+          <li>Emerging research directions, cross-disciplinary connections</li>
+          <li>Group feedback on feasibility and novelty</li>
+          <li>Decision: pursue, defer, or archive</li>
+          <li>Maintain idea repository, credit idea originators</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">G</span>
+        <span class="sec-title">Collaborations</span>
+        <span class="sec-time">10 min (15:30)</span>
+        <div class="sec-desc">Updates on ongoing collaborations and new opportunities.</div>
+        <ul>
+          <li>Active collaboration updates (data sharing, joint papers, student exchanges)</li>
+          <li>Strategic partnerships with target institutions</li>
+          <li>Co-authorship network expansion, access to unique datasets</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">H</span>
+        <span class="sec-title">Media Coverage and Outreach</span>
+        <span class="sec-time">10 min (15:40)</span>
+        <div class="sec-desc">News, tutorials, visits, and social media strategy.</div>
+        <ul>
+          <li><strong>News:</strong> Publications accepted, competition wins, awards, grants</li>
+          <li><strong>Tutorials:</strong> Blog posts, videos, open-source releases (impact building)</li>
+          <li><strong>Events:</strong> Conference presentations, invited talks, lab visits, workshops</li>
+          <li><strong>Social media:</strong> X/Twitter, LinkedIn, website updates, GitHub</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <span class="sec-id">I</span>
+        <span class="sec-title">Summary and Task Assignment</span>
+        <span class="sec-time">10 min (15:50)</span>
+        <div class="sec-desc">Student-led summary with clear action items and deadlines.</div>
+        <ul>
+          <li>One designated student (rotating) summarizes the meeting</li>
+          <li>Capture key decisions and action items with deadlines</li>
+          <li>Summary distributed to all members within 24 hours</li>
+          <li>Develops leadership and communication skills</li>
+        </ul>
+      </div>
+
+      <h2>Rotating Roles</h2>
+      <p>Three roles rotate weekly across all 7 group members (4 PhD + 3 MSc) in round-robin order:</p>
+      <table class="roles-table">
+        <thead><tr><th>Role</th><th>Responsibilities</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Chair</strong></td><td>Lead the meeting, keep time, ensure all sections are covered, manage discussion flow</td></tr>
+          <tr><td><strong>Note-Taker</strong></td><td>Record minutes, capture decisions and action items, distribute summary within 24 hours</td></tr>
+          <tr><td><strong>Paper Presenter</strong></td><td>Select 1-2 papers from top venues, prepare 10-15 min presentation with critical analysis</td></tr>
+        </tbody>
+      </table>
+      <p>The rotation schedule is displayed on the Dashboard and announced via email each Monday. Check the Dashboard to see your upcoming assignments.</p>
+
+      <h2>Preparation Checklist</h2>
+      <h3>All PhD Students</h3>
+      <ul>
+        <li>Prepare 3-5 minute progress update (results, challenges, next steps)</li>
+        <li>Bring any figures, plots, or demos to share on screen</li>
+        <li>Think about connections to other group members' work</li>
+      </ul>
+      <h3>All MSc Students</h3>
+      <ul>
+        <li>Prepare a brief project status update</li>
+        <li>Note any blockers or questions for the group</li>
+      </ul>
+      <h3>Everyone</h3>
+      <ul>
+        <li>Check if you have a role this week (Dashboard)</li>
+        <li>Think about new ideas, tools, or collaboration opportunities to share</li>
+        <li>Review previous meeting's action items — are yours done?</li>
+      </ul>
+      <h3>If You Are Chair</h3>
+      <ul>
+        <li>Review the agenda before the meeting</li>
+        <li>Prepare to keep the group on time (use a timer if helpful)</li>
+        <li>Ensure everyone gets a chance to speak</li>
+      </ul>
+      <h3>If You Are Paper Presenter</h3>
+      <ul>
+        <li>Select 1-2 recent papers from top venues by Wednesday</li>
+        <li>Prepare slides or a screen-share walkthrough</li>
+        <li>Focus on: key contribution, method, relevance to us, limitations, potential improvements</li>
+      </ul>
+
+      <h2>Meeting Best Practices</h2>
+      <h3>Before</h3>
+      <ul>
+        <li>Agenda circulated Monday morning (automated)</li>
+        <li>Pre-reading materials shared in advance when needed</li>
+        <li>Tech setup: ensure Zoom/remote participation works</li>
+      </ul>
+      <h3>During</h3>
+      <ul>
+        <li><strong>Punctuality:</strong> Start and end on time</li>
+        <li><strong>Active participation:</strong> Everyone contributes</li>
+        <li><strong>Respectful dialogue:</strong> Constructive feedback only</li>
+        <li><strong>Stay focused:</strong> Deep-dive topics can be deferred to separate sessions</li>
+      </ul>
+      <h3>After</h3>
+      <ul>
+        <li>Note-taker distributes minutes within 24 hours</li>
+        <li>Action items tracked and followed up</li>
+        <li>Quarterly feedback survey on meeting effectiveness</li>
+      </ul>
+
+      <h2>Remote / Hybrid Guidelines</h2>
+      <ul>
+        <li><strong>Platform:</strong> Zoom (link provided in meeting emails and Dashboard)</li>
+        <li><strong>Audio/Video:</strong> Camera on when presenting; mute when not speaking</li>
+        <li><strong>Screen sharing:</strong> Prepare materials before the meeting</li>
+        <li><strong>Engagement:</strong> Chair ensures remote participants are included (round-robin)</li>
+        <li><strong>Chat:</strong> Use Zoom chat for questions during presentations to avoid interrupting</li>
+        <li><strong>Recording:</strong> Meetings may be recorded for absent members (with consent)</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- ──── PAGE: Resources ──── -->
+  <div class="page" id="page-resources">
+    <div class="doc-content">
+      <h2>Internal Resources</h2>
+      <p>Key documents and links for team members.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-header">Group Operations</div>
+          <div class="card-body">
+            <ul class="link-list">
+              <li><a href="#" onclick="showPage('meeting-guide'); return false;">Meeting Guide</a> — Full meeting structure and expectations</li>
+              <li><a href="https://cwanglab.github.io" target="_blank">Group Website</a> — Public-facing site</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Research Tools</div>
+          <div class="card-body">
+            <ul class="link-list">
+              <li><a href="https://scholar.google.com" target="_blank">Google Scholar</a></li>
+              <li><a href="https://elicit.com" target="_blank">Elicit</a> — AI research assistant</li>
+              <li><a href="https://consensus.app" target="_blank">Consensus</a> — AI-powered paper search</li>
+              <li><a href="https://www.connectedpapers.com" target="_blank">Connected Papers</a> — Visual paper exploration</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Heriot-Watt Resources</div>
+          <div class="card-body">
+            <ul class="link-list">
+              <li><a href="https://www.hw.ac.uk/students/" target="_blank">Student Hub</a></li>
+              <li><a href="https://www.hw.ac.uk/services/is/" target="_blank">IT Services</a></li>
+              <li><a href="https://www.hw.ac.uk/uk/edinburgh/edinburgh-business-school/national-robotarium.htm" target="_blank">National Robotarium</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Conference Deadlines</div>
+          <div class="card-body">
+            <ul class="link-list">
+              <li><a href="https://aideadlin.es/?sub=ML,CV,NLP,RO,SP,DM,AP,KR" target="_blank">AI Deadlines</a> — Conference tracker</li>
+              <li><a href="https://www.miccai.org" target="_blank">MICCAI</a> — Medical Image Computing</li>
+              <li><a href="https://cvpr.thecvf.com" target="_blank">CVPR</a> — Computer Vision</li>
+              <li><a href="https://neurips.cc" target="_blank">NeurIPS</a> — Neural Information Processing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>Wellbeing &amp; Support</h2>
+      <p>Your wellbeing matters. If you're struggling, please reach out.</p>
+      <div class="card">
+        <div class="card-body">
+          <ul class="link-list">
+            <li><strong>Your supervisor</strong> — Dr. Chengjia Wang (first point of contact for any concern)</li>
+            <li><a href="https://www.hw.ac.uk/students/health-wellbeing/" target="_blank">Heriot-Watt Student Wellbeing</a></li>
+            <li><strong>Samaritans:</strong> 116 123 (24/7, free)</li>
+            <li><strong>NHS:</strong> 111 (non-emergency health)</li>
+            <li><strong>Emergency:</strong> 999</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <script>
-// ============================================================
-// Authentication
-// ============================================================
-// SHA-256 hash of the team password. To change the password:
-//   1. Pick a new password
-//   2. Run: echo -n "yourpassword" | shasum -a 256
-//   3. Replace the hash below
-// Default password: "cwanglab2026" (CHANGE THIS before deployment)
+// ════════════ AUTH ════════════
 const PASSWORD_HASH = '2bd30c33db000e1abc5bbaafda9df534a3ebbeed0a18c01aaca74bbafc32e7db';
 
 async function sha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 async function attemptLogin() {
   const input = document.getElementById('password-input').value;
-  const hash = await sha256(input);
-
-  if (hash === PASSWORD_HASH) {
+  if (await sha256(input) === PASSWORD_HASH) {
     sessionStorage.setItem('cwanglab_auth', 'true');
-    showDashboard();
+    showApp();
   } else {
     document.getElementById('login-error').style.display = 'block';
     document.getElementById('password-input').value = '';
@@ -390,31 +539,38 @@ async function attemptLogin() {
 
 function logout() {
   sessionStorage.removeItem('cwanglab_auth');
-  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('app').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('password-input').value = '';
   document.getElementById('login-error').style.display = 'none';
 }
 
-function showDashboard() {
+function showApp() {
   document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('app').style.display = 'block';
   loadMeetingData();
 }
 
-// Check session on page load
-if (sessionStorage.getItem('cwanglab_auth') === 'true') {
-  showDashboard();
+if (sessionStorage.getItem('cwanglab_auth') === 'true') showApp();
+document.getElementById('password-input').addEventListener('keypress', e => { if (e.key === 'Enter') attemptLogin(); });
+
+// ════════════ NAVIGATION ════════════
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  // find the tab
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    if (t.textContent.toLowerCase().replace(/\s+/g, '-') === pageId ||
+        (pageId === 'dashboard' && t.textContent === 'Dashboard') ||
+        (pageId === 'meeting-guide' && t.textContent === 'Meeting Guide') ||
+        (pageId === 'resources' && t.textContent === 'Resources'))
+      t.classList.add('active');
+  });
+  window.scrollTo(0, 0);
 }
 
-// Enter key triggers login
-document.getElementById('password-input').addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') attemptLogin();
-});
-
-// ============================================================
-// Meeting Data
-// ============================================================
+// ════════════ MEETING DATA ════════════
 async function loadMeetingData() {
   try {
     const resp = await fetch('data/current.json');
@@ -424,110 +580,55 @@ async function loadMeetingData() {
     renderRoles(data);
     renderAgenda(data);
     renderRotation(data);
-  } catch (e) {
-    // No data file yet — show static fallback
-    renderFallback();
-  }
+  } catch (e) { renderFallback(); }
 }
 
 function renderMeetingInfo(data) {
-  const el = document.getElementById('meeting-info');
-  el.innerHTML = `
-    <div class="info-row">
-      <span class="info-label">Date</span>
-      <span class="info-value">${data.meeting_date_full}</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Time</span>
-      <span class="info-value">${data.time} - ${data.end_time}</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Location</span>
-      <span class="info-value">${data.location}</span>
-    </div>
-    ${data.zoom_link ? `<div class="info-row">
-      <span class="info-label">Zoom</span>
-      <span class="info-value"><a href="${data.zoom_link}" target="_blank">${data.zoom_link}</a></span>
-    </div>` : ''}
-  `;
+  document.getElementById('meeting-info').innerHTML = `
+    <div class="info-row"><span class="info-label">Date</span><span class="info-value">${data.meeting_date_full}</span></div>
+    <div class="info-row"><span class="info-label">Time</span><span class="info-value">${data.time} - ${data.end_time}</span></div>
+    <div class="info-row"><span class="info-label">Location</span><span class="info-value">${data.location}</span></div>
+    ${data.zoom_link ? `<div class="info-row"><span class="info-label">Zoom</span><span class="info-value"><a href="${data.zoom_link}" target="_blank">Join Meeting</a></span></div>` : ''}`;
 }
 
 function renderRoles(data) {
-  const el = document.getElementById('roles-section');
   const r = data.roles;
-  el.innerHTML = `
-    <table class="roles-table">
-      <thead><tr><th>Role</th><th>Name</th></tr></thead>
-      <tbody>
-        <tr><td>Chair</td><td>${r.chair}</td></tr>
-        <tr><td>Note-Taker</td><td>${r.note_taker}</td></tr>
-        <tr><td>Paper Presenter</td><td>${r.paper_presenter}</td></tr>
-      </tbody>
-    </table>
-    ${data.next_roles ? `
-    <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--gray-200)">
+  document.getElementById('roles-section').innerHTML = `
+    <table class="roles-table"><thead><tr><th>Role</th><th>Name</th></tr></thead><tbody>
+      <tr><td>Chair</td><td>${r.chair}</td></tr>
+      <tr><td>Note-Taker</td><td>${r.note_taker}</td></tr>
+      <tr><td>Paper Presenter</td><td>${r.paper_presenter}</td></tr>
+    </tbody></table>
+    ${data.next_roles ? `<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--gray-200)">
       <div style="font-size:12px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Next Week</div>
-      <table class="roles-table">
-        <tbody>
-          <tr><td>Chair</td><td>${data.next_roles.chair}</td></tr>
-          <tr><td>Note-Taker</td><td>${data.next_roles.note_taker}</td></tr>
-          <tr><td>Paper Presenter</td><td>${data.next_roles.paper_presenter}</td></tr>
-        </tbody>
-      </table>
-    </div>` : ''}
-  `;
+      <table class="roles-table"><tbody>
+        <tr><td>Chair</td><td>${data.next_roles.chair}</td></tr>
+        <tr><td>Note-Taker</td><td>${data.next_roles.note_taker}</td></tr>
+        <tr><td>Paper Presenter</td><td>${data.next_roles.paper_presenter}</td></tr>
+      </tbody></table></div>` : ''}`;
 }
 
 function renderAgenda(data) {
-  const el = document.getElementById('agenda-section');
-  if (!data.agenda) { el.innerHTML = '<div class="no-data">No agenda data</div>'; return; }
-
-  el.innerHTML = data.agenda.map(s => `
-    <div class="agenda-item">
-      <span class="agenda-time">${s.time}</span>
-      <span class="agenda-title">${s.id}. ${s.title}</span>
-      <span class="agenda-duration">${s.duration} min</span>
-    </div>
-  `).join('');
+  if (!data.agenda) { document.getElementById('agenda-section').innerHTML = '<div class="no-data">No agenda data</div>'; return; }
+  document.getElementById('agenda-section').innerHTML = data.agenda.map(s =>
+    `<div class="agenda-item"><span class="agenda-time">${s.time}</span><span class="agenda-title">${s.id}. ${s.title}</span><span class="agenda-duration">${s.duration} min</span></div>`
+  ).join('');
 }
 
 function renderRotation(data) {
-  const el = document.getElementById('rotation-section');
-  if (!data.upcoming_rotation) {
-    el.innerHTML = '<div class="no-data">No rotation data</div>';
-    return;
-  }
-
-  el.innerHTML = `<ul class="rotation-list">` +
-    data.upcoming_rotation.map(w => `
-      <li>
-        <div>
-          <div><strong>${w.chair}</strong> (Chair)</div>
-          <div style="font-size:12px;color:var(--gray-400)">${w.note_taker} (Notes) · ${w.paper_presenter} (Paper)</div>
-        </div>
-        <span class="rotation-week">${w.date}</span>
-      </li>
-    `).join('') + `</ul>`;
+  if (!data.upcoming_rotation) { document.getElementById('rotation-section').innerHTML = '<div class="no-data">No data</div>'; return; }
+  document.getElementById('rotation-section').innerHTML = `<ul class="rotation-list">` +
+    data.upcoming_rotation.map(w => `<li><div><div><strong>${w.chair}</strong> (Chair)</div><div style="font-size:12px;color:var(--gray-400)">${w.note_taker} (Notes) · ${w.paper_presenter} (Paper)</div></div><span class="rotation-week">${w.date}</span></li>`).join('') + `</ul>`;
 }
 
 function renderFallback() {
   document.getElementById('meeting-info').innerHTML = `
-    <div class="info-row">
-      <span class="info-label">Day</span>
-      <span class="info-value">Every Thursday</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Time</span>
-      <span class="info-value">14:00 - 16:00 (UK)</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Location</span>
-      <span class="info-value">National Robotarium, Heriot-Watt University</span>
-    </div>
-  `;
-  document.getElementById('roles-section').innerHTML = '<div class="no-data">Run meeting bot to generate data:<br><code>python meeting_bot.py --mode initial</code></div>';
-  document.getElementById('agenda-section').innerHTML = '<div class="no-data">Agenda will appear after first bot run</div>';
-  document.getElementById('rotation-section').innerHTML = '<div class="no-data">Rotation schedule will appear after first bot run</div>';
+    <div class="info-row"><span class="info-label">Day</span><span class="info-value">Every Thursday</span></div>
+    <div class="info-row"><span class="info-label">Time</span><span class="info-value">14:00 - 16:00 (UK)</span></div>
+    <div class="info-row"><span class="info-label">Location</span><span class="info-value">National Robotarium, Heriot-Watt</span></div>`;
+  document.getElementById('roles-section').innerHTML = '<div class="no-data">Data will appear after first bot run</div>';
+  document.getElementById('agenda-section').innerHTML = '<div class="no-data">Data will appear after first bot run</div>';
+  document.getElementById('rotation-section').innerHTML = '<div class="no-data">Data will appear after first bot run</div>';
 }
 </script>
 </body>
