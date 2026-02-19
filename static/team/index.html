@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C. Wang Lab - Team Portal</title>
+<style>
+  :root {
+    --blue: #1e3a8a;
+    --blue-light: #2563eb;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+    --green: #16a34a;
+    --red: #dc2626;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* Login Screen */
+  #login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  }
+
+  .login-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+
+  .login-box h1 {
+    color: var(--blue);
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .login-box p {
+    color: var(--gray-600);
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .login-box input[type="password"]:focus {
+    border-color: var(--blue-light);
+  }
+
+  .login-box button {
+    width: 100%;
+    padding: 12px;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+
+  .login-box button:hover { background: var(--blue-light); }
+
+  .login-error {
+    color: var(--red);
+    font-size: 14px;
+    margin-top: 12px;
+    display: none;
+  }
+
+  /* Dashboard */
+  #dashboard { display: none; }
+
+  .topbar {
+    background: var(--blue);
+    color: var(--white);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topbar h1 { font-size: 20px; font-weight: 600; }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .topbar a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .topbar a:hover { color: var(--white); }
+
+  .btn-logout {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .btn-logout:hover { background: rgba(255,255,255,0.25); }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .grid-full { grid-column: 1 / -1; }
+
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-200);
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-body { padding: 20px; }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+  }
+
+  .badge-blue { background: #dbeafe; color: var(--blue); }
+  .badge-green { background: #dcfce7; color: var(--green); }
+
+  /* Meeting info */
+  .meeting-info { display: flex; flex-direction: column; gap: 12px; }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--gray-600); font-size: 14px; }
+  .info-value { font-weight: 500; font-size: 14px; }
+
+  /* Roles table */
+  .roles-table { width: 100%; border-collapse: collapse; }
+  .roles-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--gray-50);
+    font-size: 13px;
+    color: var(--gray-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .roles-table td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--gray-100);
+    font-size: 14px;
+  }
+
+  /* Rotation schedule */
+  .rotation-list { list-style: none; }
+  .rotation-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 14px;
+  }
+  .rotation-list li:last-child { border-bottom: none; }
+  .rotation-week { color: var(--gray-400); font-size: 12px; }
+
+  /* Agenda sections */
+  .agenda-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .agenda-item:last-child { border-bottom: none; }
+
+  .agenda-time {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--blue-light);
+    min-width: 50px;
+  }
+
+  .agenda-title { font-size: 14px; font-weight: 500; }
+
+  .agenda-duration {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* Links */
+  .link-list { list-style: none; }
+  .link-list li { padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
+  .link-list li:last-child { border-bottom: none; }
+  .link-list a {
+    color: var(--blue-light);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .link-list a:hover { text-decoration: underline; }
+
+  .no-data {
+    color: var(--gray-400);
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .topbar { padding: 12px 16px; }
+    .container { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>C. Wang Lab</h1>
+    <p>Team Portal — Members Only</p>
+    <input type="password" id="password-input" placeholder="Enter team password" autofocus>
+    <button onclick="attemptLogin()">Sign In</button>
+    <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+  </div>
+</div>
+
+<!-- Dashboard (hidden until login) -->
+<div id="dashboard">
+  <div class="topbar">
+    <h1>C. Wang Lab — Team Portal</h1>
+    <div class="topbar-right">
+      <a href="https://cwanglab.github.io" target="_blank">Public Website</a>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Next Meeting -->
+    <div class="grid">
+      <div class="card grid-full">
+        <div class="card-header">
+          Next Meeting
+          <span class="badge badge-blue" id="meeting-badge">This Thursday</span>
+        </div>
+        <div class="card-body">
+          <div class="meeting-info" id="meeting-info">
+            <div class="no-data">Loading meeting data...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roles + Agenda -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">This Week's Roles</div>
+        <div class="card-body" id="roles-section">
+          <div class="no-data">No data loaded</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Agenda (2 hours)</div>
+        <div class="card-body" id="agenda-section">
+          <div class="no-data">No data loaded</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rotation Schedule + Quick Links -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">Rotation Schedule (Upcoming)</div>
+        <div class="card-body" id="rotation-section">
+          <div class="no-data">No data loaded</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Quick Links</div>
+        <div class="card-body">
+          <ul class="link-list">
+            <li><a href="https://cwanglab.github.io" target="_blank">Group Website</a></li>
+            <li><a href="https://cwanglab.github.io/publications/" target="_blank">Publications</a></li>
+            <li><a href="https://cwanglab.github.io/research/" target="_blank">Research Directions</a></li>
+            <li><a href="https://cwanglab.github.io/opportunities/" target="_blank">Open Positions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// Authentication
+// ============================================================
+// SHA-256 hash of the team password. To change the password:
+//   1. Pick a new password
+//   2. Run: echo -n "yourpassword" | shasum -a 256
+//   3. Replace the hash below
+// Default password: "cwanglab2026" (CHANGE THIS before deployment)
+const PASSWORD_HASH = '2bd30c33db000e1abc5bbaafda9df534a3ebbeed0a18c01aaca74bbafc32e7db';
+
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function attemptLogin() {
+  const input = document.getElementById('password-input').value;
+  const hash = await sha256(input);
+
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem('cwanglab_auth', 'true');
+    showDashboard();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('password-input').value = '';
+    document.getElementById('password-input').focus();
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('cwanglab_auth');
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('password-input').value = '';
+  document.getElementById('login-error').style.display = 'none';
+}
+
+function showDashboard() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadMeetingData();
+}
+
+// Check session on page load
+if (sessionStorage.getItem('cwanglab_auth') === 'true') {
+  showDashboard();
+}
+
+// Enter key triggers login
+document.getElementById('password-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') attemptLogin();
+});
+
+// ============================================================
+// Meeting Data
+// ============================================================
+async function loadMeetingData() {
+  try {
+    const resp = await fetch('data/current.json');
+    if (!resp.ok) throw new Error('No data');
+    const data = await resp.json();
+    renderMeetingInfo(data);
+    renderRoles(data);
+    renderAgenda(data);
+    renderRotation(data);
+  } catch (e) {
+    // No data file yet — show static fallback
+    renderFallback();
+  }
+}
+
+function renderMeetingInfo(data) {
+  const el = document.getElementById('meeting-info');
+  el.innerHTML = `
+    <div class="info-row">
+      <span class="info-label">Date</span>
+      <span class="info-value">${data.meeting_date_full}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Time</span>
+      <span class="info-value">${data.time} - ${data.end_time}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Location</span>
+      <span class="info-value">${data.location}</span>
+    </div>
+    ${data.zoom_link ? `<div class="info-row">
+      <span class="info-label">Zoom</span>
+      <span class="info-value"><a href="${data.zoom_link}" target="_blank">${data.zoom_link}</a></span>
+    </div>` : ''}
+  `;
+}
+
+function renderRoles(data) {
+  const el = document.getElementById('roles-section');
+  const r = data.roles;
+  el.innerHTML = `
+    <table class="roles-table">
+      <thead><tr><th>Role</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td>Chair</td><td>${r.chair}</td></tr>
+        <tr><td>Note-Taker</td><td>${r.note_taker}</td></tr>
+        <tr><td>Paper Presenter</td><td>${r.paper_presenter}</td></tr>
+      </tbody>
+    </table>
+    ${data.next_roles ? `
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--gray-200)">
+      <div style="font-size:12px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Next Week</div>
+      <table class="roles-table">
+        <tbody>
+          <tr><td>Chair</td><td>${data.next_roles.chair}</td></tr>
+          <tr><td>Note-Taker</td><td>${data.next_roles.note_taker}</td></tr>
+          <tr><td>Paper Presenter</td><td>${data.next_roles.paper_presenter}</td></tr>
+        </tbody>
+      </table>
+    </div>` : ''}
+  `;
+}
+
+function renderAgenda(data) {
+  const el = document.getElementById('agenda-section');
+  if (!data.agenda) { el.innerHTML = '<div class="no-data">No agenda data</div>'; return; }
+
+  el.innerHTML = data.agenda.map(s => `
+    <div class="agenda-item">
+      <span class="agenda-time">${s.time}</span>
+      <span class="agenda-title">${s.id}. ${s.title}</span>
+      <span class="agenda-duration">${s.duration} min</span>
+    </div>
+  `).join('');
+}
+
+function renderRotation(data) {
+  const el = document.getElementById('rotation-section');
+  if (!data.upcoming_rotation) {
+    el.innerHTML = '<div class="no-data">No rotation data</div>';
+    return;
+  }
+
+  el.innerHTML = `<ul class="rotation-list">` +
+    data.upcoming_rotation.map(w => `
+      <li>
+        <div>
+          <div><strong>${w.chair}</strong> (Chair)</div>
+          <div style="font-size:12px;color:var(--gray-400)">${w.note_taker} (Notes) · ${w.paper_presenter} (Paper)</div>
+        </div>
+        <span class="rotation-week">${w.date}</span>
+      </li>
+    `).join('') + `</ul>`;
+}
+
+function renderFallback() {
+  document.getElementById('meeting-info').innerHTML = `
+    <div class="info-row">
+      <span class="info-label">Day</span>
+      <span class="info-value">Every Thursday</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Time</span>
+      <span class="info-value">14:00 - 16:00 (UK)</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Location</span>
+      <span class="info-value">National Robotarium, Heriot-Watt University</span>
+    </div>
+  `;
+  document.getElementById('roles-section').innerHTML = '<div class="no-data">Run meeting bot to generate data:<br><code>python meeting_bot.py --mode initial</code></div>';
+  document.getElementById('agenda-section').innerHTML = '<div class="no-data">Agenda will appear after first bot run</div>';
+  document.getElementById('rotation-section').innerHTML = '<div class="no-data">Rotation schedule will appear after first bot run</div>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "meeting_date_full": "Thursday, 19 February 2026",
+  "time": "14:00",
+  "end_time": "16:00",
+  "location": "National Robotarium, Heriot-Watt University",
+  "zoom_link": "",
+  "roles": {
+    "chair": "PhD Student 1",
+    "note_taker": "PhD Student 2",
+    "paper_presenter": "PhD Student 3"
+  },
+  "next_roles": {
+    "chair": "PhD Student 2",
+    "note_taker": "PhD Student 3",
+    "paper_presenter": "PhD Student 4"
+  },
+  "agenda": [
+    {
+      "id": "A",
+      "title": "PhD Project Progress with Brainstorming",
+      "duration": 20,
+      "time": "14:00"
+    },
+    {
+      "id": "B",
+      "title": "BSc/MSc Project Progress with Brainstorming",
+      "duration": 15,
+      "time": "14:20"
+    },
+    {
+      "id": "C",
+      "title": "Paper Sharing with Brainstorming",
+      "duration": 15,
+      "time": "14:35"
+    },
+    {
+      "id": "D",
+      "title": "Tool Sharing with Brainstorming",
+      "duration": 10,
+      "time": "14:50"
+    },
+    {
+      "id": "E",
+      "title": "Publication Planning and Funding Search",
+      "duration": 15,
+      "time": "15:00"
+    },
+    {
+      "id": "F",
+      "title": "New Idea Proposals and Solution Discussions",
+      "duration": 15,
+      "time": "15:15"
+    },
+    {
+      "id": "G",
+      "title": "Collaborations",
+      "duration": 10,
+      "time": "15:30"
+    },
+    {
+      "id": "H",
+      "title": "Media Coverage and Outreach",
+      "duration": 10,
+      "time": "15:40"
+    },
+    {
+      "id": "I",
+      "title": "Summary and Task Assignment",
+      "duration": 10,
+      "time": "15:50"
+    }
+  ],
+  "upcoming_rotation": [
+    {
+      "date": "19 Feb 2026",
+      "chair": "PhD Student 1",
+      "note_taker": "PhD Student 2",
+      "paper_presenter": "PhD Student 3"
+    },
+    {
+      "date": "26 Feb 2026",
+      "chair": "PhD Student 2",
+      "note_taker": "PhD Student 3",
+      "paper_presenter": "PhD Student 4"
+    },
+    {
+      "date": "05 Mar 2026",
+      "chair": "PhD Student 3",
+      "note_taker": "PhD Student 4",
+      "paper_presenter": "MSc Student 1"
+    },
+    {
+      "date": "12 Mar 2026",
+      "chair": "PhD Student 4",
+      "note_taker": "MSc Student 1",
+      "paper_presenter": "MSc Student 2"
+    }
+  ],
+  "generated_at": "2026-02-19 17:04 GMT"
+}

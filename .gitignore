@@ -12,3 +12,6 @@ resources/
 
 # Logs
 *.log
+
+# Meeting automation outputs (generated weekly)
+meeting_automation/outputs/
