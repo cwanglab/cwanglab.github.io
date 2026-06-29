@@ -133,8 +133,6 @@ The methods above are grounded in AI work for five multicentre cardiovascular tr
 </div>
 </div>
 
-Trial and translational collaborators include Edinburgh, Mount Sinai, Cedars-Sinai, Imperial College, Leiden, Zhejiang University, Canon Medical and Pfizer.
-
 <p class="eyebrow">CAPABILITIES</p>
 
 ## Methods and capabilities

@@ -57,6 +57,6 @@ Everyone uses large models; nobody can afford them everywhere. We develop **hete
 
 ## People &amp; openings
 
-Eight PhD researchers across the Edinburgh Centre for Robotics and Heriot-Watt University, led by **Dr Chengjia Wang** (Bicentennial Research Leader; Honorary Fellow, University of Edinburgh BHF Centre for Cardiovascular Science). We collaborate across Edinburgh, Imperial, Mount Sinai, Cedars-Sinai, ZJU, Canon Medical and Pfizer.
+Eight PhD researchers across the Edinburgh Centre for Robotics and Heriot-Watt University, led by **Dr Chengjia Wang** (Bicentennial Research Leader; Honorary Fellow, University of Edinburgh BHF Centre for Cardiovascular Science).
 
 [Meet the team →](/team/) &nbsp; [Open positions →](/opportunities/)

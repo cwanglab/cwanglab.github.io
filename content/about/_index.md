@@ -88,11 +88,9 @@ Across five multicentre trials — **SCOT-HEART**, **MA3RS**, **PREFFIR**, **DIA
 - Wellcome Trust — PREFFIR, coronary plaque rupture with 18F-NaF PET.
 - Chief Scientist Office — SCOT-HEART, coronary CTA screening.
 
-<p class="eyebrow">COLLABORATORS</p>
+<p class="eyebrow">INTERNAL COLLABORATORS</p>
 
-## Collaborators
-
-We work with clinical, academic and industry partners across imaging and cardiovascular science: the **University of Edinburgh**, **Mount Sinai**, **Cedars-Sinai**, **Imperial College London**, **Leiden**, **Zhejiang University**, **Canon Medical** and **Pfizer**.
+## Internal collaborators
 
 Within Heriot-Watt, the group collaborates with **Associate Professor Marta Vallejo** (machine learning for healthcare and neurodegenerative diagnosis; former Head of AI at ClearSky Medical) and **Professor Wei Pang** (bio-inspired computing, graph neural networks and explainable AI).
 

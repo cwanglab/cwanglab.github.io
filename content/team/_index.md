@@ -106,23 +106,4 @@ Eight PhD researchers across the Edinburgh Centre for Robotics and Heriot-Watt U
 
 The lab is an emerging group, and its first PhD researchers are still in training. As cohorts complete, alumni and their destinations will be listed here with their consent.
 
-<p class="eyebrow">COLLABORATORS &amp; PARTNERS</p>
-
-## Collaborators &amp; partners
-
-<div class="card-grid">
-<div class="card">
-<h3>Clinical &amp; data</h3>
-<p>University of Edinburgh BHF Centre for Cardiovascular Science; UK Biobank (39,000+ whole-body MRI); nine years of NHS-embedded research.</p>
-</div>
-<div class="card">
-<h3>Academic</h3>
-<p>Mount Sinai, Cedars-Sinai, Imperial College London, Leiden University, and Zhejiang University.</p>
-</div>
-<div class="card">
-<h3>Industry</h3>
-<p>Canon Medical (PhD co-funding and imaging) and Pfizer (drug-discovery and large-scale screening pipelines).</p>
-</div>
-</div>
-
-See [Research](/research/) for the directions these collaborations support, and [Openings](/opportunities/) to join the group.
+See [Research](/research/) for the lab's directions, and [Openings](/opportunities/) to join the group.
