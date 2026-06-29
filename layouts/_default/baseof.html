@@ -5,244 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ .Site.Params.description }}">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a;        /* Deep blue */
-            --primary-light: #3b82f6;  /* Softer blue */
-            --secondary: #64748b;      /* Slate gray */
-            --accent: #0ea5e9;         /* Sky blue */
-            --text-dark: #1e293b;      /* Dark slate */
-            --text-gray: #475569;      /* Medium gray */
-            --text-light: #64748b;     /* Light gray */
-            --bg-white: #ffffff;
-            --bg-gray: #f8fafc;        /* Very light gray */
-            --border: #e2e8f0;         /* Light border */
+            /* "Edinburgh Claret" — deep academic crimson primary (cardiovascular + auspicious + distinctive),
+               white clinical base + slate ink, Heriot-Watt navy as quiet secondary. */
+            --bg:           #FFFFFF;
+            --surface:      #F8F2F4;   /* faint claret-tinted panel */
+            --border:       #DED7DA;
+            --ink:          #232024;   /* warm slate body */
+            --ink-muted:    #6a5f63;
+            --heading:      #8A1F3D;   /* claret — headings/brand */
+            --accent:       #8A1F3D;   /* claret — links */
+            --accent-hover: #5E1228;   /* dark claret */
+            --emphasis:     #004067;   /* Heriot-Watt navy — quiet secondary */
+            --focus-ring:   #009FE1;   /* HWU cyan — focus rings only */
+
+            /* legacy variable names kept so inline-styled content re-skins automatically */
+            --primary:      #8A1F3D;
+            --primary-light:#5E1228;
+            --secondary:    #6a5f63;
+            --text-dark:    #232024;
+            --text-gray:    #3c3539;
+            --text-light:   #6a5f63;
+            --bg-white:     #FFFFFF;
+            --bg-gray:      #F8F2F4;
+
+            --font-display: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+            --font-body:    'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+            --measure: 760px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background: var(--bg-white);
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.62;
+            color: var(--ink);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 2.25rem; }
 
-        /* Header - Clean and minimal */
-        header {
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
+        a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(138,31,61,0.28); }
+        a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        /* ---------- Masthead ---------- */
+        header { border-bottom: 2px solid var(--heading); padding: 1.1rem 0; background: var(--bg); }
+        nav { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; }
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: -0.02em;
+            font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; color: var(--heading);
+            letter-spacing: -0.005em; border-bottom: none; line-height: 1.15; max-width: 24em;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
+        .logo:hover { border-bottom: none; color: var(--heading); }
+        .logo small {
+            display: block; font-family: var(--font-mono); font-size: 0.58rem; font-weight: 500;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); margin-top: 3px;
         }
-
+        .nav-links { display: flex; gap: 1.65rem; list-style: none; align-items: baseline; flex-wrap: wrap; }
         .nav-links a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            position: relative;
+            font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.09em;
+            text-transform: uppercase; color: var(--ink-muted); border-bottom: none;
+        }
+        .nav-links a:hover { color: var(--accent); border-bottom: none; }
+
+        /* ---------- Eyebrow ---------- */
+        .eyebrow {
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--accent); margin: 0 0 0.5rem;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.2s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero - Elegant and spacious */
-        .hero {
-            background: linear-gradient(to bottom, var(--bg-gray) 0%, var(--bg-white) 100%);
-            padding: 5rem 0 6rem;
-            border-bottom: 1px solid var(--border);
-        }
-
+        /* ---------- Hero ---------- */
+        .hero { padding: 4.25rem 0 2.5rem; border-bottom: 1px solid var(--border); }
+        .hero-inner { max-width: var(--measure); }
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
+            font-family: var(--font-display); font-size: clamp(2.7rem, 6vw, 4.3rem); font-weight: 600;
+            color: var(--heading); letter-spacing: -0.02em; line-height: 1.04; margin: 0 0 1.1rem;
         }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+        .hero-lead {
+            font-family: var(--font-display); font-size: clamp(1.15rem, 2.3vw, 1.5rem); font-style: italic;
+            font-weight: 400; color: var(--ink-muted); max-width: 620px; margin-bottom: 1.5rem; line-height: 1.45;
         }
+        .readout { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-muted); }
+        .readout b { color: var(--heading); font-weight: 600; }
+        .readout .sep { color: var(--border); margin: 0 0.55rem; }
 
-        .hero .tagline {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-            font-weight: 500;
-        }
+        /* ---------- Main ---------- */
+        main { padding: 3rem 0 1rem; min-height: 55vh; }
+        .content { max-width: var(--measure); margin: 0 auto; }
 
-        /* Main Content - Clean sections */
-        main {
-            padding: 4rem 0;
-            min-height: 60vh;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Typography - Professional hierarchy */
-        h1 {
-            font-size: 2.5rem;
-            margin: 2rem 0 1.5rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
+        /* ---------- Typography ---------- */
+        h1 { font-family: var(--font-display); font-size: 2.6rem; font-weight: 600; color: var(--heading); letter-spacing: -0.02em; margin: 0 0 1.4rem; line-height: 1.1; }
         h2 {
-            font-size: 2rem;
-            margin: 2.5rem 0 1rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 0.5rem;
+            font-family: var(--font-display); font-size: 1.65rem; font-weight: 600; color: var(--heading);
+            letter-spacing: -0.01em; margin: 2.75rem 0 1rem; padding-top: 0.9rem; border-top: 1px solid var(--border);
         }
+        h3 { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; color: var(--heading); margin: 1.6rem 0 0.5rem; }
+        p { margin-bottom: 1.2rem; color: var(--ink); }
+        .lead { font-family: var(--font-display); font-size: 1.28rem; font-style: italic; color: var(--ink-muted); margin-bottom: 1.5rem; }
+        strong { color: var(--ink); font-weight: 600; }
 
-        h3 {
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
+        /* ---------- "Cards" as editorial text blocks (no box / fill / hover-lift) ---------- */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem 2.5rem; margin: 1.5rem 0 0.5rem; }
+        .card { background: none; border: none; border-top: 2px solid var(--heading); border-radius: 0; padding: 0.8rem 0 0; box-shadow: none; transition: none; }
+        .card:hover { background: none; border-color: var(--heading); transform: none; box-shadow: none; }
+        .card h3 { margin-top: 0; font-size: 1.05rem; }
+        .card p { font-size: 0.95rem; margin-bottom: 0; color: var(--ink-muted); }
 
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--text-gray);
-            font-size: 1.05rem;
-        }
+        /* ---------- Publication / news lists ---------- */
+        .pub-list, .news-list { list-style: none; margin: 1.25rem 0; padding: 0; }
+        .pub-list li { padding: 0.95rem 0; border-bottom: 1px solid var(--border); }
+        .pub-list li:last-child { border-bottom: none; }
+        .pub-meta { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 0.25rem; }
+        .pub-title { font-weight: 600; color: var(--ink); }
+        .pub-auth { color: var(--ink-muted); font-style: italic; }
+        .pub-links { font-family: var(--font-mono); font-size: 0.72rem; }
+        .news-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
+        .news-list li:last-child { border-bottom: none; }
+        .news-yr { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--accent); margin-right: 0.6rem; }
 
-        /* Cards - Modern grid layout */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
+        .content ul:not(.pub-list):not(.news-list) { list-style: none; margin: 1.1rem 0; padding: 0; }
+        .content ul:not(.pub-list):not(.news-list) li { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+        .content li strong { color: var(--ink); }
 
-        .card {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
+        /* ---------- Footer ---------- */
+        footer { border-top: 2px solid var(--heading); margin-top: 5rem; padding: 2.75rem 0 2.5rem; }
+        .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; }
+        .foot-grid h4 { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.7rem; }
+        .foot-grid p { font-size: 0.92rem; color: var(--ink-muted); margin-bottom: 0.25rem; }
+        .foot-grid a { font-size: 0.92rem; display: block; margin-bottom: 0.25rem; border-bottom: none; color: var(--accent); }
+        .foot-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--heading); margin-bottom: 0.45rem; }
+        .foot-base { color: var(--ink-muted); font-size: 0.8rem; margin-top: 2.25rem; font-family: var(--font-mono); letter-spacing: 0.04em; }
 
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-
-        .card p {
-            font-size: 1rem;
-            margin-bottom: 0;
-        }
-
-        /* Remove bullet lists - use clean sections instead */
-        .content ul {
-            list-style: none;
-            margin: 1.5rem 0;
-            padding: 0;
-        }
-
-        .content li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-gray);
-            font-size: 1.05rem;
-        }
-
-        .content li:last-child {
-            border-bottom: none;
-        }
-
-        .content li strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Footer - Subtle and clean */
-        footer {
-            background: var(--bg-gray);
-            padding: 3rem 0 2rem;
-            margin-top: 6rem;
-            border-top: 1px solid var(--border);
-        }
-
-        footer p {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1.1rem; }
-            .nav-links { gap: 1.5rem; font-size: 0.9rem; }
-            .container { padding: 0 1.5rem; }
+        a:focus-visible, .nav-links a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+        @media (max-width: 760px) {
+            body { font-size: 17px; }
+            .container { padding: 0 1.4rem; }
+            .hero { padding: 3rem 0 2rem; }
+            .nav-links { gap: 1.1rem; }
+            .foot-grid { grid-template-columns: 1fr; gap: 1.4rem; }
         }
     </style>
 </head>
@@ -250,7 +159,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">{{ .Site.Title }}</div>
+                <a class="logo" href="/">Heterogeneous &amp; Terminal Intelligence Lab<small>Dr Chengjia Wang · Heriot-Watt University</small></a>
                 <ul class="nav-links">
                     {{ range .Site.Menus.main }}
                     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
@@ -264,9 +173,26 @@
 
     <footer>
         <div class="container">
-            <p><strong>{{ .Site.Title }}</strong> | Heriot-Watt University</p>
-            <p>{{ .Site.Params.description }}</p>
-            <p style="margin-top: 1rem; font-size: 0.85rem;">&copy; 2026 All rights reserved</p>
+            <div class="foot-grid">
+                <div>
+                    <div class="foot-name">Heterogeneous &amp; Terminal Intelligence Lab</div>
+                    <p>Dr Chengjia Wang · School of Mathematical &amp; Computer Sciences</p>
+                    <p>National Robotarium, Heriot-Watt University</p>
+                    <p>Edinburgh EH14 4AS, United Kingdom</p>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>Dr. Chengjia Wang · Office EM1.35</p>
+                    <a href="mailto:C.Wang@hw.ac.uk">C.Wang@hw.ac.uk</a>
+                </div>
+                <div>
+                    <h4>Elsewhere</h4>
+                    <a href="https://scholar.google.com/citations?user=lwV4KfwAAAAJ">Google Scholar</a>
+                    <a href="https://github.com/cwanglab">GitHub</a>
+                    <a href="https://researchportal.hw.ac.uk/en/persons/chengjia-wang/">HW Research Portal</a>
+                </div>
+            </div>
+            <p class="foot-base">© 2026 C. Wang Lab — Heriot-Watt University</p>
         </div>
     </footer>
 </body>

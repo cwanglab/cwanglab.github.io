@@ -1,67 +1,56 @@
 ---
-title: "C. Wang Lab"
-description: "Building Trustworthy Heterogeneous AI"
+title: "Heterogeneous Medical AI"
+description: "Heterogeneous medical AI across a Cloud–Edge–Terminal framework — population-scale imaging, federated learning, and on-device clinical inference."
 ---
 
-## Research Focus
+<p class="eyebrow">Research</p>
 
-We develop AI systems that are trustworthy, efficient, and impactful across diverse domains—from healthcare to edge computing.
-
-<div class="card-grid">
-<div class="card">
-<h3>Trustworthy Machine Learning</h3>
-<p>Developing explainable, fair, and robust AI systems with provable guarantees. Focus on uncertainty quantification, adversarial robustness, and interpretability.</p>
-</div>
-
-<div class="card">
-<h3>Health Intelligence</h3>
-<p>AI-powered healthcare solutions with clinical translation. Cardiac MRI analysis, radiology automation, and collaboration with NHS and BHF Centre.</p>
-</div>
-
-<div class="card">
-<h3>Terminal & Edge AI</h3>
-<p>Efficient AI for resource-constrained environments. Model compression, on-device learning, and pervasive computing for wearables and IoT.</p>
-</div>
-
-<div class="card">
-<h3>Multimodal Systems</h3>
-<p>Vision-language models and heterogeneous data fusion. Bridging multiple modalities for comprehensive AI understanding.</p>
-</div>
-</div>
-
-## Recent Highlights
-
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 2rem 0;">
-<p style="margin-bottom: 1rem;"><strong>2 Nature Communications papers</strong> published January-February 2025</p>
-<p style="margin-bottom: 1rem;"><strong>UK Biobank access</strong> to ~100,000 cardiac MRI scans for research</p>
-<p style="margin-bottom: 0;"><strong>Active collaborations</strong> with BHF Centre, NHS Lothian, Edinburgh Imaging</p>
-</div>
-
-## About Our Stage
-
-We are an emerging research group founded in November 2021, committed to radical honesty about our position and ambitions.
+Everyone uses large models; nobody can afford them everywhere. We develop **heterogeneous medical AI** that runs reliably across the full spectrum of clinical compute — from data-centre GPUs to hospital workstations to handheld point-of-care devices. Our work spans four heterogeneities — **data, device, model, and demand** — organised as a **Cloud–Edge–Terminal** framework, and is grounded in nine years of NHS-embedded research and five multicentre clinical trials.
 
 <div class="card-grid">
 <div class="card">
-<h3>Our Reality</h3>
-<p><strong>Founded:</strong> November 2021</p>
-<p><strong>Current team:</strong> 4 PhD students, diverse international backgrounds</p>
-<p><strong>Publications:</strong> 57+ peer-reviewed papers including 2 Nature Communications (2025)</p>
+<h3>Cloud — population analytics &amp; synthesis</h3>
+<p>High-throughput imaging pipelines (UK Biobank, 39,000+ whole-body MRI), cross-modal synthesis for multi-centre harmonisation, and causal phenotype discovery.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Nature Communications ×2 (2025) · Information Fusion (2021) · Medical Image Analysis (2021)</em></p>
 </div>
-
 <div class="card">
-<h3>Why Join Us</h3>
-<p><strong>Personal mentorship:</strong> Small team enables biweekly one-on-ones</p>
-<p><strong>Ground-floor opportunity:</strong> Co-create research direction</p>
-<p><strong>Work-life balance:</strong> 10-hour daily limit enforced</p>
-<p><strong>Clinical impact:</strong> Direct pathways to NHS deployment</p>
+<h3>Edge — federated &amp; privacy-preserving learning</h3>
+<p>Heterogeneous federated knowledge distillation so hospitals with different hardware learn together without sharing patient data; fog–cloud architectures.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>IEEE Trans. Industrial Informatics ×2 (2020) · IEEE Trans. Medical Imaging (2020)</em></p>
+</div>
+<div class="card">
+<h3>Terminal — on-device, real-time clinical decision</h3>
+<p>Parameter-efficient foundation-model adaptation (SeLoRA: 850M→8.5M trainable params, ~1%); point-of-care AI for coronary intervention; on-device screening.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Expert Systems with Applications (2026) · Computers in Biology &amp; Medicine (2023) · Communications Medicine (2023)</em></p>
 </div>
 </div>
 
-## Current Opportunities
+[Full research directions →](/research/)
 
-We are recruiting **2 PhD students** for September 2026 (fully funded, 4 years).
+## Selected publications
 
-<p style="text-align: center; margin-top: 2rem;">
-<a href="/opportunities/" style="display: inline-block; background: var(--primary); color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s;">View PhD Positions</a>
-</p>
+<ul class="pub-list">
+<li><span class="pub-meta">Nature Communications · 2025</span><span class="pub-title">Deep learning and genome-wide association meta-analyses of bone marrow adiposity in the UK Biobank.</span> <span class="pub-auth">Xu, Wang, …, Cawthorn.</span> <span class="pub-links"><a href="https://doi.org/10.1038/s41467-024-55422-4">DOI</a></span></li>
+<li><span class="pub-meta">Nature Communications · 2025</span><span class="pub-title">Clinical implications of bone marrow adiposity via deep learning, PheWAS and Mendelian randomization.</span> <span class="pub-auth">Xu, Wang, …, Cawthorn.</span> <span class="pub-links"><a href="https://doi.org/10.1038/s41467-025-63395-1">DOI</a></span></li>
+<li><span class="pub-meta">Pattern Recognition · 2026</span><span class="pub-title">SAM-LLaVA: a segmentation-aware vision–language framework for industrial defect diagnosis.</span> <span class="pub-auth">An, Wang, Dong.</span> <span class="pub-links"><a href="https://doi.org/10.1016/j.patcog.2026.114242">DOI</a></span></li>
+<li><span class="pub-meta">Pattern Recognition · 2026</span><span class="pub-title">UMDM-USG: a unified multi-view diffusion model for underwater scene generation.</span> <span class="pub-auth">Zhu, Wang, Dong.</span> <span class="pub-links"><a href="https://doi.org/10.1016/j.patcog.2026.114232">DOI</a></span></li>
+<li><span class="pub-meta">Expert Systems with Applications · 2026</span><span class="pub-title">SeLoRA: self-expanding LoRA for high-quality, efficient medical image synthesis.</span> <span class="pub-auth">Mao, …, Wang.</span> <span class="pub-links"><a href="https://doi.org/10.1016/j.eswa.2026.131569">DOI</a> · <a href="https://arxiv.org/abs/2408.07196">arXiv</a></span></li>
+<li><span class="pub-meta">Communications Medicine · 2023</span><span class="pub-title">Large-scale deep learning to identify patients at risk of immunodeficiencies (with Pfizer).</span> <span class="pub-auth">Papanastasiou, …, Wang.</span></li>
+<li><span class="pub-meta">Circulation · 2020 · 806 citations</span><span class="pub-title">Low-attenuation non-calcified plaque on coronary CT angiography predicts myocardial infarction (SCOT-HEART).</span></li>
+</ul>
+
+[All publications and Google Scholar →](/publications/)
+
+## News
+
+<ul class="news-list">
+<li><span class="news-yr">2026</span>Two papers in <em>Pattern Recognition</em> (SAM-LLaVA; UMDM-USG); <em>SeLoRA</em> published in <em>Expert Systems with Applications</em>; paper at IEEE ISBI 2026.</li>
+<li><span class="news-yr">2025</span>Two <em>Nature Communications</em> papers on UK Biobank bone-marrow adiposity, with the BHF Centre, Edinburgh.</li>
+<li><span class="news-yr">2026</span>Recruiting <strong>PhD students, a postdoc, and visiting scholars</strong> in medical-imaging AI, federated learning and model compression — see opportunities.</li>
+</ul>
+
+## People &amp; openings
+
+Eight PhD researchers across the Edinburgh Centre for Robotics and Heriot-Watt University, led by **Dr Chengjia Wang** (Bicentennial Research Leader; Honorary Fellow, University of Edinburgh BHF Centre for Cardiovascular Science). We collaborate across Edinburgh, Imperial, Mount Sinai, Cedars-Sinai, ZJU, Canon Medical and Pfizer.
+
+[Meet the team →](/team/) &nbsp; [Open positions →](/opportunities/)

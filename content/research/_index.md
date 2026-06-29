@@ -1,253 +1,155 @@
 ---
 title: "Research"
-description: "Trustworthy Heterogeneous AI across health intelligence, edge computing, and multimodal systems"
+description: "Heterogeneous Medical AI across a Cloud–Edge–Terminal framework — population-scale imaging, federated learning, and on-device clinical inference, grounded in five multicentre trials."
 ---
 
-## Research Vision
+<p class="eyebrow">FRAMEWORK</p>
 
-We develop AI systems that are **trustworthy** (explainable, fair, robust), **heterogeneous** (spanning health to edge devices), and **impactful** (clinical translation, open-source adoption).
+## The compute gap
 
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<p style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Our Differentiator</p>
-<p style="margin: 0;">We don't build AI in isolation. Every project has a real-world validation pathway—clinical trials, edge deployment, or open-source community adoption.</p>
-</div>
-
----
-
-## Research Themes
-
-### Theme 1: Trustworthy Machine Learning
-
-Building AI systems with provable guarantees for safety-critical applications.
+Everyone uses large models; nobody can afford them everywhere. A roughly **15,000× gap in compute** separates the data-centre GPUs that train modern foundation models from the workstations and handheld devices where clinical decisions are actually made. Closing that gap is the central problem of **Heterogeneous Medical AI**: building systems that hold up across four kinds of heterogeneity, and that move capability to wherever the patient is.
 
 <div class="card-grid">
 <div class="card">
-<h3>Explainability</h3>
-<p><strong>Focus:</strong> Post-hoc interpretation methods for medical imaging models</p>
-<p><strong>Methods:</strong> Attention visualization, saliency maps, counterfactual explanations</p>
-<p><strong>Application:</strong> Clinical decision support systems requiring physician trust</p>
+<h3>Data</h3>
+<p>Heterogeneous modalities, sites and scanners — MRI, CT, PET, ultrasound and EHR — with differing protocols, vendors and distributions.</p>
 </div>
-
 <div class="card">
-<h3>Robustness</h3>
-<p><strong>Focus:</strong> Adversarial robustness and out-of-distribution detection</p>
-<p><strong>Methods:</strong> Certified defenses, uncertainty quantification, domain adaptation</p>
-<p><strong>Application:</strong> Safety-critical medical AI deployment</p>
+<h3>Device</h3>
+<p>Compute that ranges across orders of magnitude, from data-centre clusters to hospital workstations to point-of-care endpoints.</p>
 </div>
-
 <div class="card">
-<h3>Fairness</h3>
-<p><strong>Focus:</strong> Bias detection and mitigation in healthcare AI</p>
-<p><strong>Methods:</strong> Demographic parity analysis, counterfactual fairness</p>
-<p><strong>Application:</strong> Equitable diagnosis across patient demographics</p>
+<h3>Model</h3>
+<p>No single architecture serves every setting; capacity must scale down to the endpoint without discarding what large models learned.</p>
+</div>
+<div class="card">
+<h3>Demand</h3>
+<p>Clinical needs differ by task and latency budget, from population-scale analytics to sub-second intra-operative inference.</p>
 </div>
 </div>
 
-**Key Publications:**
-- **Nature Communications (2025):** "Explainable deep learning for cardiac MRI analysis" - 15 citations in 6 months
-- **MICCAI 2024:** "Adversarial robustness in medical image segmentation" - Best Paper Honorable Mention
+We organise this work as a **Cloud–Edge–Terminal** framework, and ground it in nine years of NHS-embedded research and five multicentre clinical trials.
 
-**Open-Source Impact:**
-- SeLoRA repository: **12 GitHub stars**, **250+ downloads** (2 months)
-- Uncertainty quantification toolkit: **8 stars**, **100+ downloads**
+<p class="eyebrow">CLOUD</p>
 
----
+## Population analytics and cross-domain synthesis
 
-### Theme 2: Health Intelligence
-
-AI-powered healthcare solutions with direct clinical translation pathways.
+At population scale, the constraint is throughput and consistency, not latency. We build high-throughput pipelines that read tens of thousands of studies, harmonise data across centres and scanners, and recover the causal structure linking imaging phenotypes to disease.
 
 <div class="card-grid">
 <div class="card">
-<h3>Cardiac Imaging</h3>
-<p><strong>Focus:</strong> Automated analysis of cardiac MRI scans for cardiovascular disease</p>
-<p><strong>Data:</strong> UK Biobank access (~100,000 scans)</p>
-<p><strong>Partners:</strong> BHF Centre for Research Excellence</p>
-<p><strong>Impact:</strong> 2 Nature Communications papers (2025)</p>
+<h3>Population-scale imaging pipelines</h3>
+<p>High-throughput analysis of UK Biobank whole-body MRI (39,000+ subjects), turning raw volumes into quantitative phenotypes at cohort scale.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Nature Communications ×2 (2025) · Computational &amp; Structural Biotechnology Journal (2024)</em></p>
 </div>
-
 <div class="card">
-<h3>Radiology Automation</h3>
-<p><strong>Focus:</strong> Multi-organ segmentation and disease detection</p>
-<p><strong>Data:</strong> Edinburgh Imaging retrospective cohorts</p>
-<p><strong>Partners:</strong> NHS Lothian (ethics application in progress)</p>
-<p><strong>Timeline:</strong> Clinical trial 2027-2029</p>
+<h3>Cross-modal synthesis &amp; harmonisation</h3>
+<p>Deformation-invariant cross-domain synthesis that bridges modalities and reconciles multi-centre acquisition differences without paired data.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Information Fusion (2021) · Medical Image Analysis (2021)</em></p>
 </div>
-
 <div class="card">
-<h3>Multimodal Diagnosis</h3>
-<p><strong>Focus:</strong> Vision-language models for radiology report generation</p>
-<p><strong>Methods:</strong> Transformer-based architectures, cross-modal attention</p>
-<p><strong>Application:</strong> Automated preliminary report drafting</p>
+<h3>Causal phenotype discovery</h3>
+<p>Linking deep-learned imaging phenotypes to clinical outcomes through PheWAS and Mendelian randomisation to separate association from cause.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Nature Communications (2025)</em></p>
 </div>
 </div>
 
-**Clinical Collaborations:**
-- **BHF Centre:** Joint publications, data sharing, clinical validation
-- **NHS Lothian:** Ethics application submitted (Feb 2026), decision expected Q2 2026
-- **Edinburgh Imaging:** Retrospective study ongoing, 500+ patient cohort
+<p class="eyebrow">EDGE</p>
 
----
+## Federated and privacy-preserving learning
 
-### Theme 3: Terminal & Edge AI
-
-Efficient AI for resource-constrained environments—wearables, IoT, edge devices.
+Hospitals hold complementary data but cannot pool it, and rarely run the same hardware. We develop learning that crosses institutional and device boundaries — sharing knowledge, not patient data — and the fog–cloud architectures that make distributed inference robust.
 
 <div class="card-grid">
 <div class="card">
-<h3>Model Compression</h3>
-<p><strong>Focus:</strong> Reducing model size without accuracy loss</p>
-<p><strong>Methods:</strong> Pruning, quantization, knowledge distillation, low-rank adaptation</p>
-<p><strong>Target:</strong> <10MB models for wearable devices</p>
+<h3>Heterogeneous federated distillation</h3>
+<p>Knowledge distillation that lets hospitals with different model architectures and hardware learn together, without any patient data leaving its site.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>IEEE Transactions on Medical Imaging (2020)</em></p>
 </div>
-
 <div class="card">
-<h3>On-Device Learning</h3>
-<p><strong>Focus:</strong> Federated learning and personalized adaptation</p>
-<p><strong>Methods:</strong> Edge-cloud collaboration, privacy-preserving techniques</p>
-<p><strong>Application:</strong> Personalized health monitoring on smartwatches</p>
-</div>
-
-<div class="card">
-<h3>Pervasive Computing</h3>
-<p><strong>Focus:</strong> Ubiquitous AI deployment across terminal devices</p>
-<p><strong>Methods:</strong> Multi-tier architecture (wearable → edge → cloud)</p>
-<p><strong>Application:</strong> Continuous health monitoring ecosystems</p>
+<h3>Fog–cloud cyber-physical systems</h3>
+<p>Distributed architectures for industrial cyber-physical and IoT settings, including semi-supervised learning that tolerates sparse, noisy labels at the edge.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>IEEE Transactions on Industrial Informatics ×2 (2020)</em></p>
 </div>
 </div>
 
-**Research Projects:**
-- **Research Innovation Scotland (£4K, 2025):** Edge AI for cardiac monitoring
-- **Collaboration:** Industry partner discussions for smartwatch deployment
+<p class="eyebrow">TERMINAL</p>
 
-**Future Directions:**
-- EPSRC responsive mode application (£400K submitted Feb 2026)
-- Target: Deploy edge AI systems in 1000+ patients by 2028
+## Lightweight inference and real-time clinical decision
 
----
-
-### Theme 4: Multimodal Systems
-
-Bridging vision, language, and heterogeneous data for comprehensive AI understanding.
+At the point of care the budget is fixed: a single workstation, a few hundred milliseconds, no cloud. We compress foundation-model capability into endpoint-sized models and deploy them for live intervention and screening.
 
 <div class="card-grid">
 <div class="card">
-<h3>Vision-Language Models</h3>
-<p><strong>Focus:</strong> Medical image-text alignment for report generation</p>
-<p><strong>Methods:</strong> CLIP-based architectures, contrastive learning</p>
-<p><strong>Dataset:</strong> Paired radiology images + reports (10,000+ samples)</p>
+<h3>Parameter-efficient adaptation</h3>
+<p>SeLoRA adapts a foundation model by training 8.5M of 850M parameters (~1%), recovering full-tuning quality at a fraction of the memory and compute.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Expert Systems with Applications (2026)</em></p>
 </div>
-
 <div class="card">
-<h3>Heterogeneous Data Fusion</h3>
-<p><strong>Focus:</strong> Integrating imaging, EHR, genomics for holistic diagnosis</p>
-<p><strong>Challenge:</strong> Missing modalities, different temporal resolutions</p>
-<p><strong>Methods:</strong> Multi-view learning, attention-based fusion</p>
+<h3>Point-of-care intervention AI</h3>
+<p>Sub-second path planning for coronary intervention, running intra-operatively on the procedure-room workstation rather than a remote server.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Computers in Biology &amp; Medicine (2023)</em></p>
 </div>
-
 <div class="card">
-<h3>Cross-Domain Transfer</h3>
-<p><strong>Focus:</strong> Transfer learning from natural images to medical imaging</p>
-<p><strong>Methods:</strong> Domain adaptation, few-shot learning</p>
-<p><strong>Impact:</strong> Reduce annotation burden for rare diseases</p>
+<h3>On-device diagnostic screening</h3>
+<p>Large-scale screening for immunodeficiencies, validated multi-centre and blinded against expert-level performance.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Communications Medicine (2023)</em></p>
 </div>
 </div>
 
-**Publications in Progress:**
-- CVPR 2026 submission: "Vision-language models for radiology"
-- ICML 2026 submission: "Heterogeneous data fusion with missing modalities"
+This progression follows a **natural evolution** rather than a chase for trends: each method solves a problem the previous one exposed — from image registration in MA3RS, to multimodal fusion (DiCyc), to federated distillation, to parameter-efficient adaptation (SeLoRA).
 
----
+<p class="eyebrow">CLINICAL TRANSLATION</p>
 
-## Clinical Translation Roadmap (5-10 Years)
+## Five multicentre trials
 
-Our pathway from research to real-world deployment in NHS settings.
-
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<h3 style="margin-top: 0; color: var(--primary);">Phase 1: Retrospective Validation (2024-2026)</h3>
-<p><strong>Current stage.</strong> Validate algorithms on existing clinical datasets.</p>
-<p><strong>Partners:</strong> Edinburgh Imaging, BHF Centre</p>
-<p><strong>Deliverable:</strong> Peer-reviewed publications, algorithm benchmarks</p>
-<p><strong>Status:</strong> ✅ Ongoing (2 Nature Comms papers published 2025)</p>
-</div>
-
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<h3 style="margin-top: 0; color: var(--primary);">Phase 2: Prospective Clinical Study (2027-2029)</h3>
-<p><strong>Goal:</strong> Real-time clinical validation with physician oversight.</p>
-<p><strong>Partners:</strong> NHS Lothian (ethics application submitted Feb 2026)</p>
-<p><strong>Deliverable:</strong> Clinical trial results, safety validation</p>
-<p><strong>Timeline:</strong> 500-patient cohort over 2 years</p>
-</div>
-
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<h3 style="margin-top: 0; color: var(--primary);">Phase 3: Regulatory Approval (2029-2031)</h3>
-<p><strong>Goal:</strong> MHRA (UK) or CE marking (EU) approval as medical device.</p>
-<p><strong>Pathway:</strong> Class IIa medical device software</p>
-<p><strong>Deliverable:</strong> Regulatory submission, clinical evidence package</p>
-<p><strong>Requirements:</strong> ISO 13485 quality management, clinical evaluation report</p>
-</div>
-
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<h3 style="margin-top: 0; color: var(--primary);">Phase 4: NHS Deployment (2031+)</h3>
-<p><strong>Goal:</strong> Routine clinical use in NHS hospitals.</p>
-<p><strong>Model:</strong> SaaS deployment or hospital on-premise installation</p>
-<p><strong>Impact:</strong> 10,000+ patients/year benefiting from AI-assisted diagnosis</p>
-<p><strong>Sustainability:</strong> Licensing revenue reinvested in research</p>
-</div>
-
-**Challenges We Acknowledge:**
-
-- **Regulatory complexity:** Medical device approval takes 2-3 years minimum
-- **Clinical validation:** Requires 1000+ patient cohorts for statistical power
-- **NHS procurement:** Long sales cycles, budget constraints
-- **Maintenance burden:** Ongoing model updates, bug fixes, user support
-
-We plan for these challenges with:
-- Early engagement with MHRA
-- Dedicated clinical collaborators (not just data providers)
-- Business model planning (licensing, SaaS, or university spin-out)
-- Long-term funding strategy (NIHR, Innovate UK, venture capital)
-
----
-
-## Funding & Resources
-
-**Active Research Projects:**
+The methods above are grounded in AI work for five multicentre cardiovascular trials, with combined trial funding exceeding **£5M**. The trials are where heterogeneity stops being an abstraction: real scanners, real vendors, real patients.
 
 <div class="card-grid">
 <div class="card">
-<h3>EPSRC Responsive Mode</h3>
-<p><strong>£400,000</strong> (submitted February 2026)</p>
-<p><strong>Project:</strong> Trustworthy AI for Clinical Decision Support</p>
-<p><strong>Duration:</strong> 2026-2029 | <strong>Role:</strong> PI</p>
-<p><strong>Status:</strong> Under review, decision expected June 2026</p>
+<h3>SCOT-HEART</h3>
+<p>Coronary CTA screening across 12 centres and 4,146 patients. AI role: automated plaque quantification, cross-device robustness across 12 scanners, and risk stratification.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>CSO £553K · Circulation (2020)</em></p>
 </div>
-
 <div class="card">
-<h3>Heriot-Watt Start-Up</h3>
-<p><strong>£160,000</strong> (2021-2024, extended to 2026)</p>
-<p><strong>Seed funding for lab establishment</strong></p>
-<p><strong>Duration:</strong> 2021-2026 | <strong>Role:</strong> PI</p>
-<p><strong>Status:</strong> ✅ Active</p>
+<h3>MA3RS</h3>
+<p>Abdominal aortic aneurysm imaging with USPIO-MRI. AI role: multi-modality registration of MRI, PET and CT, and 3D aneurysm classification.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>BHF £1.8M · Circulation (2017); J. Vascular Surgery (2017)</em></p>
 </div>
-
 <div class="card">
-<h3>Research Innovation Scotland</h3>
-<p><strong>£4,000</strong> (2025)</p>
-<p><strong>Edge AI for cardiac monitoring pilot</strong></p>
-<p><strong>Duration:</strong> 2025 | <strong>Role:</strong> PI</p>
-<p><strong>Status:</strong> ✅ Completed</p>
+<h3>PREFFIR</h3>
+<p>Coronary plaque rupture imaging with <sup>18</sup>F-NaF PET. AI role: PET/CT motion compensation and uptake quantification.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Wellcome Trust £2.5M</em></p>
+</div>
+<div class="card">
+<h3>DIAMOND</h3>
+<p>Aortic stenosis trial at Edinburgh. AI role: cardiac MR T1 and ECV mapping with cross-vendor harmonisation.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Edinburgh BHF · JACC: Cardiovascular Imaging ×2</em></p>
+</div>
+<div class="card">
+<h3>SALTIRE II</h3>
+<p>Aortic valve calcification trial at Edinburgh. AI role: automated calcification scoring.</p>
+<p style="font-size:0.8rem;color:var(--ink-muted);"><em>Edinburgh BHF</em></p>
 </div>
 </div>
 
-**Computational Resources:**
-- **UK Biobank Approved Researcher:** Access to 100,000 cardiac MRI scans
-- **Heriot-Watt HPC:** 16-GPU cluster for deep learning
-- **National Robotarium:** Edge device testing facilities
+Trial and translational collaborators include Edinburgh, Mount Sinai, Cedars-Sinai, Imperial College, Leiden, Zhejiang University, Canon Medical and Pfizer.
 
----
+<p class="eyebrow">CAPABILITIES</p>
 
-<p style="text-align: center; margin: 3rem 0;">
-<a href="/publications/" style="display: inline-block; background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-right: 1rem;">View Publications</a>
-<a href="/opportunities/" style="display: inline-block; background: white; color: var(--primary); border: 2px solid var(--primary); padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Join Our Research</a>
-</p>
+## Methods and capabilities
+
+Across the three layers, the group works with:
+
+- Multi-modality fusion across MRI, CT, PET, ultrasound and EHR
+- Longitudinal data synthesis and disentangled representation learning
+- Causal and explainable AI
+- Federated and privacy-preserving learning
+- Foundation-model adaptation (PEFT / LoRA) and model compression
+- Cross-domain synthesis with GANs, diffusion and flow models
+- Semi-supervised and active learning under label scarcity
+- Population-scale biobank analytics and high-throughput pipelines
+- On-device, real-time inference for point-of-care deployment
+- An AI-driven drug-discovery pipeline (with Pfizer) and micro/nano-robot control
+
+[Publications and Google Scholar →](/publications/)

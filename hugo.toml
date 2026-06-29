@@ -1,11 +1,11 @@
 baseURL = 'https://cwanglab.github.io/'
 languageCode = 'en-us'
-title = 'C. Wang Lab - Trustworthy Heterogeneous AI'
+title = 'Heterogeneous & Terminal Intelligence Lab'
 # theme = 'PaperMod'  # Temporarily disabled for custom layout
 
 [params]
-  description = "C. Wang Lab for Trustworthy Heterogeneous AI at Heriot-Watt University. Research areas: Health Intelligence, Terminal/Edge AI, Multimodal Systems"
-  author = "Dr. Chengjia Wang"
+  description = "Heterogeneous & Terminal Intelligence Lab (Dr Chengjia Wang), Heriot-Watt University. Heterogeneous medical AI across a Cloud–Edge–Terminal framework: population-scale imaging, federated learning, and on-device clinical inference."
+  author = "Dr Chengjia Wang"
 
   # Home info
   [[params.socialIcons]]

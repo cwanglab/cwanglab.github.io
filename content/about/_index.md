@@ -1,220 +1,99 @@
 ---
 title: "About"
-description: "Our mission, values, and commitment to building trustworthy heterogeneous AI"
+description: "Heterogeneous medical AI grounded in nine years of NHS-embedded research and five multicentre clinical trials — across a Cloud–Edge–Terminal framework."
 ---
 
-## Our Mission
+<p class="eyebrow">MISSION</p>
 
-We build AI systems that are trustworthy, efficient, and impactful across diverse domains—from healthcare to edge computing. Our research bridges theoretical foundations with real-world deployment, emphasizing explainability, fairness, and robustness.
+## Heterogeneous medical AI
 
-<div style="background: var(--bg-gray); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-<p style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">Our Positioning: Honest & Ambitious</p>
-<p>Founded in November 2021, we are an emerging research group at Heriot-Watt University. We compete on research quality, mentorship, and work-life balance—not prestige or heritage.</p>
-</div>
-
-## What We're NOT
+Everyone uses large models; nobody can afford them everywhere. Between a data-centre GPU and a clinical endpoint sits roughly a 15,000× compute gap — yet both are expected to deliver dependable, regulated decisions. We build **heterogeneous medical AI** that runs reliably across the full clinical compute spectrum, designed around four heterogeneities that real deployment cannot avoid.
 
 <div class="card-grid">
 <div class="card">
-<h3>❌ Oxford or Cambridge</h3>
-<p>We don't have 100-year heritage or famous professors. We're building our reputation from the ground up.</p>
+<h3>Data</h3>
+<p>Multi-centre, multi-modal and longitudinal — scanners, vendors and protocols differ, so models must harmonise rather than assume uniformity.</p>
 </div>
-
 <div class="card">
-<h3>❌ Established Group</h3>
-<p>We're young and growing, not a mature lab with decades of alumni.</p>
+<h3>Device</h3>
+<p>Compute spans data-centre clusters, hospital workstations and handheld point-of-care hardware, each with its own memory and latency budget.</p>
 </div>
-
 <div class="card">
-<h3>❌ Massive Funding</h3>
-<p>No £10M+ grants yet. We operate with start-up funding (£160K) and strategic small grants, building our funding portfolio.</p>
+<h3>Model</h3>
+<p>No single architecture serves every setting; capacity must be allocated to where the decision is actually made.</p>
+</div>
+<div class="card">
+<h3>Demand</h3>
+<p>Clinical needs range from population-scale analytics to sub-second intra-operative guidance, with very different tolerances for delay and error.</p>
 </div>
 </div>
 
-## What We ARE
+We organise this work as a **Cloud–Edge–Terminal** framework: population analytics and cross-domain synthesis in the cloud, federated and privacy-preserving learning at the edge, and lightweight, real-time inference at the terminal. The thread between them is a refusal to treat heterogeneity as noise to be averaged away — it is the operating condition of clinical AI.
+
+[Full research directions →](/research/)
+
+<p class="eyebrow">PRINCIPAL INVESTIGATOR</p>
+
+## Dr Chengjia Wang
+
+Dr Wang is a **Bicentennial Research Leader (Assistant Professor)** and **Programme Director of the BEng in Robotics** at Heriot-Watt University, Edinburgh, and an **Honorary Research Fellow** at the University of Edinburgh BHF Centre for Cardiovascular Science. He completed his PhD at the University of Edinburgh, co-funded by Toshiba/Canon Medical, and has spent nine years embedded in NHS clinical research.
+
+He is GCP certified, holds an NHS Research Passport, and is a US patent holder — a combination that lets the group work with patient data and clinical workflows under real regulatory and governance constraints, not as an afterthought.
+
+Contact: [Chengjia.Wang@hw.ac.uk](mailto:Chengjia.Wang@hw.ac.uk) · [Google Scholar](https://scholar.google.com/citations?user=lwV4KfwAAAAJ) · [hintelligence.online](https://hintelligence.online) · +44 (0)131 451 3415 · Office EM1.35, National Robotarium, Heriot-Watt University, Edinburgh EH14 4AS.
+
+<p class="eyebrow">RESEARCH PHILOSOPHY</p>
+
+## Natural evolution
+
+Our research grows from solving real clinical problems rather than chasing trends. Each project is exposed by the limitations of the one before it: image registration in **MA3RS** raised the problem of combining modalities, which led to multimodal fusion (**DiCyc**); fusing data held across hospitals raised the problem of doing so without sharing it, which led to **federated knowledge distillation**; learning across heterogeneous hardware raised the problem of adapting large models cheaply, which led to **SeLoRA**.
+
+This is what we mean by natural evolution — a research line where every step answers a question the previous step made unavoidable, and where methods earn their place by working on a clinical task, not by being fashionable.
+
+<p class="eyebrow">FUNDING &amp; SCALE</p>
+
+## Funding and scale
 
 <div class="card-grid">
 <div class="card">
-<h3>✅ Strong Foundation</h3>
-<p><strong>57+ peer-reviewed publications</strong> including 2 Nature Communications (2025)</p>
-<p><strong>Clinical partnerships:</strong> BHF Centre, NHS Lothian, Edinburgh Imaging</p>
-<p><strong>Data access:</strong> UK Biobank (~100,000 cardiac MRI scans)</p>
+<h3>£430K+</h3>
+<p>Secured as Principal Investigator across start-up, international-collaboration and partnership awards.</p>
 </div>
-
 <div class="card">
-<h3>✅ Personal Mentorship</h3>
-<p><strong>Small team:</strong> 4 PhD students = biweekly one-on-ones guaranteed</p>
-<p><strong>Co-creation:</strong> Shape research direction together, not execute predetermined plans</p>
-<p><strong>Career support:</strong> Publication strategy, conference presentations, job applications</p>
+<h3>£2.4M+</h3>
+<p>Held as Co-Investigator and Named Researcher on programme and project grants.</p>
 </div>
-
 <div class="card">
-<h3>✅ Work-Life Balance</h3>
-<p><strong>10-hour daily limit</strong> enforced, not just promised</p>
-<p><strong>Mental health priority:</strong> Regular check-ins, flexible schedules</p>
-<p><strong>0 PhD dropouts</strong> to date—sustainable research culture</p>
+<h3>5 RCTs · &gt;£5M</h3>
+<p>Multicentre randomised controlled trials contributed to, with combined trial funding exceeding £5M.</p>
 </div>
-
 <div class="card">
-<h3>✅ World-Class Ambition</h3>
-<p><strong>Goal:</strong> Top-1 status in trustworthy heterogeneous AI globally</p>
-<p><strong>Pathway:</strong> High-impact publications, clinical translation, open-source impact</p>
-<p><strong>Timeline:</strong> 5-10 years to achieve top-tier recognition</p>
+<h3>72 papers · h-index 25</h3>
+<p>3,400+ citations and 5 patents (1 US); 8 PhD researchers across the group.</p>
 </div>
 </div>
 
----
+Across five multicentre trials — **SCOT-HEART**, **MA3RS**, **PREFFIR**, **DIAMOND** and **SALTIRE II** — the group's role has been the imaging-AI component: automated quantification, cross-device and cross-vendor harmonisation, multi-modality registration and motion compensation.
 
-## Our 6 Core Values
+**As Principal Investigator**
 
-<div class="card-grid">
-<div class="card">
-<h3>1. Radical Honesty</h3>
-<p>We transparently share our stage (emerging group), funding status, and challenges. No exaggeration, no false promises.</p>
-</div>
+- Research Innovation Scotland — International Collaboration: AI-guided micro-swarm for cardiovascular interventions (2025), with £4K travel support.
+- Heriot-Watt University Start-Up Fund — £160K (2021–24).
+- Imperial Institute of Advanced Technology, Hangzhou — £110K (2020–21).
 
-<div class="card">
-<h3>2. Sustainable Research</h3>
-<p>10-hour daily work limit, mental health support, and 4-year PhD completion target. Research quality over quantity.</p>
-</div>
+**As Co-Investigator / Named Researcher**
 
-<div class="card">
-<h3>3. Open Collaboration</h3>
-<p>Open-source code, reproducible research, active community engagement. We share knowledge freely.</p>
-</div>
+- MRC (MR/S010505/1) — £677K (2019–24), OPTIMAT bone-marrow adiposity (Co-I).
+- BHF Programme Grant — £1.8M (2016–21), Named Researcher.
+- Wellcome Trust — PREFFIR, coronary plaque rupture with 18F-NaF PET.
+- Chief Scientist Office — SCOT-HEART, coronary CTA screening.
 
-<div class="card">
-<h3>4. Diversity & Inclusion</h3>
-<p>5+ nationalities, gender balance goal (40% women), accessibility support. Merit-based, bias-aware recruitment.</p>
-</div>
+<p class="eyebrow">COLLABORATORS</p>
 
-<div class="card">
-<h3>5. Clinical Impact</h3>
-<p>Direct pathways to NHS deployment, regulatory compliance planning, real-world validation. Research that matters.</p>
-</div>
+## Collaborators
 
-<div class="card">
-<h3>6. Excellence in Mentorship</h3>
-<p>Career development, publication strategy, job placement support. Your success is our success.</p>
-</div>
-</div>
+We work with clinical, academic and industry partners across imaging and cardiovascular science: the **University of Edinburgh**, **Mount Sinai**, **Cedars-Sinai**, **Imperial College London**, **Leiden**, **Zhejiang University**, **Canon Medical** and **Pfizer**.
 
----
+Within Heriot-Watt, the group collaborates with **Associate Professor Marta Vallejo** (machine learning for healthcare and neurodegenerative diagnosis; former Head of AI at ClearSky Medical) and **Professor Wei Pang** (bio-inspired computing, graph neural networks and explainable AI).
 
-## Diversity & Inclusion
-
-We are committed to building a diverse, equitable, and inclusive research environment.
-
-**Current Demographics (2026):**
-
-<div class="card-grid">
-<div class="card">
-<h3>International Diversity</h3>
-<p><strong>5+ nationalities</strong> represented in our team</p>
-<p><strong>60% international students</strong> (non-UK)</p>
-<p>Perspectives from Europe, Asia, Africa, Americas</p>
-</div>
-
-<div class="card">
-<h3>Gender Balance</h3>
-<p><strong>Current:</strong> 29% women (2/7 PhD students)</p>
-<p><strong>Target:</strong> 40% by 2028</p>
-<p>Active outreach to underrepresented groups</p>
-</div>
-
-<div class="card">
-<h3>Accessibility</h3>
-<p>Physical accessibility at National Robotarium</p>
-<p>Flexible work arrangements for disabilities</p>
-<p>Neurodiversity-friendly practices</p>
-</div>
-
-<div class="card">
-<h3>Mental Health</h3>
-<p>Regular well-being check-ins</p>
-<p>University counseling services access</p>
-<p>Peer support network within team</p>
-</div>
-</div>
-
----
-
-## Funding & Sustainability
-
-**Active Funding (2026):**
-
-<div class="card-grid">
-<div class="card">
-<h3>Heriot-Watt Start-Up</h3>
-<p><strong>£160,000</strong> (2021-2024, extended to 2026)</p>
-<p>Seed funding for lab establishment, equipment, student support</p>
-</div>
-
-<div class="card">
-<h3>Research Innovation Scotland</h3>
-<p><strong>£4,000</strong> (2025)</p>
-<p>Pilot study funding for edge AI research</p>
-</div>
-</div>
-
-**Pending Applications:**
-
-<div class="card-grid">
-<div class="card">
-<h3>EPSRC Responsive Mode</h3>
-<p><strong>£400,000</strong> submitted (February 2026)</p>
-<p>Project: Trustworthy AI for Clinical Decision Support</p>
-<p>Decision expected: June 2026</p>
-</div>
-</div>
-
-**Funding Philosophy:**
-
-We prioritize sustainable, diversified funding over single large grants. This strategy:
-
-- Enables flexible research directions
-- Reduces dependency on single funding source
-- Supports long-term lab stability
-- Demonstrates research breadth to future funders
-
-<div style="background: var(--bg-gray); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 2rem 0;">
-<p style="margin: 0;"><strong>Transparency Note:</strong> All funding amounts listed are accurate as of February 2026. We update this page quarterly to maintain accuracy.</p>
-</div>
-
----
-
-## Why Choose an Emerging Group?
-
-**Honest Trade-offs:**
-
-<div class="card-grid">
-<div class="card">
-<h3>You Get</h3>
-<p>Personal mentorship (not lost in 30-person lab)</p>
-<p>Ground-floor opportunity (shape research direction)</p>
-<p>Work-life balance (enforced 10-hour limit)</p>
-<p>Publication opportunities (smaller team = more authorship)</p>
-</div>
-
-<div class="card">
-<h3>You Don't Get</h3>
-<p>Famous PI name (yet—we're building it together)</p>
-<p>50+ lab alumni network (only MSc/BSc graduates so far)</p>
-<p>£10M+ project budgets (building funding portfolio)</p>
-</div>
-</div>
-
-**Our Commitment:**
-
-If you join us as a PhD student, we commit to:
-
-1. **Biweekly one-on-one meetings** (minimum 30 minutes)
-2. **Publication support:** Co-author on 3+ papers during PhD
-3. **Conference funding:** 2+ international conferences
-4. **Career guidance:** Job applications, interview prep, networking
-5. **Work-life balance:** Enforce 10-hour limit, support mental health
-6. **Completion:** 4-year PhD target, no forced extensions
-
-<p style="text-align: center; margin-top: 3rem;">
-<a href="/opportunities/" style="display: inline-block; background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">View PhD Positions</a>
-</p>
+[Meet the team →](/team/) &nbsp; [Open positions →](/opportunities/)
