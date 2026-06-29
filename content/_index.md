@@ -44,9 +44,15 @@ Everyone uses large models; nobody can afford them everywhere. We develop **hete
 ## News
 
 <ul class="news-list">
-<li><span class="news-yr">2026</span>Two papers in <em>Pattern Recognition</em> (SAM-LLaVA; UMDM-USG); <em>SeLoRA</em> published in <em>Expert Systems with Applications</em>; paper at IEEE ISBI 2026.</li>
+<li><span class="news-yr">2026</span>Two papers accepted to <em>Pattern Recognition</em>: SAM-LLaVA and UMDM-USG.</li>
+<li><span class="news-yr">2026</span><em>SeLoRA</em> published in <em>Expert Systems with Applications</em> — foundation-model adaptation at ~1% of parameters.</li>
+<li><span class="news-yr">2026</span>Paper accepted at IEEE ISBI 2026 — data-efficient segmentation by distillation from a SAM teacher.</li>
+<li><span class="news-yr">2026</span>Invited review on bone-marrow adiposity deep learning in <em>Current Osteoporosis Reports</em>.</li>
+<li><span class="news-yr">2026</span>Recruiting <strong>PhD students, a postdoc, and visiting scholars</strong> across the Cloud–Edge–Terminal directions.</li>
 <li><span class="news-yr">2025</span>Two <em>Nature Communications</em> papers on UK Biobank bone-marrow adiposity, with the BHF Centre, Edinburgh.</li>
-<li><span class="news-yr">2026</span>Recruiting <strong>PhD students, a postdoc, and visiting scholars</strong> in medical-imaging AI, federated learning and model compression — see opportunities.</li>
+<li><span class="news-yr">2024</span>Review <em>“Is attention all you need in medical image analysis?”</em> in IEEE J. Biomedical &amp; Health Informatics.</li>
+<li><span class="news-yr">2024</span>Large-scale UK Biobank Dixon-MRI bone-marrow method published in <em>Computational &amp; Structural Biotechnology Journal</em>.</li>
+<li><span class="news-yr">2023</span>Immunodeficiency screening with Pfizer published in <em>Communications Medicine</em>.</li>
 </ul>
 
 ## People &amp; openings

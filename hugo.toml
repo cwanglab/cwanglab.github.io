@@ -33,19 +33,24 @@ title = 'Heterogeneous & Terminal Intelligence Lab'
     weight = 3
 
   [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 4
+
+  [[menu.main]]
     name = "Team"
     url = "/team/"
-    weight = 4
+    weight = 5
 
   [[menu.main]]
     name = "Publications"
     url = "/publications/"
-    weight = 5
+    weight = 6
 
   [[menu.main]]
-    name = "Join Us"
+    name = "Join"
     url = "/opportunities/"
-    weight = 6
+    weight = 7
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

@@ -7,23 +7,26 @@ description: "People of the Heterogeneous & Terminal Intelligence Lab — PI, fa
 
 ## Dr Chengjia Wang
 
-Bicentennial Research Leader (Assistant Professor) and Program Director of the BEng in Robotics at Heriot-Watt University, Edinburgh; Honorary Research Fellow at the University of Edinburgh BHF Centre for Cardiovascular Science. His PhD (University of Edinburgh) was co-funded by Toshiba/Canon Medical, followed by nine years of NHS-embedded clinical research. GCP certified, holds an NHS Research Passport, and is a US patent holder.
+<div class="pi-card">
+<img class="avatar-lg" src="/avatars/pi.svg" alt="Dr Chengjia Wang" loading="lazy">
+<div class="pi-body">
+<p>Bicentennial Research Leader (Assistant Professor) and Programme Director of the BEng in Robotics at Heriot-Watt University, Edinburgh; Honorary Research Fellow at the University of Edinburgh BHF Centre for Cardiovascular Science. His PhD (University of Edinburgh) was co-funded by Toshiba/Canon Medical, followed by nine years of NHS-embedded clinical research. GCP certified, holds an NHS Research Passport, and is a US patent holder.</p>
+<p style="font-size:0.9rem;"><a href="mailto:Chengjia.Wang@hw.ac.uk">Chengjia.Wang@hw.ac.uk</a> · <a href="https://scholar.google.com/citations?user=lwV4KfwAAAAJ">Google Scholar</a> · <a href="https://hintelligence.online">hintelligence.online</a> · Office EM1.35, National Robotarium, Edinburgh EH14 4AS</p>
+</div>
+</div>
 
 <div class="card-grid">
 <div class="card">
 <h3>Record</h3>
-<p>h-index 25 · 3,400+ citations · 72 publications. Five patents (one US).</p>
-<p style="font-size:0.8rem;color:var(--ink-muted);"><em><a href="https://scholar.google.com/citations?user=lwV4KfwAAAAJ">Google Scholar</a></em></p>
+<p>h-index 25 · 3,400+ citations · 72 publications · 5 patents (1 US).</p>
 </div>
 <div class="card">
 <h3>Funding &amp; trials</h3>
-<p>£430K+ in PI funding and £2.4M+ as Co-Investigator; AI lead across five multicentre clinical trials.</p>
-<p style="font-size:0.8rem;color:var(--ink-muted);"><em>SCOT-HEART · MA3RS · PREFFIR · DIAMOND · SALTIRE II</em></p>
+<p>£430K+ as PI and £2.4M+ as Co-Investigator; AI lead across five multicentre trials (SCOT-HEART · MA3RS · PREFFIR · DIAMOND · SALTIRE II).</p>
 </div>
 <div class="card">
-<h3>Contact</h3>
-<p>Office EM1.35, National Robotarium, Heriot-Watt University, Edinburgh EH14 4AS. +44 (0)131 451 3415.</p>
-<p style="font-size:0.8rem;color:var(--ink-muted);"><em><a href="mailto:Chengjia.Wang@hw.ac.uk">Chengjia.Wang@hw.ac.uk</a> · <a href="https://hintelligence.online">hintelligence.online</a></em></p>
+<h3>Focus</h3>
+<p>Heterogeneous medical AI across the Cloud–Edge–Terminal framework — from UK Biobank analytics to on-device clinical inference.</p>
 </div>
 </div>
 
@@ -31,18 +34,18 @@ Bicentennial Research Leader (Assistant Professor) and Program Director of the B
 
 ## Faculty collaborators
 
-We work closely with colleagues in the School of Mathematical and Computer Sciences at Heriot-Watt University.
-
-<div class="card-grid">
-<div class="card">
-<h3>Associate Prof. Marta Vallejo</h3>
-<p>Machine learning for healthcare, including neurodegenerative disease diagnosis. Former Head of AI at ClearSky Medical Diagnostics.</p>
-<p style="font-size:0.8rem;color:var(--ink-muted);"><em>School of Mathematical and Computer Sciences, Heriot-Watt University</em></p>
+<div class="people-grid">
+<div class="person">
+<img class="avatar" src="/avatars/faculty1.svg" alt="" loading="lazy">
+<div class="pname">Assoc. Prof. Marta Vallejo</div>
+<div class="prole">Faculty</div>
+<div class="pnote">ML for healthcare; neurodegenerative diagnosis</div>
 </div>
-<div class="card">
-<h3>Prof. Wei Pang</h3>
-<p>Bio-inspired computing, graph neural networks, and explainable AI for health and biology.</p>
-<p style="font-size:0.8rem;color:var(--ink-muted);"><em>School of Mathematical and Computer Sciences, Heriot-Watt University</em></p>
+<div class="person">
+<img class="avatar" src="/avatars/faculty2.svg" alt="" loading="lazy">
+<div class="pname">Prof. Wei Pang</div>
+<div class="prole">Faculty</div>
+<div class="pnote">Bio-inspired computing; GNNs; explainable AI</div>
 </div>
 </div>
 
@@ -50,24 +53,52 @@ We work closely with colleagues in the School of Mathematical and Computer Scien
 
 ## PhD researchers
 
-Eight PhD researchers based across the Edinburgh Centre for Robotics and Heriot-Watt University. Their projects span the lab's full Cloud–Edge–Terminal framework, with each student grounded in a concrete clinical or industrial problem.
+Eight PhD researchers across the Edinburgh Centre for Robotics and Heriot-Watt University, working across the full Cloud–Edge–Terminal framework. Names and photographs are added with each researcher's consent; until then the cohort is shown by research focus.
 
-<div class="card-grid">
-<div class="card">
-<h3>Cloud</h3>
-<p>Population-scale imaging pipelines, cross-modal synthesis for multi-centre harmonisation, and causal phenotype discovery.</p>
+<div class="people-grid">
+<div class="person">
+<img class="avatar" src="/avatars/phd1.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Cloud</div>
+<div class="pnote">Population-scale imaging pipelines</div>
 </div>
-<div class="card">
-<h3>Edge</h3>
-<p>Federated and privacy-preserving learning, including heterogeneous knowledge distillation across hospitals with differing hardware.</p>
+<div class="person">
+<img class="avatar" src="/avatars/phd2.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Cloud</div>
+<div class="pnote">Cross-domain image synthesis</div>
 </div>
-<div class="card">
-<h3>Terminal</h3>
-<p>Parameter-efficient foundation-model adaptation, on-device inference, and real-time clinical decision support.</p>
+<div class="person">
+<img class="avatar" src="/avatars/phd3.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Cloud</div>
+<div class="pnote">Causal phenotype discovery</div>
+</div>
+<div class="person">
+<img class="avatar" src="/avatars/phd4.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Edge</div>
+<div class="pnote">Federated knowledge distillation</div>
+</div>
+<div class="person">
+<img class="avatar" src="/avatars/phd5.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Edge</div>
+<div class="pnote">Privacy-preserving learning</div>
+</div>
+<div class="person">
+<img class="avatar" src="/avatars/phd6.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Terminal</div>
+<div class="pnote">Model compression &amp; PEFT</div>
+</div>
+<div class="person">
+<img class="avatar" src="/avatars/phd7.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Terminal</div>
+<div class="pnote">On-device inference</div>
+</div>
+<div class="person">
+<img class="avatar" src="/avatars/phd8.svg" alt="" loading="lazy">
+<div class="pname">PhD Researcher</div><div class="prole">Terminal</div>
+<div class="pnote">Real-time clinical decision</div>
 </div>
 </div>
 
-Individual profiles are added with each researcher's consent; until then the cohort is described in aggregate by year and research focus.
+<p style="font-size:0.85rem;color:var(--ink-muted);"><em>Placeholder avatars are shown pending each researcher's consent to publish their name and photograph.</em></p>
 
 <p class="eyebrow">ALUMNI</p>
 
@@ -78,8 +109,6 @@ The lab is an emerging group, and its first PhD researchers are still in trainin
 <p class="eyebrow">COLLABORATORS &amp; PARTNERS</p>
 
 ## Collaborators &amp; partners
-
-Our work is built on long-standing clinical, academic, and industrial collaborations.
 
 <div class="card-grid">
 <div class="card">
@@ -96,4 +125,4 @@ Our work is built on long-standing clinical, academic, and industrial collaborat
 </div>
 </div>
 
-See [Research](/research/) for the directions these collaborations support, and [Opportunities](/opportunities/) to join the group.
+See [Research](/research/) for the directions these collaborations support, and [Openings](/opportunities/) to join the group.
