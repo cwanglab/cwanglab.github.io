@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Content administration | Heterogeneous &amp; Terminal Intelligence Lab</title>
+  <style>
+    :root {
+      --ink: #1d252c;
+      --muted: #5f676d;
+      --navy: #183552;
+      --claret: #7a1732;
+      --rule: #d8dadd;
+      --paper: #ffffff;
+      --soft: #f6f6f4;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.6; letter-spacing: 0; }
+    a { color: var(--claret); text-underline-offset: 0.18em; }
+    a:focus-visible { outline: 3px solid #f0a33b; outline-offset: 3px; }
+    .shell { width: min(calc(100% - 48px), 1040px); margin-inline: auto; }
+    header { border-top: 5px solid var(--claret); border-bottom: 1px solid var(--rule); }
+    .header-inner { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+    .mark { position: relative; width: 48px; height: 48px; flex: 0 0 48px; overflow: hidden; background: white; }
+    .mark img { display: block; width: 68px; max-width: none; transform: translateX(-10px); }
+    .brand strong { display: block; max-width: 330px; font-family: var(--serif); font-size: 19px; line-height: 1.08; }
+    .public-site { font-size: 14px; font-weight: 700; }
+    main { padding: 64px 0 70px; }
+    .kicker { margin: 0 0 12px; color: var(--claret); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    h1 { max-width: 740px; margin: 0; font-family: var(--serif); font-size: 48px; line-height: 1.05; }
+    .lead { max-width: 760px; margin: 22px 0 0; color: var(--muted); font-family: var(--serif); font-size: 22px; line-height: 1.45; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 30px; }
+    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--navy); background: var(--navy); color: white; font-size: 14px; font-weight: 800; text-decoration: none; }
+    .repo { color: var(--muted); font-size: 14px; }
+    .section { margin-top: 58px; padding-top: 28px; border-top: 2px solid var(--ink); }
+    .section h2 { margin: 0 0 22px; font-family: var(--serif); font-size: 28px; }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin: 0; padding: 0; list-style: none; counter-reset: setup; }
+    .steps li { min-width: 0; counter-increment: setup; }
+    .steps li::before { content: counter(setup, decimal-leading-zero); display: block; margin-bottom: 10px; color: var(--claret); font-size: 12px; font-weight: 800; }
+    .steps strong { display: block; margin-bottom: 5px; }
+    .steps p { margin: 0; color: var(--muted); font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+    th { width: 32%; font-size: 13px; }
+    td { color: var(--muted); font-size: 14px; }
+    .note { margin-top: 30px; padding: 18px 20px; border-left: 4px solid var(--claret); background: var(--soft); color: var(--muted); font-size: 14px; }
+    footer { padding: 24px 0; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
+    @media (max-width: 700px) {
+      .shell { width: min(calc(100% - 32px), 1040px); }
+      .header-inner { min-height: 76px; }
+      .mark { width: 42px; height: 42px; flex-basis: 42px; }
+      .mark img { width: 59px; transform: translateX(-8.5px); }
+      .brand strong { max-width: 205px; font-size: 15px; }
+      .public-site { display: none; }
+      main { padding-top: 46px; }
+      h1 { font-size: 37px; }
+      .lead { font-size: 19px; }
+      .steps { grid-template-columns: 1fr; }
+      th, td { display: block; width: 100%; padding-right: 0; }
+      th { padding-bottom: 3px; border-bottom: 0; }
+      td { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell header-inner">
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true"><img src="/images/brand/htil-logo.png" alt=""></span>
+        <strong>Heterogeneous &amp; Terminal Intelligence Lab</strong>
+      </a>
+      <a class="public-site" href="/">Public website</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <p class="kicker">Content administration</p>
+      <h1>Edit the lab website</h1>
+      <p class="lead">Pages CMS provides structured forms for the lab's research, people, publications, projects and news. Every saved change is recorded in GitHub.</p>
+      <div class="actions">
+        <a class="button" href="https://app.pagescms.org/">Open Pages CMS</a>
+        <span class="repo"><strong>Repository:</strong> cwanglab/cwanglab.github.io &nbsp; <strong>Branch:</strong> main</span>
+      </div>
+
+      <section class="section" aria-labelledby="setup-title">
+        <h2 id="setup-title">First-time setup</h2>
+        <ol class="steps">
+          <li><strong>Sign in with GitHub</strong><p>Use an account with access to the cwanglab organisation.</p></li>
+          <li><strong>Authorise the repository</strong><p>Install Pages CMS for cwanglab/cwanglab.github.io only.</p></li>
+          <li><strong>Open main</strong><p>Select the main branch. The editor reads its forms from .pages.yml.</p></li>
+        </ol>
+      </section>
+
+      <section class="section" aria-labelledby="areas-title">
+        <h2 id="areas-title">Editor areas</h2>
+        <table>
+          <tbody>
+            <tr><th>Site settings</th><td>Lab identity, logo, mission, address and academic profile links.</td></tr>
+            <tr><th>Research directions</th><td>Research summaries, full descriptions, figures, captions and source links.</td></tr>
+            <tr><th>People</th><td>Members, positions, biographies, photographs and academic profiles.</td></tr>
+            <tr><th>Publications</th><td>Verified bibliographic metadata and DOI, open-access, code and data links.</td></tr>
+            <tr><th>Projects and code</th><td>Project status, summaries, research areas, images and outputs.</td></tr>
+            <tr><th>News</th><td>Public announcements with a draft switch for unfinished records.</td></tr>
+            <tr><th>Social queue</th><td>Non-confidential X, LinkedIn and website copy with review status.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" aria-labelledby="access-title">
+        <h2 id="access-title">Access</h2>
+        <table>
+          <tbody>
+            <tr><th>Site administrator</th><td>A named GitHub account with repository access and two-factor authentication. Can manage content, configuration and collaborators.</td></tr>
+            <tr><th>Content editor</th><td>Invited by email in Pages CMS. Can edit content and media without repository administration.</td></tr>
+          </tbody>
+        </table>
+        <p class="note"><strong>This page is an entry point, not a password form.</strong> GitHub Pages is static; secure editing and saving are handled by Pages CMS and GitHub authentication.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="shell">Content changes should be checked on the public site after deployment.</div></footer>
+</body>
+</html>

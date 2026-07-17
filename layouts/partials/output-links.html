@@ -1,0 +1,13 @@
+{{ $p := .Params }}
+{{ if or $p.doi $p.arxiv $p.code $p.data $p.project $p.project_url $p.oa_url }}
+  <div class="record__links">
+    {{ with $p.doi }}<a href="{{ . }}">DOI</a>{{ end }}
+    {{ with $p.arxiv }}<a href="{{ . }}">arXiv</a>{{ end }}
+    {{ with $p.code }}<a href="{{ . }}">Code</a>{{ end }}
+    {{ with $p.data }}<a href="{{ . }}">Data</a>{{ end }}
+    {{ with $p.project }}<a href="{{ . }}">Project</a>{{ end }}
+    {{ with $p.project_url }}<a href="{{ . }}">Project site</a>{{ end }}
+    {{ with $p.oa_url }}<a href="{{ . }}">Open access</a>{{ end }}
+  </div>
+{{ end }}
+

@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }} <a href="{{ site.Data.site.scholar }}">View the complete record on Google Scholar.</a></p></div></header>
+  <section class="section"><div class="shell">
+    {{ range .RegularPages.GroupByDate "2006" "desc" }}
+      <section class="publication-year">
+        <h2>{{ .Key }}</h2>
+        <ol class="publication-list">
+          {{ range .Pages.ByTitle }}
+            <li class="publication">
+              <p class="publication__title">{{ .Title }}</p>
+              <p class="publication__authors">{{ .Params.authors }}</p>
+              <p class="publication__venue">{{ .Params.venue }}</p>
+              {{ partial "output-links.html" . }}
+            </li>
+          {{ end }}
+        </ol>
+      </section>
+    {{ end }}
+  </div></section>
+{{ end }}

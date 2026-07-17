@@ -1,0 +1,44 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }}</p></div></header>
+  <section class="section"><div class="shell">
+    {{ $groups := slice
+      (dict "key" "principal-investigator" "label" "Principal investigator")
+      (dict "key" "research-staff" "label" "Research staff")
+      (dict "key" "postdoctoral-researcher" "label" "Postdoctoral researchers")
+      (dict "key" "phd-researcher" "label" "PhD researchers")
+      (dict "key" "student" "label" "Students")
+      (dict "key" "academic-collaborator" "label" "Academic collaborators")
+      (dict "key" "alumni" "label" "Alumni") }}
+    {{ range $groups }}
+      {{ $people := where $.RegularPages ".Params.category" .key }}
+      {{ if gt (len $people) 0 }}
+        <section class="people-group">
+          <h2>{{ .label }}</h2>
+          <div class="people-list">
+            {{ range $people.ByParam "order" }}
+              {{ $person := . }}
+              {{ $photo := .Params.photo | default "" }}
+              <article class="person{{ if eq .Params.category "principal-investigator" }} person--pi{{ end }}{{ if eq $photo "" }} person--no-photo{{ end }}">
+                {{ with $photo }}<div><img class="person__photo" src="{{ . }}" alt="{{ $person.Title }}"></div>{{ end }}
+                <div>
+                  <h3>{{ .Title }}</h3>
+                  <p class="person__position">{{ .Params.position }}</p>
+                  {{ with .Params.affiliation }}<p class="person__affiliation">{{ . }}</p>{{ end }}
+                  <div class="person__bio">{{ .Content }}</div>
+                  <div class="person__links">
+                    {{ with .Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+                    {{ with .Params.website }}<a href="{{ . }}">Website</a>{{ end }}
+                    {{ with .Params.scholar }}<a href="{{ . }}">Google Scholar</a>{{ end }}
+                    {{ with .Params.orcid }}<a href="{{ . }}">ORCID</a>{{ end }}
+                    {{ with .Params.github }}<a href="{{ . }}">GitHub</a>{{ end }}
+                  </div>
+                  {{ with .Params.alumni_destination }}<p><strong>Current position:</strong> {{ . }}</p>{{ end }}
+                </div>
+              </article>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+  </div></section>
+{{ end }}

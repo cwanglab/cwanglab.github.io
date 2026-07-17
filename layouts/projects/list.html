@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }}</p></div></header>
+  <section class="section"><div class="shell"><div class="record-grid">
+    {{ range .RegularPages.ByParam "order" }}
+      <article class="record">
+        <span class="record__meta">{{ .Params.research_area }} · {{ .Params.status }}</span>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Params.summary }}</p>
+        {{ partial "output-links.html" . }}
+      </article>
+    {{ end }}
+  </div></div></section>
+{{ end }}
+

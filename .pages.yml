@@ -1,0 +1,212 @@
+media:
+  - name: images
+    label: Images
+    input: static/images
+    output: /images
+    categories: [image]
+
+content:
+  - name: site
+    label: Site settings
+    type: file
+    path: data/site.yaml
+    format: yaml
+    fields:
+      - { name: name, label: Group name, type: string, required: true }
+      - { name: logo, label: Lab logo, type: image, required: true }
+      - { name: institution, label: Institution, type: string, required: true }
+      - { name: location, label: Location, type: string, required: true }
+      - { name: school, label: School or department, type: string, required: true }
+      - { name: mission, label: Mission, type: text, required: true }
+      - { name: framework, label: Research framework, type: string, required: true }
+      - { name: email, label: Contact email, type: string, required: true }
+      - { name: office, label: Office, type: string }
+      - { name: address, label: Address, type: text }
+      - { name: scholar, label: Google Scholar URL, type: string }
+      - { name: github, label: GitHub URL, type: string }
+      - { name: principal_investigator, label: Principal investigator, type: string }
+      - { name: pi_position, label: PI position, type: string }
+
+  - name: research
+    label: Research directions
+    type: collection
+    path: content/research
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, order]
+      sort: order
+      order: asc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: Short summary, type: text, required: true }
+      - { name: order, label: Display order, type: number, required: true }
+      - { name: image, label: Research image, type: image, required: true }
+      - { name: thumbnail, label: Optional overview thumbnail, type: image }
+      - { name: image_alt, label: Image description, type: text, required: true }
+      - { name: image_caption, label: Image caption, type: text, required: true }
+      - { name: image_source_label, label: Image source label, type: string, required: true }
+      - { name: image_source_url, label: Image source URL, type: string, required: true }
+      - { name: image_position, label: Thumbnail position, type: select, options: { values: [top, center, bottom] }, default: center }
+      - { name: body, label: Full description, type: rich-text }
+
+  - name: people
+    label: People
+    type: collection
+    path: content/people
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, category, position, order]
+      sort: order
+      order: asc
+    fields:
+      - { name: title, label: Name, type: string, required: true }
+      - name: category
+        label: Group
+        type: select
+        required: true
+        options:
+          values: [principal-investigator, research-staff, postdoctoral-researcher, phd-researcher, student, academic-collaborator, alumni]
+      - { name: position, label: Position, type: string, required: true }
+      - { name: affiliation, label: Affiliation, type: string }
+      - { name: order, label: Display order, type: number, required: true }
+      - { name: photo, label: Photograph, type: image }
+      - { name: email, label: Email, type: string }
+      - { name: website, label: Website, type: string }
+      - { name: scholar, label: Google Scholar, type: string }
+      - { name: orcid, label: ORCID, type: string }
+      - { name: github, label: GitHub, type: string }
+      - { name: alumni_destination, label: Alumni current position, type: string }
+      - { name: body, label: Biography, type: rich-text }
+
+  - name: publications
+    label: Publications
+    type: collection
+    path: content/publications
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, year, venue, featured]
+      sort: year
+      order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: authors, label: Authors, type: text, required: true }
+      - { name: venue, label: Venue, type: string, required: true }
+      - { name: year, label: Year, type: number, required: true }
+      - { name: date, label: Sort date, type: date, required: true }
+      - { name: date_precision, label: Date precision, type: select, options: { values: [day, month, year] } }
+      - { name: type, label: Publication type, type: select, options: { values: [journal, conference, preprint, review, book, other] } }
+      - { name: featured, label: Show on home page, type: boolean, default: false }
+      - { name: doi, label: DOI URL, type: string }
+      - { name: arxiv, label: arXiv URL, type: string }
+      - { name: code, label: Code URL, type: string }
+      - { name: data, label: Data URL, type: string }
+      - { name: project, label: Project URL, type: string }
+      - { name: oa_url, label: Open-access URL, type: string }
+
+  - name: projects
+    label: Projects and code
+    type: collection
+    path: content/projects
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, status, research_area, order]
+      sort: order
+      order: asc
+    fields:
+      - { name: title, label: Project name, type: string, required: true }
+      - { name: summary, label: Short summary, type: text, required: true }
+      - { name: status, label: Status, type: select, required: true, options: { values: [Active, Published, Completed, Archived] } }
+      - { name: period, label: Period, type: string }
+      - { name: research_area, label: Research direction, type: string, required: true }
+      - { name: order, label: Display order, type: number, required: true }
+      - { name: featured, label: Show on home page, type: boolean, default: false }
+      - { name: doi, label: DOI URL, type: string }
+      - { name: arxiv, label: arXiv URL, type: string }
+      - { name: code, label: Code URL, type: string }
+      - { name: data, label: Data URL, type: string }
+      - { name: project_url, label: External project URL, type: string }
+      - { name: image, label: Research image, type: image }
+      - { name: body, label: Project description, type: rich-text }
+
+  - name: news
+    label: News
+    type: collection
+    path: content/news
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, date, category, draft]
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Headline, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: display_date, label: Display date, type: string }
+      - { name: summary, label: Summary, type: text, required: true }
+      - { name: category, label: Category, type: select, options: { values: [Publication, Project, People, Event, Opportunity, Other] } }
+      - { name: publication, label: Related publication URL, type: string }
+      - { name: external_url, label: External URL, type: string }
+      - { name: draft, label: Keep private as draft, type: boolean, default: true }
+      - { name: body, label: Full update, type: rich-text }
+
+  - name: social
+    label: Social queue (non-confidential)
+    type: collection
+    path: content/social
+    format: yaml-frontmatter
+    exclude: [.gitkeep]
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, status, platform_date, reviewer]
+      sort: platform_date
+      order: desc
+    fields:
+      - { name: title, label: Internal title, type: string, required: true }
+      - { name: platform_date, label: Planned date, type: date }
+      - { name: source_record, label: Source publication or project path, type: string, required: true }
+      - { name: doi, label: DOI, type: string }
+      - name: status
+        label: Workflow status
+        type: select
+        required: true
+        default: draft
+        options:
+          values: [draft, review, approved, scheduled, published, rejected]
+      - { name: x_copy, label: X post or thread, type: text }
+      - { name: linkedin_copy, label: LinkedIn post, type: text }
+      - { name: website_news_title, label: Website news title, type: string }
+      - { name: website_news_summary, label: Website news summary, type: text }
+      - { name: reviewer, label: Reviewer, type: string }
+      - { name: review_date, label: Review date, type: date }
+      - { name: claims_checked, label: Claims checked against source, type: boolean, default: false }
+      - { name: image_rights_checked, label: Image rights checked, type: boolean, default: false }
+      - { name: embargo_checked, label: Embargo checked, type: boolean, default: false }
+      - { name: buffer_post_ids, label: Buffer or platform post IDs, type: text }
+      - { name: published_urls, label: Published URLs, type: text }
+      - { name: body, label: Public fact sheet and non-confidential notes, type: rich-text }
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "content: create {path} via Pages CMS"
+      update: "content: update {path} via Pages CMS"
+      delete: "content: delete {path} via Pages CMS"
+      rename: "content: rename {oldPath} to {newPath} via Pages CMS"

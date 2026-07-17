@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }}</p></div></header>
+  <section class="section"><div class="shell"><div class="news-list">
+    {{ range .RegularPages.ByDate.Reverse }}
+      <article class="news-item">
+        <div class="news-item__date">{{ .Params.display_date | default (.Date.Format "2 Jan 2006") }}<br>{{ .Params.category }}</div>
+        <div><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ .Params.summary }}</p></div>
+      </article>
+    {{ end }}
+  </div></div></section>
+{{ end }}
+

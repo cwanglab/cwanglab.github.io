@@ -1,10 +1,14 @@
 {{ define "main" }}
-<main>
-    <div class="container">
-        <div class="content">
-            <h1>{{ .Title }}</h1>
-            {{ .Content }}
-        </div>
+  <header class="page-head">
+    <div class="shell">
+      <p class="kicker">{{ .Section | title }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
     </div>
-</main>
+  </header>
+  <section class="section">
+    <div class="shell">
+      <article class="content">{{ .Content }}</article>
+    </div>
+  </section>
 {{ end }}

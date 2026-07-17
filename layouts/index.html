@@ -1,20 +1,127 @@
 {{ define "main" }}
-<div class="hero">
-    <div class="container">
-        <div class="hero-inner">
-            <p class="eyebrow">Heterogeneous Medical AI · Heriot-Watt University, Edinburgh</p>
-            <h1>From the cloud to the clinical terminal.</h1>
-            <p class="hero-lead">We build heterogeneous medical AI that works reliably across every clinical compute environment — closing the 15,000× gap between cloud GPUs and point-of-care devices.</p>
-            <div class="readout"><b>h-index 25</b><span class="sep">·</span><b>3,400+</b> citations<span class="sep">·</span><b>72</b> publications<span class="sep">·</span><b>8</b> PhD researchers<span class="sep">·</span><b>5</b> multicentre RCTs</div>
-        </div>
+  <section class="home-hero">
+    <div class="shell">
+      <p class="kicker">Heterogeneous intelligence · Terminal intelligence</p>
+      <h1>{{ site.Data.site.name }}</h1>
+      <p class="home-hero__lead">{{ site.Data.site.mission }}</p>
+      <div class="hero-links">
+        <a href="{{ relURL "/research/" }}">Research directions</a>
+        <a href="{{ relURL "/publications/" }}">Selected publications</a>
+        <a href="mailto:{{ site.Data.site.email }}">Contact the group</a>
+      </div>
     </div>
-</div>
+  </section>
 
-<main>
-    <div class="container">
-        <div class="content">
-            {{ .Content }}
-        </div>
+  <section class="framework-band" aria-labelledby="framework-title">
+    <div class="shell">
+      <div class="framework-head">
+        <p class="kicker">Research framework</p>
+        <h2 id="framework-title">Cloud–Edge–Terminal intelligence</h2>
+      </div>
+      <div class="framework-grid">
+        <article class="framework-item">
+          <span class="framework-item__label">Cloud</span>
+          <h3>Population and foundation models</h3>
+          <p>Population-scale imaging, cross-domain synthesis and representation learning in large computing environments.</p>
+        </article>
+        <article class="framework-item">
+          <span class="framework-item__label">Edge</span>
+          <h3>Heterogeneous collaboration</h3>
+          <p>Federated learning and knowledge transfer across institutions, architectures and devices without assuming uniform infrastructure.</p>
+        </article>
+        <article class="framework-item">
+          <span class="framework-item__label">Terminal</span>
+          <h3>Intelligence at the point of use</h3>
+          <p>Efficient adaptation and real-time inference for clinical, robotic and embedded terminals with fixed resource budgets.</p>
+        </article>
+      </div>
     </div>
-</main>
+  </section>
+
+  {{ $research := where site.RegularPages "Section" "research" }}
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <h2>Research directions</h2>
+        <a href="{{ relURL "/research/" }}">Read the research overview</a>
+      </div>
+      <div class="research-gallery research-gallery--home">
+        {{ range $index, $page := $research.ByParam "order" }}
+          {{ $thumbnail := $page.Params.thumbnail | default $page.Params.image }}
+          <article class="research-card">
+            <a class="research-card__visual" href="{{ $page.RelPermalink }}" aria-label="Read about {{ $page.Title }}">
+              <img src="{{ $thumbnail }}" alt="{{ $page.Params.image_alt }}" loading="lazy">
+            </a>
+            <div class="research-card__body">
+              <span class="research-card__number">0{{ add $index 1 }}</span>
+              <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+              <p>{{ $page.Params.summary }}</p>
+              <a class="research-card__link" href="{{ $page.RelPermalink }}">Explore this direction</a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ $projects := where (where site.RegularPages "Section" "projects") ".Params.featured" true }}
+  <section class="section section--soft">
+    <div class="shell">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <a href="{{ relURL "/projects/" }}">All projects and code</a>
+      </div>
+      <div class="record-grid">
+        {{ range $projects.ByParam "order" }}
+          <article class="record">
+            <span class="record__meta">{{ .Params.research_area }}</span>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Params.summary }}</p>
+            {{ partial "output-links.html" . }}
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ $publications := where (where site.RegularPages "Section" "publications") ".Params.featured" true }}
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <h2>Recent selected publications</h2>
+        <a href="{{ relURL "/publications/" }}">Selected publication list</a>
+      </div>
+      <ol class="publication-list">
+        {{ range first 4 $publications.ByDate.Reverse }}
+          <li class="publication">
+            <p class="publication__title">{{ .Title }}</p>
+            <p class="publication__authors">{{ .Params.authors }}</p>
+            <p class="publication__venue">{{ .Params.venue }}, {{ .Params.year }}</p>
+            {{ partial "output-links.html" . }}
+          </li>
+        {{ end }}
+      </ol>
+    </div>
+  </section>
+
+  {{ $news := where site.RegularPages "Section" "news" }}
+  <section class="section section--soft">
+    <div class="shell">
+      <div class="section-head">
+        <h2>Latest updates</h2>
+        <a href="{{ relURL "/news/" }}">All news</a>
+      </div>
+      <div class="news-list">
+        {{ range first 3 $news.ByDate.Reverse }}
+          <article class="news-item">
+            <div class="news-item__date">{{ .Params.display_date | default (.Date.Format "2 Jan 2006") }}</div>
+            <div>
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p>{{ .Params.summary }}</p>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
 {{ end }}

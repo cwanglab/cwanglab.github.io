@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><p class="kicker">{{ .Params.research_area }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p></div></header>
+  <section class="section"><div class="shell">
+    <dl class="detail-meta">
+      <div><dt>Status</dt><dd>{{ .Params.status }}</dd></div>
+      <div><dt>Period</dt><dd>{{ .Params.period }}</dd></div>
+      <div><dt>Outputs</dt><dd>{{ partial "output-links.html" . }}</dd></div>
+    </dl>
+    <article class="content">{{ .Content }}</article>
+  </div></section>
+{{ end }}
+

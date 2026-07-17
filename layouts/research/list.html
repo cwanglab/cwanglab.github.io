@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <header class="page-head">
+    <div class="shell">
+      <p class="kicker">Heterogeneous intelligence · Terminal intelligence</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Params.intro }}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <div class="research-gallery">
+        {{ range $index, $page := .RegularPages.ByParam "order" }}
+          {{ $thumbnail := $page.Params.thumbnail | default $page.Params.image }}
+          <article class="research-card">
+            <a class="research-card__visual" href="{{ $page.RelPermalink }}" aria-label="Read about {{ $page.Title }}">
+              <img src="{{ $thumbnail }}" alt="{{ $page.Params.image_alt }}" loading="{{ if lt $index 2 }}eager{{ else }}lazy{{ end }}">
+            </a>
+            <div class="research-card__body">
+              <span class="research-card__number">0{{ add $index 1 }}</span>
+              <h2><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+              <p>{{ $page.Params.summary }}</p>
+              <a class="research-card__link" href="{{ $page.RelPermalink }}">Questions, methods and outputs</a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

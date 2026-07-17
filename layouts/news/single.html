@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <header class="page-head"><div class="shell"><p class="kicker">{{ .Params.category }} · {{ .Params.display_date | default (.Date.Format "2 January 2006") }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p></div></header>
+  <section class="section"><div class="shell">
+    <article class="content">{{ .Content }}</article>
+    <div class="hero-links">
+      {{ with .Params.publication }}<a href="{{ . }}">Publication record</a>{{ end }}
+      {{ with .Params.external_url }}<a href="{{ . }}">Publisher / DOI</a>{{ end }}
+    </div>
+  </div></section>
+{{ end }}
+

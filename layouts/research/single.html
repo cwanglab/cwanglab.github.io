@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <header class="research-detail-head">
+    <div class="shell research-detail-head__grid">
+      <div class="research-detail-head__copy">
+        <p class="kicker">Research direction</p>
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Params.summary }}</p>
+      </div>
+      <figure class="research-figure">
+        <img src="{{ .Params.image }}" alt="{{ .Params.image_alt }}">
+        <figcaption>
+          {{ .Params.image_caption }}
+          {{ with .Params.image_source_url }}<a href="{{ . }}">Source: {{ $.Params.image_source_label }}</a>{{ end }}
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <article class="content research-detail-content">{{ .Content }}</article>
+      <div class="hero-links">
+        <a href="{{ relURL "/projects/" }}">Related projects and code</a>
+        <a href="{{ relURL "/publications/" }}">Selected publications</a>
+        <a href="{{ relURL "/research/" }}">All research directions</a>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
