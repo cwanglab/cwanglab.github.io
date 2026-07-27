@@ -1,24 +1,46 @@
 {{ define "main" }}
-  <header class="research-detail-head">
-    <div class="shell research-detail-head__grid">
-      <div class="research-detail-head__copy">
-        <p class="kicker">Research direction</p>
-        <h1>{{ .Title }}</h1>
-        <p>{{ .Params.summary }}</p>
-      </div>
-      <figure class="research-figure">
-        <img src="{{ .Params.image }}" alt="{{ .Params.image_alt }}">
-        <figcaption>
-          {{ .Params.image_caption }}
-          {{ with .Params.image_source_url }}<a href="{{ . }}">Source: {{ $.Params.image_source_label }}</a>{{ end }}
-        </figcaption>
-      </figure>
+  <style>
+    /* Research direction page: plain academic document. The figure is kept
+       because it carries real information (method diagram), but at a
+       restrained size, left-aligned, with no card frame or tinted band. */
+    .research-fig { max-width: 560px; margin: 0 0 34px; }
+    .research-fig.wide { max-width: 800px; }
+    .research-fig img { width: 100%; height: auto; }
+    .research-fig figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .research-fig figcaption a { font-weight: 700; }
+    /* Direction overview diagram: flat line-art infographic, restrained size,
+       left-aligned, one-line caption. No frame, tint or card. */
+    .research-diagram { max-width: 600px; margin: 0 0 30px; }
+    .research-diagram img { width: 100%; height: auto; }
+    .research-diagram figcaption { margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  </style>
+
+  <header class="page-head">
+    <div class="shell">
+      <p class="kicker">Research direction</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Params.summary }}</p>
     </div>
   </header>
 
   <section class="section">
     <div class="shell">
-      <article class="content research-detail-content">{{ .Content }}</article>
+      {{ with .Params.diagram }}
+        <figure class="research-diagram">
+          <img src="{{ . | relURL }}" alt="{{ $.Params.diagram_alt }}">
+          <figcaption>{{ $.Params.diagram_caption }}</figcaption>
+        </figure>
+      {{ end }}
+      {{ with .Params.image }}
+        <figure class="research-fig{{ if eq $.Params.image_size "wide" }} wide{{ end }}">
+          <img src="{{ . | relURL }}" alt="{{ $.Params.image_alt }}">
+          <figcaption>
+            {{ $.Params.image_caption }}
+            {{ with $.Params.image_source_url }}<br><a href="{{ . }}">Source: {{ $.Params.image_source_label }}</a>{{ end }}
+          </figcaption>
+        </figure>
+      {{ end }}
+      <article class="content">{{ .Content }}</article>
       <div class="hero-links">
         <a href="{{ relURL "/projects/" }}">Related projects and code</a>
         <a href="{{ relURL "/publications/" }}">Selected publications</a>
@@ -27,4 +49,3 @@
     </div>
   </section>
 {{ end }}
-

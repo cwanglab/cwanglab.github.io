@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C. Wang Lab - Team Portal</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Team Portal | Heterogeneous &amp; Terminal Intelligence Lab</title>
 <style>
   :root {
     --blue: #1e3a8a;
@@ -57,7 +58,7 @@
     background: var(--blue); color: var(--white); padding: 0 32px;
     display: flex; justify-content: space-between; align-items: center; height: 56px;
   }
-  .topbar h1 { font-size: 18px; font-weight: 600; }
+  .topbar .topbar-title { margin: 0; font-size: 18px; font-weight: 600; }
   .topbar-right { display: flex; align-items: center; gap: 16px; }
   .topbar a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; }
   .topbar a:hover { color: var(--white); }
@@ -165,7 +166,7 @@
 <!-- ════════════ LOGIN ════════════ -->
 <div id="login-screen">
   <div class="login-box">
-    <h1>C. Wang Lab</h1>
+    <h1>Heterogeneous &amp; Terminal Intelligence Lab</h1>
     <p>Team Portal — Members Only</p>
     <input type="password" id="password-input" placeholder="Enter team password" autofocus>
     <button onclick="attemptLogin()">Sign In</button>
@@ -176,9 +177,9 @@
 <!-- ════════════ APP ════════════ -->
 <div id="app">
   <div class="topbar">
-    <h1>C. Wang Lab</h1>
+    <p class="topbar-title">Heterogeneous &amp; Terminal Intelligence Lab</p>
     <div class="topbar-right">
-      <a href="https://cwanglab.github.io" target="_blank">Public Website</a>
+      <a href="https://cwanglab.github.io/" target="_blank" rel="noopener">Public Website</a>
       <button class="btn-logout" onclick="logout()">Sign Out</button>
     </div>
   </div>

@@ -1,13 +1,19 @@
+{{/* output-links.html — unified plain-text output links for publications
+     and projects. Renders one line of text links separated by middots, e.g.
+     "DOI · arXiv · Code · Open access", from front matter fields:
+     doi, arxiv, pdf, code, data, project, project_url, oa_url.
+     Empty fields are hidden. Spacing CSS (.output-links) is provided by the
+     calling templates' own <style> blocks; links inherit the base link style. */}}
 {{ $p := .Params }}
-{{ if or $p.doi $p.arxiv $p.code $p.data $p.project $p.project_url $p.oa_url }}
-  <div class="record__links">
-    {{ with $p.doi }}<a href="{{ . }}">DOI</a>{{ end }}
-    {{ with $p.arxiv }}<a href="{{ . }}">arXiv</a>{{ end }}
-    {{ with $p.code }}<a href="{{ . }}">Code</a>{{ end }}
-    {{ with $p.data }}<a href="{{ . }}">Data</a>{{ end }}
-    {{ with $p.project }}<a href="{{ . }}">Project</a>{{ end }}
-    {{ with $p.project_url }}<a href="{{ . }}">Project site</a>{{ end }}
-    {{ with $p.oa_url }}<a href="{{ . }}">Open access</a>{{ end }}
-  </div>
+{{ $links := slice }}
+{{ with $p.doi }}{{ $links = $links | append (printf `<a href="%s">DOI</a>` .) }}{{ end }}
+{{ with $p.arxiv }}{{ $links = $links | append (printf `<a href="%s">arXiv</a>` .) }}{{ end }}
+{{ with $p.pdf }}{{ $links = $links | append (printf `<a href="%s">PDF</a>` .) }}{{ end }}
+{{ with $p.code }}{{ $links = $links | append (printf `<a href="%s">Code</a>` .) }}{{ end }}
+{{ with $p.data }}{{ $links = $links | append (printf `<a href="%s">Data</a>` .) }}{{ end }}
+{{ with $p.project }}{{ $links = $links | append (printf `<a href="%s">Project</a>` .) }}{{ end }}
+{{ with $p.project_url }}{{ $links = $links | append (printf `<a href="%s">Project site</a>` .) }}{{ end }}
+{{ with $p.oa_url }}{{ $links = $links | append (printf `<a href="%s">Open access</a>` .) }}{{ end }}
+{{ if gt (len $links) 0 }}
+  <p class="output-links">{{ delimit $links " · " | safeHTML }}</p>
 {{ end }}
-

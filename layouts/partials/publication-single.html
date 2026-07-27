@@ -1,0 +1,37 @@
+{{/* publication-single.html — shared single-page markup for publications.
+     Called by layouts/publications/single.html and by the type-override shims
+     layouts/journal/single.html and layouts/review/single.html (content files
+     set `type: journal|review`, which reroutes Hugo's layout lookup). */}}
+  <style>
+    .pub-single__head { border-bottom: 1px solid var(--rule); }
+    .pub-single__meta { margin: 18px 0 0; }
+    .pub-single__authors { margin: 0 0 6px; color: var(--ink); font-size: 17px; line-height: 1.55; }
+    .pub-single__venue { margin: 0; color: var(--muted); font-size: 15px; font-style: italic; }
+    .pub-single .output-links { margin: 18px 0 0; font-size: 15px; }
+    .pub-single__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0 0 36px; padding: 20px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+    .pub-single__facts div { min-width: 0; }
+    .pub-single__facts dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .pub-single__facts dd { margin: 5px 0 0; font-size: 15px; overflow-wrap: anywhere; }
+    @media (max-width: 700px) { .pub-single__facts { grid-template-columns: 1fr; } }
+  </style>
+
+  <div class="pub-single">
+    <header class="page-head pub-single__head"><div class="shell">
+      <p class="kicker">{{ .Params.type | default "Publication" | humanize }} · {{ .Date.Format "2006" }}</p>
+      <h1>{{ .Title }}</h1>
+      <div class="pub-single__meta">
+        {{ with .Params.authors }}<p class="pub-single__authors">{{ . }}</p>{{ end }}
+        {{ with .Params.venue }}<p class="pub-single__venue">{{ . }}</p>{{ end }}
+      </div>
+      {{ partial "output-links.html" . }}
+    </div></header>
+    <section class="section"><div class="shell">
+      <dl class="pub-single__facts">
+        {{ with .Params.venue }}<div><dt>Venue</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.year }}<div><dt>Year</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.type }}<div><dt>Type</dt><dd>{{ . | humanize }}</dd></div>{{ end }}
+      </dl>
+      {{ with .Content }}<article class="content">{{ . }}</article>{{ end }}
+      <div class="hero-links"><a href="{{ relURL "/publications/" }}">All publications</a></div>
+    </div></section>
+  </div>

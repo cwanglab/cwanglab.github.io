@@ -1,4 +1,58 @@
 {{ define "main" }}
+  <style>
+    .member-group + .member-group { margin-top: 52px; }
+    .member-group > h2 {
+      margin: 0 0 26px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+      font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.25;
+    }
+    .member-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
+    .member { min-width: 0; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 20px; align-items: start; }
+    .member--pi { grid-column: 1 / -1; grid-template-columns: 104px minmax(0, 1fr); }
+    .member__portrait {
+      width: 76px; height: 76px; border-radius: 50%; overflow: hidden;
+      border: 1px solid var(--rule); background: var(--paper-soft);
+    }
+    .member--pi .member__portrait { width: 104px; height: 104px; }
+    .member__portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .member__monogram {
+      display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
+      font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: 0.02em; color: var(--claret);
+    }
+    .member--pi .member__monogram { font-size: 34px; }
+    .member__body { min-width: 0; }
+    .member h3 { margin: 0 0 4px; font-family: var(--serif); font-size: 22px; line-height: 1.25; }
+    .member--pi h3 { font-size: 26px; }
+    .member__position { margin: 0 0 3px; color: var(--claret); font-size: 14px; font-weight: 700; }
+    .member__affiliation { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .member__bio { margin: 0 0 12px; color: var(--ink); font-size: 16px; line-height: 1.65; }
+    .member__bio p { margin: 0 0 10px; }
+    .member__bio p:last-child { margin-bottom: 0; }
+    .member__bio:empty { margin: 0; }
+    .member__now { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .member__links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; list-style: none; }
+    .member__links a { color: var(--claret); font-size: 14px; font-weight: 700; text-decoration: none; }
+    .member__links a:hover { color: var(--claret-dark); text-decoration: underline; text-underline-offset: 0.18em; }
+    .member h3 a { color: inherit; text-decoration: none; }
+    .member h3 a:hover { color: var(--claret); text-decoration: underline; text-underline-offset: 0.18em; }
+
+    /* Taught-course and intern alumni: a plain roster list, no cards or portraits.
+       These entries have no individual page (build.render = never). */
+    .roster { columns: 2; column-gap: 48px; margin: 0; padding: 0; list-style: none; }
+    .roster li { break-inside: avoid; margin: 0 0 12px; font-size: 16px; line-height: 1.5; }
+    .roster .roster__name { font-weight: 700; }
+    .roster .roster__detail { display: block; color: var(--muted); font-size: 14px; }
+    @media (max-width: 880px) {
+      .member-grid { grid-template-columns: 1fr; gap: 34px; }
+      .roster { columns: 1; }
+    }
+    @media (max-width: 700px) {
+      .member-group > h2 { font-size: 23px; }
+      .member, .member--pi { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; }
+      .member__portrait, .member--pi .member__portrait { width: 64px; height: 64px; }
+      .member__monogram, .member--pi .member__monogram { font-size: 23px; }
+    }
+  </style>
+
   <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }}</p></div></header>
   <section class="section"><div class="shell">
     {{ $groups := slice
@@ -7,38 +61,67 @@
       (dict "key" "postdoctoral-researcher" "label" "Postdoctoral researchers")
       (dict "key" "phd-researcher" "label" "PhD researchers")
       (dict "key" "student" "label" "Students")
-      (dict "key" "academic-collaborator" "label" "Academic collaborators")
-      (dict "key" "alumni" "label" "Alumni") }}
+      (dict "key" "academic-collaborator" "label" "Collaborators")
+      (dict "key" "doctoral-alumni" "label" "Doctoral alumni") }}
     {{ range $groups }}
       {{ $people := where $.RegularPages ".Params.category" .key }}
       {{ if gt (len $people) 0 }}
-        <section class="people-group">
+        <section class="member-group">
           <h2>{{ .label }}</h2>
-          <div class="people-list">
+          <div class="member-grid">
             {{ range $people.ByParam "order" }}
-              {{ $person := . }}
-              {{ $photo := .Params.photo | default "" }}
-              <article class="person{{ if eq .Params.category "principal-investigator" }} person--pi{{ end }}{{ if eq $photo "" }} person--no-photo{{ end }}">
-                {{ with $photo }}<div><img class="person__photo" src="{{ . }}" alt="{{ $person.Title }}"></div>{{ end }}
-                <div>
-                  <h3>{{ .Title }}</h3>
-                  <p class="person__position">{{ .Params.position }}</p>
-                  {{ with .Params.affiliation }}<p class="person__affiliation">{{ . }}</p>{{ end }}
-                  <div class="person__bio">{{ .Content }}</div>
-                  <div class="person__links">
-                    {{ with .Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
-                    {{ with .Params.website }}<a href="{{ . }}">Website</a>{{ end }}
-                    {{ with .Params.scholar }}<a href="{{ . }}">Google Scholar</a>{{ end }}
-                    {{ with .Params.orcid }}<a href="{{ . }}">ORCID</a>{{ end }}
-                    {{ with .Params.github }}<a href="{{ . }}">GitHub</a>{{ end }}
-                  </div>
-                  {{ with .Params.alumni_destination }}<p><strong>Current position:</strong> {{ . }}</p>{{ end }}
+              {{ $p := . }}
+              {{ $clean := trim (replaceRE "^(Dr|Prof(essor)?|Mr|Mrs|Ms|Mx|Miss|Sir) *\\.? +" "" $p.Title) " " }}
+              {{ $words := split (replaceRE " +" " " $clean) " " }}
+              {{ $ini := substr (index $words 0) 0 1 }}
+              {{ if gt (len $words) 1 }}{{ $ini = printf "%s%s" $ini (substr (index $words (sub (len $words) 1)) 0 1) }}{{ end }}
+              <article class="member{{ if eq $p.Params.category "principal-investigator" }} member--pi{{ end }}">
+                <div class="member__portrait">
+                  {{ with $p.Params.photo }}
+                    <img src="{{ . | relURL }}" alt="" width="76" height="76" loading="lazy">
+                  {{ else }}
+                    <span class="member__monogram" aria-hidden="true">{{ $ini }}</span>
+                  {{ end }}
+                </div>
+                <div class="member__body">
+                  {{/* Alumni have no individual page (build.render = never), so their names are not linked. */}}
+                  <h3>{{ if in (slice "alumni" "doctoral-alumni") $p.Params.category }}{{ $p.Title }}{{ else }}<a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>{{ end }}</h3>
+                  <p class="member__position">{{ $p.Params.position }}</p>
+                  {{ with $p.Params.affiliation }}<p class="member__affiliation">{{ . }}</p>{{ end }}
+                  <div class="member__bio">{{ $p.Content }}</div>
+                  {{ with $p.Params.alumni_destination }}<p class="member__now"><strong>Current position:</strong> {{ . }}</p>{{ end }}
+                  {{ if or $p.Params.email $p.Params.scholar $p.Params.website $p.Params.orcid $p.Params.github }}
+                  <ul class="member__links">
+                    {{ with $p.Params.email }}<li><a href="mailto:{{ . }}">Email</a></li>{{ end }}
+                    {{ with $p.Params.scholar }}<li><a href="{{ . }}">Scholar</a></li>{{ end }}
+                    {{ with $p.Params.website }}<li><a href="{{ . }}">Website</a></li>{{ end }}
+                    {{ with $p.Params.orcid }}<li><a href="{{ . }}">ORCID</a></li>{{ end }}
+                    {{ with $p.Params.github }}<li><a href="{{ . }}">GitHub</a></li>{{ end }}
+                  </ul>
+                  {{ end }}
                 </div>
               </article>
             {{ end }}
           </div>
         </section>
       {{ end }}
+    {{ end }}
+
+    {{/* Master's, undergraduate and intern researchers: listed by name and project
+         year only, as a roster rather than individual profile pages. */}}
+    {{ $taught := where $.RegularPages ".Params.category" "alumni" }}
+    {{ if gt (len $taught) 0 }}
+      <section class="member-group">
+        <h2>Master's, undergraduate and intern researchers</h2>
+        <ul class="roster">
+          {{ range $taught.ByParam "order" }}
+            <li>
+              <span class="roster__name">{{ .Title }}</span>
+              <span class="roster__detail">{{ .Params.position }}{{ with .Params.alumni_destination }} · Now: {{ . }}{{ end }}</span>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
     {{ end }}
   </div></section>
 {{ end }}

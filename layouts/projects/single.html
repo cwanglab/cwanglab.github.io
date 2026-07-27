@@ -1,12 +1,25 @@
 {{ define "main" }}
-  <header class="page-head"><div class="shell"><p class="kicker">{{ .Params.research_area }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p></div></header>
+  <style>
+    .project-detail__meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0 0 36px; padding: 20px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+    .project-detail__meta div { min-width: 0; }
+    .project-detail__meta dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .project-detail__meta dd { margin: 5px 0 0; font-size: 15px; overflow-wrap: anywhere; }
+    .project-detail__meta .output-links { margin: 0; font-size: 15px; }
+    @media (max-width: 700px) { .project-detail__meta { grid-template-columns: 1fr; } }
+  </style>
+
+  <header class="page-head"><div class="shell">
+    <p class="kicker">{{ .Params.research_area }}</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.summary }}</p>
+  </div></header>
   <section class="section"><div class="shell">
-    <dl class="detail-meta">
-      <div><dt>Status</dt><dd>{{ .Params.status }}</dd></div>
-      <div><dt>Period</dt><dd>{{ .Params.period }}</dd></div>
+    <dl class="project-detail__meta">
+      <div><dt>Status</dt><dd>{{ .Params.status | default "—" }}</dd></div>
+      <div><dt>Period</dt><dd>{{ .Params.period | default "—" }}</dd></div>
       <div><dt>Outputs</dt><dd>{{ partial "output-links.html" . }}</dd></div>
     </dl>
     <article class="content">{{ .Content }}</article>
+    <div class="hero-links"><a href="{{ relURL "/projects/" }}">All projects</a></div>
   </div></section>
 {{ end }}
-

@@ -12,6 +12,6 @@ arxiv: "https://arxiv.org/abs/1808.03944"
 code: ""
 data: ""
 project: "/projects/dicyc/"
-oa_url: ""
+oa_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7763495/"
 ---
 

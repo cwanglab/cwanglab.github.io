@@ -1,13 +1,11 @@
 ---
 title: "Terminal intelligence"
-summary: "Efficient, adaptable and real-time intelligence for clinical, robotic and embedded terminals with fixed resource budgets."
+summary: "Scanners, surgical systems and robots run on fixed hardware with strict time budgets. We make large models adapt to specialised clinical and robotic tasks with minimal trainable parameters and latency — for teams deploying AI on real terminals, not just in the cloud."
+description: "Parameter-efficient adaptation and compression that puts large-model capability onto clinical and robotic terminals with fixed resource budgets."
 order: 20
-image: "/images/research/selora-adaptation.png"
-image_alt: "SeLoRA progressively expands low-rank adaptation capacity using a Fisher-information criterion."
-image_caption: "SeLoRA starts from a minimal low-rank adaptor and expands capacity only when the Fisher-information criterion indicates that more rank is needed."
-image_source_label: "Mao et al., SeLoRA"
-image_source_url: "https://arxiv.org/abs/2408.07196"
-image_position: "center"
+diagram: "/images/diagrams/dir-terminal.svg"
+diagram_alt: "Overview of terminal intelligence: parameter-efficient adaptation and compression that bring large-model capability to fixed clinical and robotic terminals."
+diagram_caption: "Schematic. This direction at a glance: large-model capability, adapted and compressed to run on real clinical and robotic terminals."
 ---
 
 Terminal intelligence concerns the point at which a model must sense, decide or assist in the real world. Large models are useful research tools, but many clinical and robotic terminals operate on fixed hardware and within strict response times. We investigate parameter-efficient adaptation, model compression and data-efficient learning so that capability can be transferred from large training environments to practical endpoints.
@@ -24,6 +22,5 @@ We study parameter-efficient fine-tuning, adaptive low-rank models, model compre
 
 ## Representative work
 
-- [SeLoRA: self-expanding low-rank adaptation for medical image synthesis](https://doi.org/10.1016/j.eswa.2026.131569) · [arXiv](https://arxiv.org/abs/2408.07196) · [project page](https://yuchen20.github.io/SeLoRA.github.io/)
-- [Enhancing percutaneous coronary intervention with path planning and vascular segmentation](https://doi.org/10.1016/j.compbiomed.2023.107540)
-- Data-efficient segmentation through knowledge transfer from large models
+- [SeLoRA: self-expanding LoRA for high-quality and efficient medical image synthesis](/publications/selora-2026/) (Expert Systems with Applications, 2026) · [project page](/projects/selora/)
+- [Enhancing percutaneous coronary intervention with heuristic path planning and deep-learning-based vascular segmentation](/publications/pci-path-planning-2023/) (Computers in Biology and Medicine, 2023)

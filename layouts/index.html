@@ -1,127 +1,190 @@
 {{ define "main" }}
-  <section class="home-hero">
+  <style>
+    /* Homepage: plain academic-document layout. Only headings, paragraphs,
+       lists, rules and links — no cards, badges, avatars or colour bands. */
+    .home-intro { padding: 44px 0 8px; }
+    .home-intro p { max-width: var(--measure); margin: 0 0 16px; font-size: 19px; }
+    .home-intro .kicker { margin-bottom: 12px; }
+    .home-intro h1 {
+      max-width: var(--measure); margin: 0 0 18px;
+      font-family: var(--serif); font-size: 40px; font-weight: 700; line-height: 1.15;
+    }
+    .home-intro .home-lead { font-size: 21px; line-height: 1.55; }
+    .home-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 22px 0 0; padding: 0; list-style: none; font-size: 16px; font-weight: 700; }
+
+    .home-section { padding: 34px 0 6px; }
+    .home-section h2 { margin: 0 0 14px; padding-top: 26px; border-top: 1px solid var(--rule); font-family: var(--serif); font-size: 26px; line-height: 1.25; }
+    .home-section h3 { margin: 20px 0 6px; font-family: var(--serif); font-size: 19px; line-height: 1.3; }
+
+    .home-section ul, .home-section ol { max-width: var(--measure); margin: 0 0 14px; padding-left: 22px; }
+    .home-section li { margin-bottom: 10px; }
+    .home-section li > p { margin: 2px 0 0; }
+    .home-more { max-width: var(--measure); margin: 4px 0 20px; font-size: 15px; }
+
+    /* Research framework diagram: full-width within the measure, max 960px. */
+    .framework-figure { max-width: 1080px; margin: 0 0 18px; }
+    .framework-figure img { display: block; width: 100%; height: auto; }
+    .framework-figure figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+    /* Research directions: text-led list rows with a small right-side diagram.
+       No cards, borders or background — flex only. */
+    .dir-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .dir-item .dir-text { flex: 1 1 auto; }
+    .dir-item .dir-thumb { flex: 0 0 260px; width: 260px; height: auto; display: block; margin-top: 2px; }
+
+    .people-pi { max-width: var(--measure); margin: 0 0 14px; }
+    .pub-entry .pub-venue { font-style: italic; }
+    .news-date { color: var(--muted); font-size: 15px; white-space: nowrap; }
+
+    @media (max-width: 700px) {
+      .home-intro { padding-top: 34px; }
+      .home-intro p { font-size: 17px; }
+      .home-section h2 { font-size: 23px; }
+      .dir-item { display: block; }
+      .dir-item .dir-thumb { width: 260px; margin: 10px 0 0; }
+    }
+  </style>
+
+  <section class="home-intro">
     <div class="shell">
-      <p class="kicker">Heterogeneous intelligence · Terminal intelligence</p>
+      <p class="kicker">{{ site.Data.site.school }}, {{ site.Data.site.institution }}</p>
       <h1>{{ site.Data.site.name }}</h1>
-      <p class="home-hero__lead">{{ site.Data.site.mission }}</p>
-      <div class="hero-links">
-        <a href="{{ relURL "/research/" }}">Research directions</a>
-        <a href="{{ relURL "/publications/" }}">Selected publications</a>
-        <a href="mailto:{{ site.Data.site.email }}">Contact the group</a>
-      </div>
+      <p class="home-lead">We build AI for medical imaging and robotics that works across hospitals, devices and datasets. Models that excel in one setting often fail at the next scanner, hospital or robot; we develop learning methods that carry capability across those differences — onto the clinical and robotic terminals where AI is actually used.</p>
+      <p>The group is based at the National Robotarium in Edinburgh. Recent work includes two Nature Communications studies measuring bone marrow adiposity in around 47,000 UK Biobank participants, and SeLoRA, an open-source method for adapting large image-synthesis models to specialised medical tasks.</p>
+      <p>The group is led by <a href="{{ relURL "/people/" }}">{{ site.Data.site.principal_investigator }}</a>, {{ site.Data.site.pi_position }}. Contact: <a href="mailto:{{ site.Data.site.email }}">{{ site.Data.site.email }}</a>.</p>
+      <ul class="home-links">
+        <li><a href="{{ relURL "/research/" }}">Research directions</a></li>
+        <li><a href="{{ relURL "/publications/" }}">Publications</a></li>
+        <li><a href="{{ relURL "/projects/" }}">Projects &amp; code</a></li>
+        <li><a href="{{ relURL "/opportunities/" }}">Join the group</a></li>
+      </ul>
     </div>
   </section>
 
-  <section class="framework-band" aria-labelledby="framework-title">
+  <section class="home-section" aria-labelledby="framework-title">
     <div class="shell">
-      <div class="framework-head">
-        <p class="kicker">Research framework</p>
-        <h2 id="framework-title">Cloud–Edge–Terminal intelligence</h2>
-      </div>
-      <div class="framework-grid">
-        <article class="framework-item">
-          <span class="framework-item__label">Cloud</span>
-          <h3>Population and foundation models</h3>
-          <p>Population-scale imaging, cross-domain synthesis and representation learning in large computing environments.</p>
-        </article>
-        <article class="framework-item">
-          <span class="framework-item__label">Edge</span>
-          <h3>Heterogeneous collaboration</h3>
-          <p>Federated learning and knowledge transfer across institutions, architectures and devices without assuming uniform infrastructure.</p>
-        </article>
-        <article class="framework-item">
-          <span class="framework-item__label">Terminal</span>
-          <h3>Intelligence at the point of use</h3>
-          <p>Efficient adaptation and real-time inference for clinical, robotic and embedded terminals with fixed resource budgets.</p>
-        </article>
-      </div>
+      <h2 id="framework-title">Research framework</h2>
+      <figure class="framework-figure">
+        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1400" height="520" loading="lazy">
+        <figcaption>Cloud–Edge–Terminal research framework.</figcaption>
+      </figure>
+      <ul>
+        <li><strong>Cloud — population and foundation models.</strong> Hospitals and biobanks hold imaging data at population scale; we build large-scale measurement, synthesis and representation-learning methods there, for example the UK Biobank bone marrow imaging pipeline behind our Nature Communications studies.</li>
+        <li><strong>Edge — heterogeneous collaboration.</strong> Hospitals and partners cannot always pool data or run identical hardware; federated learning and knowledge transfer let models learn across institutions, architectures and devices while source data stays under local governance.</li>
+        <li><strong>Terminal — intelligence at the point of use.</strong> Scanners, surgical systems and robots run on fixed hardware with strict time budgets; efficient adaptation and compression put large-model capability onto the clinical and robotic terminals where it is used.</li>
+      </ul>
     </div>
   </section>
 
   {{ $research := where site.RegularPages "Section" "research" }}
-  <section class="section">
+  {{ $repWork := dict
+    "heterogeneous-learning" (dict "label" "DiCyc — deformation-invariant cross-domain fusion, Information Fusion 2021" "url" "/publications/dicyc-2021/")
+    "efficient-models" (dict "label" "SeLoRA — self-expanding LoRA, Expert Systems with Applications 2026" "url" "/publications/selora-2026/")
+    "medical-imaging" (dict "label" "Bone marrow adiposity in UK Biobank, Nature Communications 2025" "url" "/publications/bma-genetics-2025/")
+    "intelligent-systems" (dict "label" "Image-guided path planning for coronary intervention, Computers in Biology and Medicine 2023" "url" "/publications/pci-path-planning-2023/")
+  }}
+  {{ $dirFig := dict
+    "heterogeneous-learning" (dict "src" "/images/diagrams/dir-heterogeneous.svg" "alt" "Schematic: heterogeneous intelligence across institutions, architectures and devices")
+    "efficient-models" (dict "src" "/images/diagrams/dir-terminal.svg" "alt" "Schematic: terminal intelligence on scanners, surgical systems and robots")
+    "medical-imaging" (dict "src" "/images/diagrams/dir-medical-ai.svg" "alt" "Schematic: trustworthy medical AI")
+    "intelligent-systems" (dict "src" "/images/diagrams/dir-robotics.svg" "alt" "Schematic: heterogeneous robotic systems")
+  }}
+  <section class="home-section" aria-labelledby="directions-title">
     <div class="shell">
-      <div class="section-head">
-        <h2>Research directions</h2>
-        <a href="{{ relURL "/research/" }}">Read the research overview</a>
-      </div>
-      <div class="research-gallery research-gallery--home">
-        {{ range $index, $page := $research.ByParam "order" }}
-          {{ $thumbnail := $page.Params.thumbnail | default $page.Params.image }}
-          <article class="research-card">
-            <a class="research-card__visual" href="{{ $page.RelPermalink }}" aria-label="Read about {{ $page.Title }}">
-              <img src="{{ $thumbnail }}" alt="{{ $page.Params.image_alt }}" loading="lazy">
-            </a>
-            <div class="research-card__body">
-              <span class="research-card__number">0{{ add $index 1 }}</span>
-              <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
-              <p>{{ $page.Params.summary }}</p>
-              <a class="research-card__link" href="{{ $page.RelPermalink }}">Explore this direction</a>
+      <h2 id="directions-title">Research directions</h2>
+      <ul>
+        {{ range $research.ByParam "order" }}
+          {{ $page := . }}
+          <li>
+            <div class="dir-item">
+              <div class="dir-text">
+                <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a> — {{ .Params.summary }}
+                {{ with index $repWork .File.BaseFileName }}
+                  Representative work: <a href="{{ .url | relURL }}">{{ .label }}</a>.
+                {{ end }}
+              </div>
+              {{ with index $dirFig $page.File.BaseFileName }}
+                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="480" height="360" loading="lazy">
+              {{ end }}
             </div>
-          </article>
+          </li>
         {{ end }}
-      </div>
+      </ul>
+      <p class="home-more"><a href="{{ relURL "/research/" }}">Research overview</a></p>
+    </div>
+  </section>
+
+  {{ $people := where site.RegularPages "Section" "people" }}
+  <section class="home-section" aria-labelledby="people-title">
+    <div class="shell">
+      <h2 id="people-title">People</h2>
+      {{ range where $people ".Params.category" "principal-investigator" }}
+        <p class="people-pi">
+          <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a>, {{ .Params.position }}, {{ .Params.affiliation }}.
+          {{ with .Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+          {{- with .Params.website }} · <a href="{{ . }}">Website</a>{{ end }}
+          {{- with .Params.scholar }} · <a href="{{ . }}">Google Scholar</a>{{ end }}
+        </p>
+      {{ end }}
+      {{/* Current members only. Alumni are listed on the People page, not here. */}}
+      {{ $current := where $people ".Params.category" "in" (slice "research-staff" "postdoctoral-researcher" "phd-researcher" "academic-collaborator") }}
+      <ul>
+        {{ range $current.ByParam "order" }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>, {{ .Params.position }}.</li>
+        {{ end }}
+      </ul>
+      <p class="home-more"><a href="{{ relURL "/people/" }}">Full team list, including alumni</a></p>
     </div>
   </section>
 
   {{ $projects := where (where site.RegularPages "Section" "projects") ".Params.featured" true }}
-  <section class="section section--soft">
+  <section class="home-section" aria-labelledby="projects-title">
     <div class="shell">
-      <div class="section-head">
-        <h2>Selected work</h2>
-        <a href="{{ relURL "/projects/" }}">All projects and code</a>
-      </div>
-      <div class="record-grid">
+      <h2 id="projects-title">Projects &amp; code</h2>
+      <ul>
         {{ range $projects.ByParam "order" }}
-          <article class="record">
-            <span class="record__meta">{{ .Params.research_area }}</span>
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Params.summary }}</p>
-            {{ partial "output-links.html" . }}
-          </article>
+          <li>
+            <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a> — {{ .Params.summary }}
+            {{ with .Params.doi }}<a href="{{ . }}">DOI</a>{{ end }}
+            {{ with .Params.code }}· <a href="{{ . }}">Code</a>{{ end }}
+            {{ with .Params.arxiv }}· <a href="{{ . }}">arXiv</a>{{ end }}
+          </li>
         {{ end }}
-      </div>
+      </ul>
+      <p class="home-more"><a href="{{ relURL "/projects/" }}">All projects and released code</a></p>
     </div>
   </section>
 
   {{ $publications := where (where site.RegularPages "Section" "publications") ".Params.featured" true }}
-  <section class="section">
+  <section class="home-section" aria-labelledby="pubs-title">
     <div class="shell">
-      <div class="section-head">
-        <h2>Recent selected publications</h2>
-        <a href="{{ relURL "/publications/" }}">Selected publication list</a>
-      </div>
-      <ol class="publication-list">
+      <h2 id="pubs-title">Selected publications</h2>
+      <ol>
         {{ range first 4 $publications.ByDate.Reverse }}
-          <li class="publication">
-            <p class="publication__title">{{ .Title }}</p>
-            <p class="publication__authors">{{ .Params.authors }}</p>
-            <p class="publication__venue">{{ .Params.venue }}, {{ .Params.year }}</p>
-            {{ partial "output-links.html" . }}
+          <li class="pub-entry">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>.
+            <span class="pub-venue">{{ .Params.venue }}</span>, {{ .Params.year }}.
+            {{ with .Params.doi }}<a href="{{ . }}">DOI</a>{{ end }}
+            {{ with .Params.arxiv }}· <a href="{{ . }}">arXiv</a>{{ end }}
+            {{ with .Params.code }}· <a href="{{ . }}">Code</a>{{ end }}
+            {{ with .Params.oa_url }}· <a href="{{ . }}">Open access</a>{{ end }}
           </li>
         {{ end }}
       </ol>
+      <p class="home-more"><a href="{{ relURL "/publications/" }}">All publications</a></p>
     </div>
   </section>
 
   {{ $news := where site.RegularPages "Section" "news" }}
-  <section class="section section--soft">
+  <section class="home-section" aria-labelledby="news-title">
     <div class="shell">
-      <div class="section-head">
-        <h2>Latest updates</h2>
-        <a href="{{ relURL "/news/" }}">All news</a>
-      </div>
-      <div class="news-list">
-        {{ range first 3 $news.ByDate.Reverse }}
-          <article class="news-item">
-            <div class="news-item__date">{{ .Params.display_date | default (.Date.Format "2 Jan 2006") }}</div>
-            <div>
-              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-              <p>{{ .Params.summary }}</p>
-            </div>
-          </article>
+      <h2 id="news-title">News</h2>
+      <ul>
+        {{ range first 5 $news.ByDate.Reverse }}
+          <li><span class="news-date">{{ .Params.display_date | default (.Date.Format "2 Jan 2006") }}</span> — <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         {{ end }}
-      </div>
+      </ul>
+      <p class="home-more"><a href="{{ relURL "/news/" }}">All news</a></p>
     </div>
   </section>
 {{ end }}

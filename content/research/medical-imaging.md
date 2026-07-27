@@ -1,14 +1,18 @@
 ---
 title: "Trustworthy medical AI"
-summary: "Medical imaging methods evaluated across modalities, centres and clinical constraints, from population analysis to point-of-care use."
+summary: "A model that works on one scanner can fail on the next. We build medical imaging methods that stay reliable across scanners, hospitals and patient groups — for clinicians and population researchers who need measurements they can trust, from UK Biobank-scale studies to point-of-care use."
+description: "Trustworthy medical imaging AI that stays reliable across scanners, hospitals and patient groups, from population-scale MRI studies to point-of-care use."
 order: 30
-image: "/images/research/bone-marrow-study-design.png"
-thumbnail: "/images/research/bone-marrow-measurement.png"
-image_alt: "Study design for deep-learning measurement of bone marrow fat in UK Biobank MRI and subsequent clinical and genetic analyses."
-image_caption: "Deep-learning segmentation of four skeletal regions in UK Biobank MRI, followed by physiological association and genome-wide association analyses."
+diagram: "/images/diagrams/dir-medical-ai.svg"
+diagram_alt: "Overview of trustworthy medical AI: imaging measurements that stay reliable across scanners, hospitals and patient groups."
+diagram_caption: "Schematic. This direction at a glance: imaging measurements that stay reliable across scanners, hospitals and patient groups."
+image: "/images/research/bone-marrow-measurement.png"
+image_size: "wide"
+image_alt: "Deep-learning measurement of bone marrow fat fraction in four skeletal regions of UK Biobank MRI, across two participant batches."
+image_caption: "Deep-learning segmentation of spine, femoral head, total hip and femoral diaphysis in UK Biobank MRI. The pipeline ran over two imaging batches comprising 50,226 participants; the batch figures shown are the 48,608 retained after sample quality control."
 image_source_label: "Xu et al., Nature Communications"
 image_source_url: "https://doi.org/10.1038/s41467-024-55422-4"
-image_position: "top"
+image_position: "center"
 ---
 
 We work with MRI, CT, PET and related clinical data on problems including segmentation, registration, image synthesis and quantitative phenotyping. The methodological question is how to learn from differences between scanners, protocols, sites and patient populations without treating those differences as incidental noise.
@@ -25,7 +29,5 @@ We develop segmentation, registration, multimodal fusion, image synthesis and qu
 
 ## Representative work
 
-- [Deep learning and genome-wide association meta-analyses of bone marrow adiposity in UK Biobank](https://doi.org/10.1038/s41467-024-55422-4)
-- [Clinical implications of bone marrow adiposity in UK Biobank](https://doi.org/10.1038/s41467-025-63395-1)
-- [Large-scale analysis of bone marrow adiposity using Dixon MRI](https://doi.org/10.1016/j.csbj.2023.12.029)
-- [SCOT-HEART coronary plaque analysis and cardiovascular imaging work](/publications/)
+- [Deep learning and genome-wide association meta-analyses of bone marrow adiposity in the UK Biobank](/publications/bma-genetics-2025/) (Nature Communications, 2025)
+- [Clinical implications of bone marrow adiposity identified by phenome-wide association and Mendelian randomization in the UK Biobank](/publications/bma-clinical-2025/) (Nature Communications, 2025)

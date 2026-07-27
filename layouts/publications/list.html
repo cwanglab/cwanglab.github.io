@@ -1,15 +1,30 @@
 {{ define "main" }}
+  <style>
+    .pub-year { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--ink); }
+    .pub-year:first-of-type { margin-top: 0; }
+    .pub-year h2 { margin: 0 0 12px; font-family: var(--serif); font-size: 28px; line-height: 1.2; }
+    .pub-list { margin: 0; padding: 0; list-style: none; }
+    .pub { padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid var(--rule); }
+    .pub:last-child { margin-bottom: 0; border-bottom: 0; }
+    .pub__title { margin: 0 0 6px; font-family: var(--serif); font-size: 19px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+    .pub__title a { color: var(--ink); text-decoration: none; }
+    .pub__title a:hover { color: var(--claret); }
+    .pub__authors, .pub__venue { margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .pub__venue { color: var(--ink); font-style: italic; }
+    .pub .output-links { margin: 8px 0 0; font-size: 14px; }
+  </style>
+
   <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }} <a href="{{ site.Data.site.scholar }}">View the complete record on Google Scholar.</a></p></div></header>
   <section class="section"><div class="shell">
     {{ range .RegularPages.GroupByDate "2006" "desc" }}
-      <section class="publication-year">
+      <section class="pub-year">
         <h2>{{ .Key }}</h2>
-        <ol class="publication-list">
+        <ol class="pub-list">
           {{ range .Pages.ByTitle }}
-            <li class="publication">
-              <p class="publication__title">{{ .Title }}</p>
-              <p class="publication__authors">{{ .Params.authors }}</p>
-              <p class="publication__venue">{{ .Params.venue }}</p>
+            <li class="pub">
+              <p class="pub__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+              <p class="pub__authors">{{ .Params.authors }}</p>
+              <p class="pub__venue">{{ .Params.venue }}</p>
               {{ partial "output-links.html" . }}
             </li>
           {{ end }}

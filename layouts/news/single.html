@@ -1,11 +1,25 @@
 {{ define "main" }}
-  <header class="page-head"><div class="shell"><p class="kicker">{{ .Params.category }} · {{ .Params.display_date | default (.Date.Format "2 January 2006") }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p></div></header>
-  <section class="section"><div class="shell">
-    <article class="content">{{ .Content }}</article>
-    <div class="hero-links">
-      {{ with .Params.publication }}<a href="{{ . }}">Publication record</a>{{ end }}
-      {{ with .Params.external_url }}<a href="{{ . }}">Publisher / DOI</a>{{ end }}
-    </div>
-  </div></section>
-{{ end }}
+  <style>
+    .news-detail .page-head .output-links { margin: 18px 0 0; font-size: 15px; }
+    .news-detail__back { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 14px; font-weight: 700; }
+  </style>
 
+  <div class="news-detail">
+    <header class="page-head"><div class="shell">
+      <p class="kicker">{{ .Params.category }} · {{ .Params.display_date | default (.Date.Format "2 January 2006") }}</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Params.summary }}</p>
+      {{ if or .Params.publication .Params.external_url }}
+        <p class="output-links">
+          {{- with .Params.publication }}<a href="{{ . | relURL }}">Publication record</a>{{ end }}
+          {{- if and .Params.publication .Params.external_url }} · {{ end }}
+          {{- with .Params.external_url }}<a href="{{ . }}">Publisher / DOI</a>{{ end }}
+        </p>
+      {{ end }}
+    </div></header>
+    <section class="section"><div class="shell">
+      <article class="content">{{ .Content }}</article>
+      <div class="news-detail__back"><a href="{{ relURL "/news/" }}">&larr; All news</a></div>
+    </div></section>
+  </div>
+{{ end }}

@@ -1,0 +1,6 @@
+{{/* Shim: publication content sets `type: "journal"`, which reroutes Hugo's
+     single-page layout lookup to layouts/journal/. Delegate to the shared
+     publication single markup so these pages stay in the publications design. */}}
+{{ define "main" }}
+{{ partial "publication-single.html" . }}
+{{ end }}

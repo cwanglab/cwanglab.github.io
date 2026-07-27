@@ -12,6 +12,6 @@ arxiv: ""
 code: ""
 data: ""
 project: "/projects/bone-marrow-adiposity/"
-oa_url: ""
+oa_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10806280/"
 ---
 

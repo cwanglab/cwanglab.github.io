@@ -1,7 +1,7 @@
 ---
 title: "SeLoRA published in Expert Systems with Applications"
-date: 2026-06-01
-display_date: "June 2026"
+date: 2026-06-05
+display_date: "5 June 2026"
 summary: "Our work on selective low-rank adaptation for medical image synthesis is now published."
 category: "Publication"
 publication: "/publications/selora-2026/"

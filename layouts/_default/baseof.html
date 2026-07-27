@@ -3,13 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ $description := .Description | default .Params.intro | default .Site.Params.description }}
+  {{/* Per-page description: explicit → section intro → derived from the page's own
+       fields → summary → site default. Avoids 30+ pages sharing one description. */}}
+  {{ $derived := "" }}
+  {{ if eq .Section "publications" }}
+    {{ $derived = printf "%s. %s%s, %v." .Title (cond (ne (string .Params.authors) "") (printf "%s. " .Params.authors) "") .Params.venue .Params.year }}
+  {{ else if eq .Section "people" }}
+    {{ $derived = printf "%s — %s, %s, Heterogeneous & Terminal Intelligence Lab." .Title .Params.position .Params.affiliation }}
+  {{ else if eq .Section "projects" }}
+    {{ $derived = .Params.summary }}
+  {{ else if eq .Section "research" }}
+    {{ $derived = .Params.summary }}
+  {{ end }}
+  {{ $description := .Description | default .Params.intro | default $derived | default (.Summary | plainify | truncate 155) | default .Site.Params.description }}
+  {{ $pageTitle := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
   <meta name="description" content="{{ $description }}">
   <meta name="author" content="{{ .Site.Params.author }}">
   <meta name="theme-color" content="#7a1732">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if and .IsPage (eq .Section "news") }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image.png">
+  <meta property="og:image:alt" content="{{ .Site.Title }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{ $description }}">
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/og-image.png">
   <link rel="icon" href="{{ relURL "/favicon.svg" }}" type="image/svg+xml">
-  {{ with site.Data.site.logo }}<link rel="apple-touch-icon" href="{{ . | relURL }}">{{ end }}
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <link rel="apple-touch-icon" href="{{ "/images/logo-claret.png" | relURL }}">
+  <title>{{ $pageTitle }}</title>
   <style>
     :root {
       --paper: #ffffff;
@@ -41,26 +67,27 @@
       -webkit-font-smoothing: antialiased;
     }
     img { display: block; max-width: 100%; height: auto; }
-    a { color: var(--claret); text-decoration-thickness: 1px; text-underline-offset: 0.18em; overflow-wrap: anywhere; }
+    a { color: var(--claret); text-decoration-thickness: 1px; text-underline-offset: 0.18em; overflow-wrap: anywhere; transition: color 0.2s ease; }
     a:hover { color: var(--claret-dark); }
     a:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
     .shell { width: min(calc(100% - 48px), var(--page)); margin-inline: auto; }
     .measure { max-width: var(--measure); }
-    .skip-link { position: absolute; left: 12px; top: -80px; z-index: 20; padding: 10px 14px; background: var(--ink); color: white; }
+    .skip-link { position: absolute; left: 12px; top: -80px; z-index: 20; padding: 10px 14px; background: var(--ink); color: white; transition: top 0.2s ease; }
     .skip-link:focus { top: 12px; }
 
     .site-header { border-top: 5px solid var(--claret); border-bottom: 1px solid var(--rule); background: var(--paper); }
     .site-header__inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
     .brand { display: inline-flex; align-items: center; gap: 13px; min-width: 350px; color: var(--ink); text-decoration: none; }
-    .brand__mark { position: relative; width: 54px; height: 54px; flex: 0 0 54px; overflow: hidden; background: #fff; }
-    .brand__mark img { width: 76px; max-width: none; transform: translateX(-11px); }
+    .brand__mark { width: 54px; height: 54px; flex: 0 0 54px; }
+    .brand__mark img { width: 100%; height: 100%; object-fit: contain; }
     .brand__copy { min-width: 0; }
     .brand__name { display: block; max-width: 300px; font-family: var(--serif); font-size: 20px; font-weight: 700; line-height: 1.08; }
     .brand__meta { display: block; max-width: 300px; margin-top: 6px; color: var(--muted); font-size: 10px; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
     .site-nav ul { display: flex; align-items: center; gap: 25px; margin: 0; padding: 0; list-style: none; }
     .site-nav a { color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     .site-nav a:hover, .site-nav a[aria-current='page'] { color: var(--claret); }
-    .mobile-nav { display: none; }
+    .mobile-nav-wrap { display: none; }
+    .mobile-nav { position: relative; }
 
     main { min-height: 60vh; }
     .home-hero { padding: 78px 0 64px; border-bottom: 1px solid var(--rule); }
@@ -96,6 +123,7 @@
     .content p { margin: 0 0 18px; }
     .content ul, .content ol { margin: 0 0 22px; padding-left: 24px; }
     .content li { margin-bottom: 8px; }
+    .error-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 6px 0 0; padding: 0; list-style: none; font-size: 15px; font-weight: 700; }
 
     .record-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; border-top: 2px solid var(--ink); }
     .record { min-width: 0; padding: 24px 0 26px; border-bottom: 1px solid var(--rule); }
@@ -114,7 +142,8 @@
     .theme p { max-width: 720px; margin: 0; color: var(--muted); }
 
     .research-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
-    .research-card { min-width: 0; overflow: hidden; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); }
+    .research-card { min-width: 0; overflow: hidden; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .research-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(32, 33, 36, 0.08); }
     .research-card__visual { display: block; width: 100%; aspect-ratio: 16 / 6.5; overflow: hidden; border-bottom: 1px solid var(--rule); background: #eef0f1; text-decoration: none; }
     .research-card__visual img { width: 100%; height: 100%; padding: 12px; object-fit: contain; }
     .research-card__body { padding: 20px 22px 22px; }
@@ -178,14 +207,16 @@
     .footer-grid p, .footer-grid a { margin: 0 0 5px; color: var(--muted); font-size: 14px; }
     .footer-grid a { color: var(--claret); }
     .footer-note { margin: 32px 0 0; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
+    .footer-note + .footer-note { margin-top: 10px; padding-top: 0; border-top: 0; }
 
-    @media (max-width: 920px) {
+    /* 1000px, not 920px: the seven-item nav clips between roughly 920 and 1000. */
+    @media (max-width: 1000px) {
       .site-nav { display: none; }
-      .mobile-nav { display: block; position: relative; }
+      .mobile-nav-wrap { display: block; }
       .mobile-nav summary { cursor: pointer; color: var(--ink); font-size: 14px; font-weight: 700; list-style: none; }
       .mobile-nav summary::-webkit-details-marker { display: none; }
-      .mobile-nav summary::before { content: 'Menu'; }
-      .mobile-nav[open] summary::before { content: 'Close'; }
+      .mobile-nav[open] .mobile-nav__label { visibility: hidden; }
+      .mobile-nav[open] summary::after { content: 'Close'; }
       .mobile-nav ul { position: absolute; right: 0; z-index: 10; width: 230px; margin: 14px 0 0; padding: 8px 18px; border: 1px solid var(--rule); background: var(--paper); list-style: none; box-shadow: 0 8px 20px rgba(0,0,0,0.09); }
       .mobile-nav li + li { border-top: 1px solid var(--rule); }
       .mobile-nav a { display: block; padding: 10px 0; color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; }
@@ -202,7 +233,6 @@
       .site-header__inner { min-height: 78px; }
       .brand { min-width: 0; gap: 9px; }
       .brand__mark { width: 44px; height: 44px; flex-basis: 44px; }
-      .brand__mark img { width: 62px; transform: translateX(-9px); }
       .brand__name { max-width: 210px; font-size: 15.5px; }
       .brand__meta { display: none; }
       .home-hero { padding: 50px 0 42px; }
@@ -235,17 +265,39 @@
       .footer-grid { grid-template-columns: 1fr; gap: 26px; }
     }
 
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      .research-card:hover { transform: none; box-shadow: none; }
+    }
   </style>
+  {{ if .IsHome }}
+  {{ $ld := dict
+    "@context" "https://schema.org"
+    "@type" "Organization"
+    "name" site.Data.site.name
+    "url" (strings.TrimSuffix "/" site.BaseURL)
+    "email" site.Data.site.email
+    "address" (dict
+      "@type" "PostalAddress"
+      "streetAddress" site.Data.site.office
+      "addressLocality" "Edinburgh"
+      "postalCode" "EH14 4AS"
+      "addressCountry" "GB")
+    "parentOrganization" (dict
+      "@type" "CollegeOrUniversity"
+      "name" site.Data.site.institution
+      "url" "https://www.hw.ac.uk/")
+  }}
+  <script type="application/ld+json">{{ $ld | jsonify (dict "indent" "  ") | safeJS }}</script>
+  {{ end }}
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="shell site-header__inner">
       <a class="brand" href="{{ site.Home.RelPermalink }}">
-        {{ with site.Data.site.logo }}
-          <span class="brand__mark" aria-hidden="true"><img src="{{ . | relURL }}" alt=""></span>
-        {{ end }}
+        <span class="brand__mark" aria-hidden="true"><img src="{{ "/images/logo-claret.png" | relURL }}" alt="" width="54" height="54"></span>
         <span class="brand__copy">
           <span class="brand__name">{{ site.Data.site.name }}</span>
           <span class="brand__meta">{{ site.Data.site.institution }} · {{ site.Data.site.location }}</span>
@@ -258,14 +310,17 @@
           {{ end }}
         </ul>
       </nav>
+      {{/* Below 1000px the desktop nav is hidden, so this carries the navigation landmark. */}}
+      <nav class="mobile-nav-wrap" aria-label="Primary navigation">
       <details class="mobile-nav">
-        <summary aria-label="Toggle navigation"></summary>
+        <summary><span class="mobile-nav__label">Menu</span></summary>
         <ul>
           {{ range site.Menus.main }}
             <li><a href="{{ .URL | relURL }}"{{ if hasPrefix $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </details>
+      </nav>
     </div>
   </header>
 
@@ -279,7 +334,7 @@
         <section>
           <h2>{{ site.Data.site.name }}</h2>
           <p>{{ site.Data.site.school }}</p>
-          <p>{{ site.Data.site.institution }}</p>
+          <p><a href="https://www.hw.ac.uk/">{{ site.Data.site.institution }}</a></p>
         </section>
         <section>
           <h3>Contact</h3>
@@ -294,7 +349,9 @@
           <p><a href="{{ relURL "/opportunities/" }}">Join the group</a></p>
         </section>
       </div>
+      <p class="footer-note">© 2026 {{ site.Data.site.name }}, <a href="https://www.hw.ac.uk/">Heriot-Watt University</a>. All rights reserved.</p>
       <p class="footer-note">Content is maintained as an academic record. Publication links should be checked against the publisher or DOI record.</p>
+      <p class="footer-note">People are listed with their consent. To amend or remove your entry, email <a href="mailto:{{ site.Data.site.email }}">{{ site.Data.site.email }}</a>.</p>
     </div>
   </footer>
 </body>

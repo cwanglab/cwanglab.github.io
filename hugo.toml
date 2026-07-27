@@ -2,12 +2,18 @@ baseURL = 'https://cwanglab.github.io/'
 languageCode = 'en-gb'
 title = 'Heterogeneous & Terminal Intelligence Lab'
 enableRobotsTXT = true
+# No canonifyURLs here: this repo serves the domain root, so the root-absolute links in
+# content markdown are already correct. The cwanglab-v2 preview needs it for its subpath.
 
 [params]
   description = 'Heterogeneous and terminal intelligence across cloud, edge and point-of-use systems, with applications in trustworthy medical AI and robotics.'
   author = 'Heterogeneous & Terminal Intelligence Lab'
 
 [menu]
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 5
   [[menu.main]]
     name = 'Research'
     url = '/research/'
