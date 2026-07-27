@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{/* Preview deployments set params.preview = true so search engines drop them and the
+       production site at the domain root is the only indexed copy. Kept as a config flag,
+       not hardcoded, so this template stays identical across both repositories. */}}
+  {{ if site.Params.preview }}<meta name="robots" content="noindex, nofollow">{{ end }}
   {{/* Per-page description: explicit → section intro → derived from the page's own
        fields → summary → site default. Avoids 30+ pages sharing one description. */}}
   {{ $derived := "" }}
@@ -352,6 +356,7 @@
       <p class="footer-note">© 2026 {{ site.Data.site.name }}, <a href="https://www.hw.ac.uk/">Heriot-Watt University</a>. All rights reserved.</p>
       <p class="footer-note">Content is maintained as an academic record. Publication links should be checked against the publisher or DOI record.</p>
       <p class="footer-note">People are listed with their consent. To amend or remove your entry, email <a href="mailto:{{ site.Data.site.email }}">{{ site.Data.site.email }}</a>.</p>
+      {{ with site.Params.preview }}<p class="footer-note">This is a preview deployment and is not indexed by search engines. The published site is at <a href="https://cwanglab.github.io/">cwanglab.github.io</a>.</p>{{ end }}
     </div>
   </footer>
 </body>
