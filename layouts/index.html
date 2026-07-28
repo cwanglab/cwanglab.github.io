@@ -65,7 +65,8 @@
     <div class="shell">
       <h2 id="framework-title">Research framework</h2>
       <figure class="framework-figure">
-        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1400" height="520" loading="lazy">
+        {{/* No loading="lazy": this figure is above the fold on the homepage. */}}
+        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1400" height="520">
         <figcaption>Cloud–Edge–Terminal research framework.</figcaption>
       </figure>
       <ul>
