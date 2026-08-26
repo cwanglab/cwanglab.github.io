@@ -6,6 +6,13 @@ order: 10
 diagram: "/images/diagrams/dir-heterogeneous.svg"
 diagram_alt: "Overview of heterogeneous intelligence: federated learning and knowledge distillation across institutions, model architectures and devices."
 diagram_caption: "Schematic. This direction at a glance: models learn across institutions, architectures and devices while source data stay under local governance."
+image: "/images/research/dicyc-fig4.jpg"
+image_size: "wide"
+image_alt: "Brain MR cross-domain synthesis: PD and T2 inputs translated by DiCycleGAN and CycleGAN, beside ground truth and difference maps."
+image_caption: "Cross-domain synthesis with deformation-invariant cycle consistency: translating between PD- and T2-weighted brain MR without paired data, shown against ground truth and difference maps."
+image_source_label: "Wang et al., arXiv:1808.03944"
+image_source_url: "https://arxiv.org/abs/1808.03944"
+image_position: "center"
 ---
 
 Heterogeneous intelligence is the study of learning systems that must operate across differences rather than assuming a uniform dataset, model or device. Hospitals and research partners often cannot pool data and do not operate identical infrastructure. We study federated, distributed and knowledge-distillation methods that allow models to learn across these boundaries while keeping source data under local governance.

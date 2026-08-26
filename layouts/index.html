@@ -87,11 +87,14 @@
     "medical-imaging" (dict "label" "Bone marrow adiposity in UK Biobank, Nature Communications 2025" "url" "/publications/bma-genetics-2025/")
     "intelligent-systems" (dict "label" "Image-guided path planning for coronary intervention, Computers in Biology and Medicine 2023" "url" "/publications/pci-path-planning-2023/")
   }}
+  {{/* Real figures from the group's papers, per the top-lab convention
+       (VIOS, HAN Lab: homepage visuals are paper figures, not drawn schematics).
+       The schematic SVGs remain on the research detail pages. */}}
   {{ $dirFig := dict
-    "heterogeneous-learning" (dict "src" "/images/diagrams/dir-heterogeneous.svg" "alt" "Schematic: heterogeneous intelligence across institutions, architectures and devices")
-    "efficient-models" (dict "src" "/images/diagrams/dir-terminal.svg" "alt" "Schematic: terminal intelligence on scanners, surgical systems and robots")
-    "medical-imaging" (dict "src" "/images/diagrams/dir-medical-ai.svg" "alt" "Schematic: trustworthy medical AI")
-    "intelligent-systems" (dict "src" "/images/diagrams/dir-robotics.svg" "alt" "Schematic: heterogeneous robotic systems")
+    "heterogeneous-learning" (dict "src" "/images/research/thumb-heterogeneous.jpg" "w" 260 "h" 139 "alt" "Brain MR cross-domain synthesis by DiCycleGAN: PD and T2 translations beside ground truth")
+    "efficient-models" (dict "src" "/images/research/thumb-terminal.jpg" "w" 260 "h" 57 "alt" "Chest X-rays synthesised by LoRA variants, SeLoRA at right")
+    "medical-imaging" (dict "src" "/images/research/thumb-medical.jpg" "w" 260 "h" 90 "alt" "Deep-learning segmentation of spine, femoral head, total hip and femoral diaphysis in UK Biobank MRI")
+    "intelligent-systems" (dict "src" "/images/research/thumb-robotics.jpg" "w" 260 "h" 137 "alt" "Bio-inspired sensorimotor pipeline: tactile e-skin to soft robotic fish and crawler")
   }}
   <section class="home-section" aria-labelledby="directions-title">
     <div class="shell">
@@ -108,7 +111,7 @@
                 {{ end }}
               </div>
               {{ with index $dirFig $page.File.BaseFileName }}
-                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="260" height="195" loading="lazy">
+                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="{{ .w }}" height="{{ .h }}" loading="lazy">
               {{ end }}
             </div>
           </li>
