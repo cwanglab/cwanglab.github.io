@@ -4,8 +4,8 @@ summary: "A model that works on one scanner can fail on the next. We build medic
 description: "Trustworthy medical imaging AI that stays reliable across scanners, hospitals and patient groups, from population-scale MRI studies to point-of-care use."
 order: 30
 diagram: "/images/diagrams/dir-medical-ai.svg"
-diagram_alt: "Four-step pipeline: whole-body MRI from UK Biobank, deep-learning measurement of four skeletal sites, phenome-wide and genome-wide association, clinical insight."
-diagram_caption: "Schematic. The measurement-to-association pipeline: whole-body MRI, deep-learning measurement at four skeletal sites, PheWAS and GWAS meta-analyses, clinical insight."
+diagram_alt: "Four-step pipeline: UK Biobank whole-body MRI, deep-learning measurement, GWAS and PheWAS analyses, clinical insight."
+diagram_caption: "Schematic. The measurement-to-association pipeline behind the group's UK Biobank studies: whole-body MRI, deep-learning measurement, GWAS and PheWAS analyses, clinical insight."
 image: "/images/research/bone-marrow-measurement.png"
 image_size: "wide"
 image_alt: "Deep-learning measurement of bone marrow fat fraction in four skeletal regions of UK Biobank MRI, across two participant batches."

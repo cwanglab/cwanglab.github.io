@@ -1,75 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Perception, planning and coordination across heterogeneous robots toward image-guided intervention">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 195" width="260" height="195" role="img" aria-label="Robots with different bodies and sensors share one sense, perceive, act loop.">
   <defs>
-    <marker id="rob-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#5f6368"/>
-    </marker>
-    <marker id="rob-arrow-claret" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <marker id="ro-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0,0 L10,5 L0,10 Z" fill="#7a1732"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="560" height="420" fill="#ffffff"/>
+  <rect x="0" y="0" width="260" height="195" fill="#ffffff"/>
 
-  <!-- Bidirectional links: nodes <-> coordination hub -->
-  <line x1="180" y1="80" x2="210" y2="182" stroke="#5f6368" stroke-width="1.5" marker-start="url(#rob-arrow)" marker-end="url(#rob-arrow)"/>
-  <line x1="180" y1="210" x2="212" y2="211" stroke="#5f6368" stroke-width="1.5" marker-start="url(#rob-arrow)" marker-end="url(#rob-arrow)"/>
-  <line x1="180" y1="340" x2="210" y2="240" stroke="#5f6368" stroke-width="1.5" marker-start="url(#rob-arrow)" marker-end="url(#rob-arrow)"/>
+  <text x="130" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Different bodies and sensors</text>
 
-  <!-- Soft robot node -->
-  <g>
-    <rect x="15" y="45" width="165" height="70" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
-    <path d="M27,80 q8,-14 16,0 q8,14 16,0" fill="none" stroke="#7a1732" stroke-width="1.6" stroke-linecap="round"/>
-    <circle cx="27" cy="80" r="2.4" fill="#7a1732"/>
-    <circle cx="43" cy="80" r="2.4" fill="#7a1732"/>
-    <circle cx="59" cy="80" r="2.4" fill="#7a1732"/>
-    <text x="76" y="69" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">soft robot</text>
-    <text x="76" y="85" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-style="italic" fill="#5f6368">tactile and</text>
-    <text x="76" y="97" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-style="italic" fill="#5f6368">morphological</text>
-    <text x="76" y="109" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-style="italic" fill="#5f6368">sensing</text>
-  </g>
+  <!-- Soft robot with e-skin -->
+  <path d="M30,52 C50,32 85,32 105,50 C85,68 50,70 30,52 Z" fill="#f7f7f5" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="55" cy="40" r="2.5" fill="#7a1732"/>
+  <circle cx="72" cy="37" r="2.5" fill="#7a1732"/>
+  <circle cx="89" cy="41" r="2.5" fill="#7a1732"/>
 
-  <!-- Crawler / fish robot node -->
-  <g>
-    <rect x="15" y="175" width="165" height="70" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
-    <ellipse cx="40" cy="210" rx="17" ry="8" fill="none" stroke="#7a1732" stroke-width="1.6"/>
-    <path d="M56,210 L68,202 L68,218 Z" fill="none" stroke="#7a1732" stroke-width="1.4" stroke-linejoin="round"/>
-    <circle cx="32" cy="208" r="1.6" fill="#7a1732"/>
-    <text x="76" y="206" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">crawler / fish</text>
-    <text x="76" y="222" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">robot</text>
-  </g>
+  <!-- Robot arm -->
+  <rect x="170" y="72" width="24" height="6" rx="2" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <path d="M182,72 L172,50 L196,40" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <path d="M196,40 L204,36 M196,40 L202,47" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="182" cy="72" r="3.5" fill="#ffffff" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="172" cy="50" r="3.5" fill="#ffffff" stroke="#3c4043" stroke-width="1.5"/>
 
-  <!-- Sensor nodes -->
-  <g>
-    <rect x="15" y="305" width="165" height="70" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
-    <circle cx="30" cy="330" r="4" fill="none" stroke="#7a1732" stroke-width="1.4"/>
-    <circle cx="52" cy="322" r="4" fill="none" stroke="#7a1732" stroke-width="1.4"/>
-    <circle cx="44" cy="352" r="4" fill="none" stroke="#7a1732" stroke-width="1.4"/>
-    <line x1="34" y1="328" x2="48" y2="324" stroke="#5f6368" stroke-width="1.1"/>
-    <line x1="33" y1="334" x2="41" y2="348" stroke="#5f6368" stroke-width="1.1"/>
-    <line x1="51" y1="326" x2="46" y2="348" stroke="#5f6368" stroke-width="1.1"/>
-    <text x="76" y="344" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">sensor nodes</text>
-  </g>
+  <!-- Both feed one loop -->
+  <line x1="68" y1="72" x2="60" y2="106" stroke="#5f6368" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="182" y1="82" x2="200" y2="106" stroke="#5f6368" stroke-width="1.2" stroke-dasharray="3,3"/>
 
-  <!-- Central coordination hub -->
-  <g>
-    <rect x="212" y="168" width="156" height="86" rx="6" fill="#f7f7f5" stroke="#7a1732" stroke-width="1.5"/>
-    <text x="290" y="198" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a1732">Coordination</text>
-    <text x="290" y="220" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#5f6368">perception · planning ·</text>
-    <text x="290" y="234" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#5f6368">coordination</text>
-  </g>
+  <!-- Sense - Perceive - Act loop -->
+  <rect x="24" y="112" width="56" height="26" rx="13" fill="#f7f7f5" stroke="#3c4043" stroke-width="1.5"/>
+  <text x="52" y="129" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Sense</text>
+  <rect x="100" y="112" width="72" height="26" rx="13" fill="#f7f7f5" stroke="#3c4043" stroke-width="1.5"/>
+  <text x="136" y="129" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Perceive</text>
+  <rect x="192" y="112" width="44" height="26" rx="13" fill="#f7f7f5" stroke="#3c4043" stroke-width="1.5"/>
+  <text x="214" y="129" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Act</text>
 
-  <!-- Arrow to application -->
-  <line x1="368" y1="211" x2="414" y2="211" stroke="#7a1732" stroke-width="2" marker-end="url(#rob-arrow-claret)"/>
-
-  <!-- Application: image-guided intervention -->
-  <g>
-    <rect x="420" y="168" width="130" height="86" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
-    <circle cx="485" cy="196" r="12" fill="none" stroke="#7a1732" stroke-width="1.5"/>
-    <circle cx="485" cy="196" r="2" fill="#7a1732"/>
-    <line x1="485" y1="180" x2="485" y2="188" stroke="#7a1732" stroke-width="1.3"/>
-    <line x1="485" y1="204" x2="485" y2="212" stroke="#7a1732" stroke-width="1.3"/>
-    <line x1="469" y1="196" x2="477" y2="196" stroke="#7a1732" stroke-width="1.3"/>
-    <line x1="493" y1="196" x2="501" y2="196" stroke="#7a1732" stroke-width="1.3"/>
-    <text x="485" y="230" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">image-guided</text>
-    <text x="485" y="246" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#3c4043">intervention</text>
-  </g>
+  <line x1="82" y1="125" x2="96" y2="125" stroke="#7a1732" stroke-width="1.8" marker-end="url(#ro-arr)"/>
+  <line x1="174" y1="125" x2="188" y2="125" stroke="#7a1732" stroke-width="1.8" marker-end="url(#ro-arr)"/>
+  <path d="M214,142 L214,160 L52,160 L52,146" fill="none" stroke="#7a1732" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#ro-arr)"/>
 </svg>

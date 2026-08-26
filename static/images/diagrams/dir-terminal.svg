@@ -1,63 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Foundation model adapted via SeLoRA and deployed to terminal devices">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 195" width="260" height="195" role="img" aria-label="A frozen large model with a small trained SeLoRA adapter deploys to an MRI scanner and a surgical robot.">
   <defs>
-    <marker id="term-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <marker id="te-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0,0 L10,5 L0,10 Z" fill="#7a1732"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="560" height="420" fill="#ffffff"/>
+  <rect x="0" y="0" width="260" height="195" fill="#ffffff"/>
 
-  <!-- Foundation model box -->
-  <g>
-    <rect x="30" y="145" width="150" height="120" fill="#f7f7f5" stroke="#7a1732" stroke-width="1.5"/>
-    <text x="105" y="195" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a1732">Foundation</text>
-    <text x="105" y="217" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a1732">model</text>
-    <text x="105" y="241" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#5f6368">large-scale pretraining</text>
-  </g>
+  <!-- Frozen large model -->
+  <text x="16" y="28" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Large model (frozen)</text>
+  <rect x="16" y="38" width="92" height="100" rx="6" fill="#f7f7f5" stroke="#5f6368" stroke-width="1.5"/>
+  <rect x="30" y="54" width="64" height="12" rx="2" fill="#d8d9da"/>
+  <rect x="30" y="76" width="64" height="12" rx="2" fill="#d8d9da"/>
+  <rect x="30" y="98" width="64" height="12" rx="2" fill="#d8d9da"/>
 
-  <!-- Arrow into adaptation stage -->
-  <line x1="180" y1="205" x2="222" y2="205" stroke="#7a1732" stroke-width="2" marker-end="url(#term-arrow)"/>
+  <!-- SeLoRA adapter: the only trained part -->
+  <rect x="97" y="78" width="22" height="22" rx="3" fill="#7a1732"/>
+  <rect x="16" y="176" width="10" height="10" rx="2" fill="#7a1732"/>
+  <text x="32" y="185" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">SeLoRA adapter (trained)</text>
 
-  <!-- SeLoRA adaptation stage -->
-  <g>
-    <rect x="228" y="135" width="155" height="142" rx="6" fill="#f7f7f5" stroke="#7a1732" stroke-width="1.5"/>
-    <text x="305" y="164" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#7a1732">SeLoRA</text>
-    <text x="305" y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">parameter-efficient</text>
-    <text x="305" y="196" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">adaptation</text>
-    <line x1="246" y1="206" x2="365" y2="206" stroke="#d8d9da" stroke-width="1"/>
-    <text x="305" y="222" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">rank expands only</text>
-    <text x="305" y="236" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">when needed</text>
-    <text x="305" y="252" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">(Fisher-information</text>
-    <text x="305" y="266" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">criterion)</text>
-  </g>
+  <!-- Deployment arrows -->
+  <path d="M119,89 L142,89 L142,60 L150,60" fill="none" stroke="#7a1732" stroke-width="1.8" marker-end="url(#te-arr)"/>
+  <path d="M142,89 L142,125 L150,125" fill="none" stroke="#7a1732" stroke-width="1.8" marker-end="url(#te-arr)"/>
 
-  <!-- Arrows to terminal devices -->
-  <line x1="383" y1="175" x2="424" y2="112" stroke="#7a1732" stroke-width="2" marker-end="url(#term-arrow)"/>
-  <line x1="383" y1="237" x2="424" y2="298" stroke="#7a1732" stroke-width="2" marker-end="url(#term-arrow)"/>
+  <!-- MRI scanner -->
+  <rect x="154" y="38" width="64" height="44" rx="8" fill="#ffffff" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="186" cy="60" r="13" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <line x1="173" y1="60" x2="199" y2="60" stroke="#3c4043" stroke-width="1"/>
+  <text x="154" y="96" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">MRI scanner</text>
 
-  <!-- MRI scanner console -->
-  <g>
-    <rect x="430" y="55" width="115" height="95" rx="8" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
-    <rect x="444" y="68" width="56" height="36" fill="none" stroke="#7a1732" stroke-width="1.5"/>
-    <line x1="450" y1="96" x2="494" y2="76" stroke="#7a1732" stroke-width="1.2"/>
-    <circle cx="522" cy="86" r="9" fill="none" stroke="#7a1732" stroke-width="1.5"/>
-    <line x1="522" y1="86" x2="527" y2="80" stroke="#7a1732" stroke-width="1.2"/>
-    <line x1="444" y1="120" x2="531" y2="120" stroke="#5f6368" stroke-width="1.2"/>
-    <circle cx="456" cy="132" r="3" fill="none" stroke="#5f6368" stroke-width="1.2"/>
-    <circle cx="472" cy="132" r="3" fill="none" stroke="#5f6368" stroke-width="1.2"/>
-    <text x="487" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">MRI scanner console</text>
-    <text x="487" y="186" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">fixed compute budget</text>
-  </g>
-
-  <!-- Surgical / soft robot -->
-  <g>
-    <rect x="435" y="278" width="64" height="40" rx="6" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
-    <circle cx="467" cy="292" r="5" fill="none" stroke="#7a1732" stroke-width="1.5"/>
-    <polyline points="499,288 528,272 546,288" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linejoin="round"/>
-    <circle cx="528" cy="272" r="3.5" fill="none" stroke="#5f6368" stroke-width="1.5"/>
-    <circle cx="546" cy="288" r="3" fill="none" stroke="#7a1732" stroke-width="1.5"/>
-    <path d="M435,308 q8,10 16,0 q8,-10 16,0" fill="none" stroke="#7a1732" stroke-width="1.3"/>
-    <line x1="428" y1="326" x2="512" y2="326" stroke="#5f6368" stroke-width="1.8"/>
-    <text x="487" y="348" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">surgical / soft robot</text>
-    <text x="487" y="364" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-style="italic" fill="#5f6368">fixed compute budget</text>
-  </g>
+  <!-- Surgical robot -->
+  <rect x="160" y="144" width="26" height="6" rx="2" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <path d="M173,144 L165,124 L189,114" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <path d="M189,114 L197,110 M189,114 L195,121" fill="none" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="173" cy="144" r="3.5" fill="#ffffff" stroke="#3c4043" stroke-width="1.5"/>
+  <circle cx="165" cy="124" r="3.5" fill="#ffffff" stroke="#3c4043" stroke-width="1.5"/>
+  <text x="154" y="168" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#3c4043">Surgical robot</text>
 </svg>

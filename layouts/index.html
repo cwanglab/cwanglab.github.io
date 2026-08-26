@@ -37,6 +37,9 @@
     .news-date { color: var(--muted); font-size: 15px; white-space: nowrap; }
 
     @media (max-width: 700px) {
+      /* The three prose bullets state Cloud/Edge/Terminal in full; at phone
+         widths the diagram's type falls below the 11px floor, so hide it. */
+      .framework-figure { display: none; }
       .home-intro { padding-top: 34px; }
       .home-intro p { font-size: 17px; }
       .home-section h2 { font-size: 23px; }
@@ -66,7 +69,7 @@
       <h2 id="framework-title">Research framework</h2>
       <figure class="framework-figure">
         {{/* No loading="lazy": this figure is above the fold on the homepage. */}}
-        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1400" height="520">
+        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1304" height="370">
         <figcaption>Cloud–Edge–Terminal research framework.</figcaption>
       </figure>
       <ul>
@@ -105,7 +108,7 @@
                 {{ end }}
               </div>
               {{ with index $dirFig $page.File.BaseFileName }}
-                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="480" height="360" loading="lazy">
+                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="260" height="195" loading="lazy">
               {{ end }}
             </div>
           </li>
