@@ -69,16 +69,6 @@ individual page. Nothing else about them is published.
 
 ---
 
-## C. Doctoral alumni (2)
-
-Tian Xia · Agisilaos Chartsias
-
-Both have full entries describing their first-author papers. Use message A,
-adding a request for their current position — `alumni_destination` in
-`content/people/*.md` is what renders "Current position: …".
-
----
-
 ## Recording replies
 
 | Person | Group | Consent | Photo | Destination | Date |

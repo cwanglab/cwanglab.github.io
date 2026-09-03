@@ -61,8 +61,7 @@
       (dict "key" "postdoctoral-researcher" "label" "Postdoctoral researchers")
       (dict "key" "phd-researcher" "label" "PhD researchers")
       (dict "key" "student" "label" "Students")
-      (dict "key" "academic-collaborator" "label" "Collaborators")
-      (dict "key" "doctoral-alumni" "label" "Doctoral alumni") }}
+      (dict "key" "academic-collaborator" "label" "Collaborators") }}
     {{ range $groups }}
       {{ $people := where $.RegularPages ".Params.category" .key }}
       {{ if gt (len $people) 0 }}
@@ -85,7 +84,7 @@
                 </div>
                 <div class="member__body">
                   {{/* Alumni have no individual page (build.render = never), so their names are not linked. */}}
-                  <h3>{{ if in (slice "alumni" "doctoral-alumni") $p.Params.category }}{{ $p.Title }}{{ else }}<a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>{{ end }}</h3>
+                  <h3>{{ if eq $p.Params.category "alumni" }}{{ $p.Title }}{{ else }}<a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>{{ end }}</h3>
                   <p class="member__position">{{ $p.Params.position }}</p>
                   {{ with $p.Params.affiliation }}<p class="member__affiliation">{{ . }}</p>{{ end }}
                   <div class="member__bio">{{ $p.Content }}</div>
